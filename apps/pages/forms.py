@@ -1,15 +1,19 @@
 from django import forms
+from apps.pages.models import ContactModel
 
 
-class ContactForms(forms.Form):
-    full_name = forms.CharField(max_length=128)
-    email = forms.EmailField(unique=True)
-    subject = forms.CharField(max_length=128, required=False)
-    message = forms.Textarea()
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactModel
+        exclude = ['is_read', 'comment']
+
 
     def clean(self):
-        print("1. object level validation")
         print(self.cleaned_data)
         return super().clean()
 
-
+    def clean_email(self):
+        email: str = self.cleaned_data.get('email')
+        if not email.endswith(".com"):
+            raise forms.ValidationError("Email must end with .com")
+        return self.cleaned_data.get('email')

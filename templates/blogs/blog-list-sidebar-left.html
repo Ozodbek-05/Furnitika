@@ -1,0 +1,70 @@
+{% extends 'layout/base.html'%}
+{% load static %}
+{% block title %} Blog List {% endblock %}
+{% block body_id %}blog-list-sidebar-left{% endblock %}
+{% block body_class %}blog{% endblock %}
+{% block content %}
+<div class="main-content">
+    <div id="wrapper-site">
+        <div id="content-wrapper">
+            <div id="main">
+                <div class="page-home">
+
+                    <!-- Breadcrumb -->
+                    <nav class="breadcrumb-bg">
+                        <div class="container no-index">
+                            <div class="breadcrumb">
+                                <ol>
+                                    <li><a href="{% url 'blogs:list' %}"><span>Blogs-Home</span></a></li>
+                                    <li><span>Blogs</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <div class="container">
+                        <div class="content">
+                            <div class="row">
+                                <!-- Sidebar -->
+                                <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+                                    {% include 'blogs/blog-sidebar.html' %}
+                                </div>
+
+                                <!-- Blog List -->
+                                <div class="col-sm-8 col-lg-9 col-md-9 flex-xs-first main-blogs">
+                                    <h2>Recent Posts</h2>
+                                    {% for blog in blogs %}
+                                        <div class="list-content row mb-4">
+                                            <div class="hover-after col-md-5 col-xs-12">
+                                                <a href="{% url 'blogs:detail' pk=blog.id %}">
+                                                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid">
+                                                </a>
+                                            </div>
+                                            <div class="late-item col-md-7 col-xs-12">
+                                                <p class="content-title">
+                                                    <a href="{% url 'blogs:detail' pk=blog.id %}">{{ blog.title }}</a>
+                                                </p>
+                                                <p class="post-info">
+                                                    <span>{{ blog.created_at|date:"M d, Y" }}</span> |
+                                                    <span>{{ blog.author.full_name }}</span>
+                                                </p>
+                                                <p class="description">{{ blog.content|truncatechars:180 }}</p>
+                                                <span class="view-more">
+                                                    <a href="{% url 'blogs:detail' pk=blog.id %}">View more</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    {% empty %}
+                                        <p>No blog posts found.</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

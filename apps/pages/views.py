@@ -1,27 +1,36 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 
-from apps.pages.models import ContactPagesModel
-
+from apps.pages.forms import ContactForm
+from apps.pages.models import ContactModel
 
 def home_view(request):
     return render(request, 'home3.html')
 
-def blog_view(request):
-    return render(request,'blog-detail.html')
-
-def blog_list_view(request):
-    return render(request, 'blog-list-sidebar-left.html')
-
-def contact_view(request):
+def contact_page_view(request):
     if request.method == "POST":
-        data = request.POST
-        validated_data = {
-            "full_name":data.get('full_name'),
-            "email": data.get('email'),
-            "subject": data.get('subject'),
-            "message": data.get('message')
-        }
-        ContactPagesModel.objects.create(**validated_data)
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            context = {
+                'errors': form.errors
+            }
+            return render(request, 'pages/contact.html', context)
         return redirect('pages:contact')
     else:
-        return render(request, 'contact.html')
+        return render(request, 'pages/contact.html')
+
+def about_view(request):
+    return render(request, 'pages/about-us.html')
+
+def not_found_view(request, exception=None):
+    return render(request, 'pages/404.html', status=404)
+
+
+
+# def test_contact(request):
+#     form = ContactForm()
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'pages/test-contact.html', context=context)

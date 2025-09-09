@@ -1,12 +1,14 @@
 from django.urls import path
-from apps.pages.views import home_view, contact_view, blog_view, blog_list_view
+
+from apps.pages.views import about_view, contact_page_view, home_view, not_found_view
+
 
 app_name = 'pages'
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('contact/', contact_view, name='contact'),
-    path('blog-detail/', blog_view, name='detail'),
-    path('blog-list/', blog_list_view, name='list'),
-
+    path('contact/', contact_page_view, name='contact'),
+    path('about/', about_view, name='about'),
+    path('404/', not_found_view, name = '404'),
+    # path('test/', test_contact, name='test')
 ]

@@ -1,0 +1,282 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block body_id %}blog-detail{% endblock %}
+{% block body_class %}blog{% endblock %}
+{% block content %}
+    <div class="main-content">
+        <div id="wrapper-site">
+            <div id="content-wrapper">
+                <div id="main">
+                    <div class="page-home">
+
+                        <!-- breadcrumb -->
+                        <nav class="breadcrumb-bg">
+                            <div class="container no-index">
+                                <div class="breadcrumb">
+                                    <ol>
+                                        <li>
+                                            <a href="{% url 'blogs:list' %}">
+                                                <span>Blogs-Home</span>
+                                            </a>
+                                        </li>
+                                        {% if parent_category %}
+                                        <li>
+                                            <a href="#">
+                                                <span>{{ parent_category.title }}</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% if category %}
+                                        <li>
+                                            <a href="#">
+                                                <span>{{ category.title }}</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        <li>
+                                            <span>{{ blog.title }}</span>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="container">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+
+                                        {% include 'blogs/blog-sidebar.html' %}
+
+                                    </div>
+                                    <div class="col-sm-8 col-lg-9 col-md-9 flex-xs-first main-blogs">
+                                        <h3>{{ blog.title }}</h3>
+                                        <div class="hover-after">
+                                            <img src="{{ blog.image.url }}" alt="img" class="img-fluid">
+                                        </div>
+                                        <div class="late-item">
+                                            <p>
+                                                {{ blog.content }}
+                                            </p>
+                                            <p class="content-title">Here, we bring you a look-see:</p>
+                                            <p>
+                                                Explore modern and cozy design ideas. This style is all about harmonizing comfort
+                                                nd elegance using simple shapes and colors. The bright yellow armchair, white sofa,
+                                                and vibrant orange cushions truly bring the room to life. Find a new source of inspiration
+                                                for your home!
+                                            </p>
+                                            <div class="spacing-10 group-image-special">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 p-left">
+                                                            <div class="effect">
+                                                                <img class="img-fluid" src="{% static 'img/blog/3.jpg' %}" alt="banner-1" title="banner-1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 p-right">
+                                                            <div class="effect">
+                                                                <img class="img-fluid" src="{% static 'img/blog/2.jpg' %}" alt="banner-2" title="banner-2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt
+                                                ut labore et dolore magna aliqua. Ut enim adminim veniam Lorem ipsum dolor
+                                                sit amet, consectetur adipiscing elit. Curabitur ut iaculis arcu. Proin tincidunt,
+                                                ipsum nec vehicula euismod, neque nibh pretium lorem, at ornare risus sem
+                                                et risus.
+                                            </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt
+                                                ut labore et dolore magna aliqua. Ut enim adminim veniam. Lorem ipsum dolor
+                                                sit amet, consectetur adipiscing elit. Curabitur ut iaculis arcu. Proin tincidunt,
+                                                ipsum nec vehicula euismod neque
+                                            </p>
+                                            <div class="border-detail">
+                                                <p class="post-info float-left">
+                                                    <span>3 minitunes ago</span>
+                                                    <span>113 Comments</span>
+                                                    <span>TIVATHEME</span>
+                                                </p>
+                                                <div class="btn-group">
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-share"></i>
+                                                        <span>Share</span>
+                                                    </a>
+                                                    <a href="#" class="email">
+                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                        <span>SEN TO A FRIEND</span>
+                                                    </a>
+                                                    <a href="#" class="print">
+                                                        <i class="zmdi zmdi-print"></i>
+                                                        <span>Print</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="admin">
+                                            <img src="{% static 'img/blog/user.jpg' %}" alt="img" class="float-left right">
+                                            <div class="info">
+                                                <p>
+                                                    <a href="#">
+                                                        <span class="content-title">
+                                                            John doe
+                                                        </span>
+                                                    </a>
+                                                    <span>Administrator, Web Designer</span>
+                                                </p>
+                                                <p class="descript">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt. ut labore et dolore magna aliqua.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="related">
+                                            <h2 class="title-block">Related News</h2>
+                                            <div class="main-blogs">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="hover-after">
+                                                            <a href="blog-detail.html">
+                                                                <img src="{% static 'img/blog/7.jpg' %}" alt="img" class="img-fluid">
+                                                            </a>
+                                                        </div>
+                                                        <div class="late-item">
+                                                            <p class="content-title">
+                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                            </p>
+                                                            <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
+                                                                lorem quis bibendum auctor.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="hover-after">
+                                                            <a href="blog-detail.html">
+                                                                <img src="{% static 'img/blog/8.jpg' %}" alt="img" class="img-fluid">
+                                                            </a>
+                                                        </div>
+                                                        <div class="late-item">
+                                                            <p class="content-title">
+                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                            </p>
+                                                            <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
+                                                                lorem quis bibendum auctor.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="hover-after">
+                                                            <a href="blog-detail.html">
+                                                                <img src="{% static 'img/blog/9.jpg' %}" alt="img" class="img-fluid">
+                                                            </a>
+                                                        </div>
+                                                        <div class="late-item">
+                                                            <p class="content-title">
+                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                            </p>
+                                                            <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
+                                                                lorem quis bibendum auctor .
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="reply late-item">
+                                            <div class="blog-comment" id="blog-comment">
+                                                <h2 class="title-block">Comments</h2>
+                                                <img src="{% static 'img/blog/user1.jpg' %}" alt="img" class="float-left right">
+                                            </div>
+                                            <div class="comment-content">
+                                                <p class="user-title">
+                                                    <a href="#">JOHN DOE</a>
+                                                    <span class="time">Posted on Mar 17, 2017 at 6:57am /
+                                                        <a href="#">repost</a> /
+                                                        <span class="green">
+                                                            <a href="#">Reply</a>
+                                                        </span>
+                                                    </span>
+                                                </p>
+                                                <p class="content-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam.
+                                                </p>
+                                            </div>
+                                            <div class="blog-comment margin-right-comment">
+                                                <div class="avatar">
+                                                    <img src="{% static 'img/blog/user2.jpg' %}" alt="img" class="float-left">
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p class="user-title">
+                                                        <a href="#">JOHN DOE</a>
+                                                        <span class="time">Posted on Mar 17, 2017 at 6:57am /
+                                                            <a href="#">repost</a> /
+                                                            <span class="green">
+                                                                <a href="#">Reply</a>
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                    <p class="content-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod
+                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim
+                                                        veniam.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="blog-comment">
+                                                <div class="avatar">
+                                                    <img src="{% static 'img/blog/user1.jpg' %}" alt="img" class="float-left right">
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p class="user-title">
+                                                        <a href="#">JOHN DOE</a>
+                                                        <span class="time">Posted on Mar 17, 2017 at 6:57am /
+                                                            <a href="#">repost</a> /
+                                                            <span class="green">
+                                                                <a href="#">Reply</a>
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                    <p class="content-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod
+                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim
+                                                        veniam.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="submit-comment" id="respond">
+                                            <h2 class="title-block">Submit comment</h2>
+                                            <div id="commentInput">
+                                                <form action="#" method="post" id="commentform">
+                                                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                                                    <div class="row">
+                                                        <div class="form-group col col-sm-12 col-md-4 ">
+                                                            <input type="text" class="inputName form-control" name="name" placeholder="Your Name *">
+                                                        </div>
+                                                        <div class="form-group col col-sm-12  col-md-4">
+                                                            <input type="text" class="inputMail form-control" name="mail" placeholder="Your E-mail *">
+                                                        </div>
+                                                        <div class="form-group col col-sm-12  col-md-4">
+                                                            <input type="text" class="form-control" name="website" placeholder="Your Website">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col col-md-12">
+                                                            <textarea tabindex="4" class="inputContent form-control grey" rows="10" name="comment" placeholder="Your Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <input type="submit" name="addComment" id="submitComment" class="btn btn-default" value="Send Message">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

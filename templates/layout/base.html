@@ -41,7 +41,7 @@
     {% block extra_css %}{% endblock %}
 </head>
 
-<body id="{% block home_id %}{% endblock %}" class="blog">
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
     {% url 'pages:home' as home_url %}
     {% if request.path == home_url %}
         {% include 'layout/header-home.html' %}
