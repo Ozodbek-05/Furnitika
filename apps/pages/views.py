@@ -4,7 +4,7 @@ from apps.pages.forms import ContactForm
 from apps.pages.models import ContactModel
 
 def home_view(request):
-    return render(request, 'home3.html')
+    return render(request, 'pages/home3.html')
 
 def contact_page_view(request):
     if request.method == "POST":
@@ -26,11 +26,3 @@ def about_view(request):
 def not_found_view(request, exception=None):
     return render(request, 'pages/404.html', status=404)
 
-
-
-# def test_contact(request):
-#     form = ContactForm()
-#     context = {
-#         'form': form
-#     }
-#     return render(request, 'pages/test-contact.html', context=context)

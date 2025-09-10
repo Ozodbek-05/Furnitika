@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% load my_tags %}
 <footer class="footer-one">
         <div class="inner-footer">
             <div class="container">
@@ -10,9 +12,9 @@
                                     <p class="logo-footer">
                                         <img src="{% static 'img/home/logo.png' %}" alt="img">
                                     </p>
-                                    <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incidi
-                                        dunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
-                                    <span>Duis aute irure dolor in reprehenderit in voluptate velit exercitation ullamco</span>
+                                    <p class="content-logo">{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incidi
+                                        dunt ut labore et dolore magna aliqua. Ut enim ad minim{% endblocktrans %}</p>
+                                    <span>{% blocktrans %}Duis aute irure dolor in reprehenderit in voluptate velit exercitation ullamco{% endblocktrans %}</span>
                                 </div>
                             </div>
                         </div>
@@ -21,26 +23,26 @@
                             <div class="block">
                                 <div class="block-content">
                                     <div class="title-block">
-                                        WHO WE ARE
+                                        {% trans 'WHO WE ARE' %}
                                     </div>
                                     <ul>
                                         <li>
-                                            <a href="#">About Us</a>
+                                            <a href="#">{% trans 'About Us' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Reasons to shop</a>
+                                            <a href="#">{% trans 'Reasons to shop' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">What our customers say</a>
+                                            <a href="#">{% trans 'What our customers say' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Meet the teaml</a>
+                                            <a href="#">{% trans 'Meet the teaml' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Contact our buyers</a>
+                                            <a href="#">{% trans 'Contact our buyers' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Cookies & privacy</a>
+                                            <a href="#">{% trans 'Cookies & privacy' %}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -51,26 +53,26 @@
                             <div class="block">
                                 <div class="block-content">
                                     <div class="title-block">
-                                        CUSTOMER SERVICES
+                                        {% trans 'CUSTOMER SERVICES' %}
                                     </div>
                                     <ul>
                                         <li>
-                                            <a href="#">Contact Us</a>
+                                            <a href="#">{% trans 'Contact Us' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Help and advice</a>
+                                            <a href="#">{% trans 'Help and advice' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Delivery</a>
+                                            <a href="#">{% trans 'Delivery' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Terms and conditions</a>
+                                            <a href="#">{% trans 'Terms and conditions' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">Refund Policy</a>
+                                            <a href="#">{% trans 'Refund Policy' %}</a>
                                         </li>
                                         <li>
-                                            <a href="#">FAQs</a>
+                                            <a href="#">{% trans 'FAQs' %}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,19 +83,19 @@
                             <div class="block">
                                 <div class="block-content">
                                     <div class="title-block">
-                                        CONTACT US
+                                        {% trans 'CONTACT US' %}
                                     </div>
                                     <div class="contact-content">
                                         <div class="data align-self-stretch d-flex">
                                             <i class="fa fa-home float-left m-bottom" aria-hidden="true"></i>
                                             <div class="content-data">
-                                                <b class="mr-2">Showroom:</b>123 Suspendis matti, Visaosang Building
+                                                <b class="mr-2">{% trans 'Showroom:' %}</b>{% trans '123 Suspendis matti, Visaosang Building' %}
 											</div>
                                         </div>
                                         <div class="data d-flex align-self-stretch">
                                             <i class="fa fa-clock-o float-left" aria-hidden="true"></i>
                                             <div class="content-data">
-                                                <b class="mr-2">Opening Hours: </b>08.00AM - 19.00
+                                                <b class="mr-2">{% trans 'Opening Hours:' %} </b>{% trans '08.00AM - 19.00' %}
                                             </div>
                                         </div>
                                         <div class="support d-dflex align-self-stretch">
@@ -125,33 +127,33 @@
                             <div class="block-content">
                                 <ul class="list-inline">
                                     <li class="name-list list-inline-item">
-                                        <span>LIVING ROOM</span> :</li>
+                                        <span>{% trans 'LIVING ROOM' %}</span> :</li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SIDE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SIDE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">FIREPLACE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'FIREPLACE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">ARMCHAIR </a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'ARMCHAIR' %} </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CUSHION</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CUSHION' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">COFFEE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'COFFEE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SHELF</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SHELF' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SOFA</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SOFA' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">DRESSING TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'DRESSING TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item views">
-                                        <a href="product-grid-sidebar-left.html">VIEW ALL</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'VIEW ALL' %}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -162,39 +164,39 @@
                             <div class="block-content">
                                 <ul class="list-inline">
                                     <li class="name-list list-inline-item">
-                                        <span>KITCHEN</span> :</li>
+                                        <span>{% trans 'KITCHEN' %}</span> :</li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">WINDOW CURTAIN</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'WINDOW CURTAIN' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CHANDELIER</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CHANDELIER' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CEILING FAN </a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CEILING FAN' %} </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">WARDROBE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'WARDROBE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">FLOOR LAMP</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'FLOOR LAMP' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">VASE FLOWER</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'VASE FLOWER' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SIDE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SIDE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">FIREPLACE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'FIREPLACE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">TABLE LAMP</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'TABLE LAMP' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">ARMCHIRM</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'ARMCHIRM' %}</a>
                                     </li>
                                     <li class="list-inline-item views">
-                                        <a href="product-grid-sidebar-left.html">VIEW ALL</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'VIEW ALL' %}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -205,42 +207,42 @@
                             <div class="block-content">
                                 <ul class="list-inline">
                                     <li class="name-list list-inline-item">
-                                        <span>BEDROOM</span> :</li>
+                                        <span>{% trans 'BEDROOM' %}</span> :</li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SIDE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SIDE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">FIREPLACE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'FIREPLACE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">ARMCHAIR </a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'ARMCHAIR' %} </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CUSHION</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CUSHION' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">COFFEE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'COFFEE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SHELF</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SHELF' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SOFA</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SOFA' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">DRESSING TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'DRESSING TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">WINDOW CURTAIN</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'WINDOW CURTAIN' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CHANDELIER</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CHANDELIER' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CEILING FAN</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CEILING FAN' %}</a>
                                     </li>
                                     <li class="list-inline-item views">
-                                        <a href="product-grid-sidebar-left.html">VIEW ALL</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'VIEW ALL' %}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -251,33 +253,33 @@
                             <div class="block-content">
                                 <ul class="list-inline">
                                     <li class="name-list list-inline-item">
-                                        <span>BATHROOM</span> :</li>
+                                        <span>{% trans 'BATHROOM' %}</span> :</li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SIDE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SIDE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">FIREPLACE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'FIREPLACE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">ARMCHAIR </a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'ARMCHAIR' %} </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">CUSHION</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'CUSHION' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">COFFEE TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'COFFEE TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SHELF</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SHELF' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">SOFA</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'SOFA' %}</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="product-grid-sidebar-left.html">DRESSING TABLE</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'DRESSING TABLE' %}</a>
                                     </li>
                                     <li class="list-inline-item views">
-                                        <a href="product-grid-sidebar-left.html">VIEW ALL</a>
+                                        <a href="product-grid-sidebar-left.html">{% trans 'VIEW ALL' %}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -291,7 +293,7 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12 align-items-center justify-content-md-start justify-content-sm-center justify-content-xs-center">
                         <span>
-                            <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
+                            <a target="_blank" href="https://www.templateshub.net">{% trans 'Templates Hub' %}</a>
                         </span>
                     </div>
                     <div class="col-md-6 col-xs-12 align-items-center justify-content-md-end d-flex justify-content-xs-center">

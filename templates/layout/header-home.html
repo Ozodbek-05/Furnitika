@@ -53,11 +53,7 @@
                                             </td>
                                             <td>
                                                 <div class="product-name">
-                                                    {% url 'products:detail' as product_url %}
-                                                    {% for product in products %}
-                                                        <a href="{% url 'products:detail' product.pk %}">{{ product.title }}</a>
-                                                    {% endfor %}
-
+                                                    <a href="product-detail.html">{% trans 'Organic Strawberry Fruits' %}</a>
                                                 </div>
                                                 <div>
                                                     2 x
@@ -71,17 +67,15 @@
                                             </td>
                                         </tr>
                                         <tr class="total">
-                                            <td colspan="2">Total:</td>
+                                            <td colspan="2">{% trans 'Total:' %}</td>
                                             <td>£92.96</td>
                                         </tr>
 
                                         <tr>
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">
-                                                    {% url 'products:cart' as cart_url %}
-                                                    {% url 'products:checkout' as checkout_url %}
-                                                    <a href="{% url 'products:cart' %}" title="View Cart">{% trans 'View Cart' %}</a>
-                                                    <a href="{% url 'products:checkout' %}" title="Checkout">{% trans 'Checkout' %}</a>
+                                                    <a href="product-cart.html" title="View Cart">{% trans 'View Cart' %}</a>
+                                                    <a href="product-checkout.html" title="Checkout">{% trans 'Checkout' %}</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -101,20 +95,20 @@
                         <div class="menu navbar collapse navbar-collapse">
                             <ul class="menu-top navbar-nav">
                                 {% url 'pages:home' as home_url %}
-                                {% url 'blogs:list' as blog_url %}
-                                {% url 'products:grid' as product_url %}
+                                {% url 'blogs:blogs_home' as blog_url %}
+                                {% url 'products:home' as product_url %}
                                 {% url 'pages:contact' as contact_url %}
                                 <li class="{% if request.path == home_url %}nav-link{% endif %}">
                                     <a href="{% url 'pages:home' %}" class="parent">{% trans 'Home' %}</a>
                                 </li>
-                                <li class="{% if request.path == blog_url %}nav-link{% endif %}">
-                                    <a href="{% url 'blogs:list' %}" class="parent">{% trans 'Blog' %}</a>
+                                <li>
+                                    <a href="{% url 'blogs:blogs_home' %}" class="parent">{% trans 'Blog' %}</a>
                                 </li>
-                                <li class="{% if request.path == product_url %}nav-link{% endif %}">
-                                    <a href="{% url 'products:grid' %}" class="parent">{% trans 'Page' %}</a>
+                                <li>
+                                    <a href="{% url 'products:home' %}" class="parent">{% trans 'Page' %}</a>
                                 </li>
-                                <li class="{% if request.path == contact_url %}nav-link{% endif %}">
-                                    <a href="{% url 'pages:contact' %}" class="parent">{% trans 'Contact Us' %}</a>
+                                <li>
+                                    <a href="{% url 'pages:contact' %}" class="parent">{% trans 'Contact US' %}</a>
                                 </li>
                             </ul>
                         </div>
@@ -128,7 +122,7 @@
                             <div class="myaccount-title">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <a href="#acount" data-toggle="collapse" class="acount">
-                                    <span>{% trans 'My Account' %}</span>
+                                    <span>My Account</span>
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -167,10 +161,13 @@
                                     <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
                                         <ul class="list-inline">
                                             <li>
-                                                <a title="Euro" rel="nofollow" href="#">EUR</a>
+                                                <a title="USD" rel="nofollow" href="#">USD</a>
                                             </li>
                                             <li class="current list-inline-item">
-                                                <a title="British Pound Sterling" rel="nofollow" href="#">GBP</a>
+                                                <a title="UZS" rel="nofollow" href="#">UZS</a>
+                                            </li>
+                                            <li class="current list-inline-item">
+                                                <a title="RUB" rel="nofollow" href="#">RUB</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -178,22 +175,17 @@
                                         <ul class="list-inline">
                                             <li class="list-inline-item current">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="{%static 'img/home/home1-flas.jpg' %}" alt="English" width="16" height="11">
+                                                    <img class="img-fluid" src="{%static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="{%static 'img/home/home1-flas2.jpg' %}" alt="Italiano" width="16" height="11">
+                                                    <img class="img-fluid" src="{%static 'img/home/lg2.jpg' %}" alt="Uzbek" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="{%static 'img/home/home1-flas3.jpg' %}" alt="Français" width="16" height="11">
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="#">
-                                                    <img class="img-fluid" src="{%static 'img/home/home1-flas4.jpg' %}" alt="Español" width="16" height="11">
+                                                    <img class="img-fluid" src="{%static 'img/home/lg3.jpg' %}" alt="Russian" width="16" height="11">
                                                 </a>
                                             </li>
                                         </ul>
@@ -212,12 +204,16 @@
                             </div>
                             <div id="currency" class="collapse">
                                 <div class="currency-item currency-list-content acount">
-                                    <a title="Euro" rel="nofollow" href="#">
-                                        <span>€</span>EUR</a>
+                                    <a title="USD" rel="nofollow" href="#">
+                                        <span>$</span>USD</a>
                                 </div>
                                 <div class="currency-item current flex-first">
-                                    <a title="British Pound Sterling" rel="nofollow" href="#">
-                                        <span>£</span>GBP</a>
+                                    <a title="UZS" rel="nofollow" href="#">
+                                        <span>#</span>UZS</a>
+                                </div>
+                                <div class="currency-item current flex-first">
+                                    <a title="RUB" rel="nofollow" href="#">
+                                        <span>%</span>RUB</a>
                                 </div>
                             </div>
                         </div>
@@ -237,25 +233,19 @@
                                     <div class="language-item current flex-first language-list-content">
                                         <a href="#">
                                             <img class="img-fluid" src="{%static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
-                                            <span>{% trans 'English' %}</span>
+                                            <span>English</span>
                                         </a>
                                     </div>
                                     <div class="language-item language-list-content">
                                         <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg2.jpg' %}" alt="Italiano" width="16" height="11">
-                                            <span>{% trans 'Italiano' %}</span>
+                                            <img class="img-fluid" src="{%static 'img/home/lg2.jpg' %}" alt="Uzbek" width="16" height="11">
+                                            <span>Uzbek</span>
                                         </a>
                                     </div>
                                     <div class="language-item language-list-content">
                                         <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg3.jpg' %}" alt="Français" width="16" height="11">
-                                            <span>{% trans 'Français' %}</span>
-                                        </a>
-                                    </div>
-                                    <div class="language-item">
-                                        <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg4.jpg' %}" alt="Español" width="16" height="11">
-                                            <span>{% trans 'Español' %}</span>
+                                            <img class="img-fluid" src="{%static 'img/home/lg3.jpg' %}" alt="Russian" width="16" height="11">
+                                            <span>Russian</span>
                                         </a>
                                     </div>
                                 </div>
@@ -271,10 +261,10 @@
                 <div class="row">
                     <!-- logo -->
                     <div class="col-sm-8 col-md-4 align-items-center">
-                        <div class="vertical-header d-flex align-items-center" style="gap:20px;">
+                        <div class="vertical-header d-flex align-items-center">
                             <div class="dropdown vertical-dropdown has-showmore" data-textshowmore="Show More" data-textless="Hide" data-desktop_item="5">
                                 <div data-toggle="collapse" data-target="#show-menu">
-                                    <div id="nav_icon3" style="margin-right:20px;">
+                                    <div id="nav_icon3">
                                         <span></span>
                                         <span></span>
                                         <span></span>
@@ -283,7 +273,7 @@
                             </div>
                             <div id="logo">
                                 <a href="home3.html">
-                                    <img src="{% static 'img/home/logo.png' %}" alt="logo" style="max-height:60px;">
+                                    <img src="{%static 'img/home/logo.png' %}" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -337,7 +327,6 @@
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </div>
                                 <div class="dropdown-content">
-
                                     <div class="cart-content">
                                         <table>
                                             <tbody>
@@ -349,11 +338,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="product-name">
-                                                            {% url 'products:detail' as product_url %}
-                                                            {% for product in products %}
-                                                                <a href="{% url 'products:detail' product.pk %}">{{ product.title }}</a>
-                                                            {% endfor %}
-
+                                                            <a href="product-detail.html">{% trans 'Organic Strawberry Fruits' %}</a>
                                                         </div>
                                                         <div>
                                                             2 x
@@ -367,16 +352,14 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="total">
-                                                    <td colspan="2">Total:</td>
+                                                    <td colspan="2">{% trans 'Total:' %}</td>
                                                     <td>£92.96</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3" class="d-flex justify-content-center">
                                                         <div class="cart-button">
-                                                            {% url 'products:cart' as cart_url %}
-                                                            {% url 'products:checkout' as checkout_url %}
-                                                            <a href="{% url 'products:cart' %}" title="View Cart">{% trans 'View Cart' %}</a>
-                                                            <a href="{% url 'products:checkout' %}" title="Checkout">{% trans 'Checkout' %}</a>
+                                                            <a href="product-cart.html" title="View Cart">{% trans 'View Cart' %}</a>
+                                                            <a href="product-checkout.html" title="Checkout">{% trans 'Checkout' %}</a>
                                                         </div>
                                                     </td>
                                                 </tr>

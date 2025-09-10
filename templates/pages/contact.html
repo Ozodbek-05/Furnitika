@@ -1,7 +1,9 @@
 {% extends 'layout/base.html' %}
 {% load static %}
-{% block title %}Contact{% endblock %}
-{% block home_id %}contact{% endblock %}
+{% load i18n %}
+{% load my_tags %}
+{% block title %}{% trans 'Contact' %}{% endblock %}
+{% block body_id %}contact{% endblock %}
 {% block body_class %}blog{% endblock %}
 {% block extra_css %}
      <link rel="stylesheet" href="{% static 'css/errors.css' %}">
@@ -18,12 +20,12 @@
                             <ol>
                                 <li>
                                     <a href="#">
-                                        <span>Home</span>
+                                        <span>{% trans 'Home' %}</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span>Contact</span>
+                                        <span>{% trans 'Contact' %}</span>
                                     </a>
                                 </li>
                             </ol>
@@ -33,7 +35,7 @@
                 <div id="main">
                     <div class="page-home">
                         <div class="container">
-                            <h1 class="text-center title-page">Contact Us</h1>
+                            <h1 class="text-center title-page">{% trans 'Contact Us' %}</h1>
                             <div class="row-inhert">
                                 <div class="header-contact">
                                     <div class="row">
@@ -45,7 +47,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="item-right d-flex">
-                                                    <div class="title">Email:</div>
+                                                    <div class="title">{% trans 'Email:' %}</div>
                                                     <div class="contact-content">
                                                         <a href="mailto:support@domain.com">support@domain.com</a>
                                                         <br>
@@ -62,10 +64,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="item-right d-flex">
-                                                    <div class="title">Address:</div>
+                                                    <div class="title">{% trans 'Address:' %}</div>
                                                     <div class="contact-content">
-                                                        23 Suspendis matti, Visaosang Building
-                                                        <br>District, NY Accums, North American
+                                                        {% trans '23 Suspendis matti, Visaosang Building District, NY Accums, North American' %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +79,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="item-right d-flex">
-                                                    <div class="title">Hotline:</div>
+                                                    <div class="title">{% trans 'Hotline:' %}</div>
                                                     <div class="contact-content">
                                                         0123-456-78910
                                                         <br>0987-654-32100
@@ -94,9 +95,12 @@
                                     </div>
                                 </div>
                                 <div class="input-contact">
-                                    <p class="text-intro text-center">“Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem quis bibendum
-                                        auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit
-                                        amet nibh vultate cursus a sit amet mauris. Proin gravida nibh vel velit auctor aliquet.”
+                                    <p class="text-intro text-center">{% blocktrans %}"This modern furniture collection combines elegant design with
+                                        functional comfort. Each piece is crafted from premium materials,
+                                        ensuring both durability and style. Whether you are looking to furnish
+                                        a new home or refresh an existing space, our catalog offers the perfect
+                                        solution to elevate your living environment. We believe that great design
+                                        should be accessible to everyone."{% endblocktrans %}
                                     </p>
 
                                     <p class="icon text-center">
@@ -111,7 +115,7 @@
                                                 <form action="{% url 'pages:contact' %}" method="post" enctype="multipart/form-data">
                                                     {% if errors %}
                                                         <div class="alert alert-danger">
-                                                            <h5> Warning</h5>
+                                                            <h5>{% trans 'Warning' %}</h5>
                                                             {{ errors }}
                                                         </div>
                                                     {% endif %}
@@ -119,26 +123,26 @@
                                                     <div class="form-fields">
                                                         <div class="form-group row">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" name="full_name" placeholder="Your name">
+                                                                <input class="form-control" name="full_name" placeholder="{% trans 'Your name' %}">
                                                             </div>
                                                             <div class="col-md-6 margin-bottom-mobie">
-                                                                <input class="form-control" name="email" type="email" value="" placeholder="Your email">
+                                                                <input class="form-control" name="email" type="email" value="" placeholder="{% trans 'Your email' %}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-md-12 margin-bottom-mobie">
-                                                                <input class="form-control" name="subject" type="text" value="" placeholder="Subject">
+                                                                <input class="form-control" name="subject" type="text" value="" placeholder="{% trans 'Subject' %}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-md-12">
-                                                                <textarea class="form-control" name="message" placeholder="Message" rows="8"></textarea>
+                                                                <textarea class="form-control" name="message" placeholder="{% trans 'Message' %}" rows="8"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <button class="btn" type="submit" name="submitMessage">
-                                                            <img class="img-fl" src="{% static 'img/other/contact_email.png' %}" alt="img">Send message
+                                                            <img class="img-fl" src="{% static 'img/other/contact' %}_email.png" alt="img">{% trans 'Send message' %}
                                                         </button>
                                                     </div>
                                                 </form>

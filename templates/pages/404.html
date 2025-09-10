@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
+{% load my_tags %}
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -12,7 +14,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>Page Not Found</title>
+     <title>{% trans 'Page Not Found' %}</title>
 
     <meta name="keywords" content="Furniture, Decor, Interior">
     <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
@@ -53,14 +55,14 @@
                                 <div class="image">
                                     <img class="img-fluid" src="{% static 'img/other/image-404.png' %}" alt="Image 404">
                                 </div>
-                                <h2 class="h4">We're sorry — something has gone wrong on our end.</h2>
+                                <h2 class="h4">{% blocktrans %} We're sorry — something has gone wrong on our end.{% endblocktrans %}</h2>
                                 <div class="info">
-                                    <p>If difficulties persist, please contact the System Administrator of this site and report
-                                        the error below.</p>
+                                    <p>{% blocktrans %}If difficulties persist, please contact the System Administrator of this site and report
+                                        the error below.{% endblocktrans %}</p>
                                 </div>
                                 <a class="btn btn-default" href="{% url 'pages:home' %}">
                                     <i class="fa fa-home" aria-hidden="true"></i>
-                                    <span>Back to homepage</span>
+                                    <span>{% trans 'Back to homepage' %}</span>
                                 </a>
                             </div>
                             <div class="content-right-404 col-lg-6 col-sm-6 text-center">

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,12 +42,15 @@ INSTALLED_APPS = [
     'apps.blogs',
     'apps.products',
     'django_extensions',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -106,7 +110,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+LANGUAGES = (
+    ('en', 'English'),
+    ('uz', 'Uzbek'),
+    ('ru', 'Russian')
+)
+LOCALE_PATHS = [BASE_DIR / 'locale', ]
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 
 TIME_ZONE = 'UTC'
 
@@ -123,6 +135,13 @@ STATIC_ROOT = (BASE_DIR / 'static/')
 STATICFILES_DIRS = (BASE_DIR / 'assets/',)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

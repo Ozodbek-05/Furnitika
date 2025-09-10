@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from apps.pages.models import BaseModel
 
@@ -54,7 +55,7 @@ class BlogModel(BaseModel):
 
     image = models.ImageField(upload_to='blog-post/')
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = RichTextUploadingField()
     status = models.CharField(
         max_length=20,
         choices=BlogStatus,

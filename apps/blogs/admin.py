@@ -9,10 +9,6 @@ class BlogCategoryModelAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
     ordering = ['id']
 
-    def __str__(self):
-        if self.parent:
-            return f"{self.title} ({self.parent.title})"
-        return self.title
 
 
 

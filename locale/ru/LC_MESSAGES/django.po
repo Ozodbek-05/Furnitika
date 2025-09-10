@@ -1,0 +1,1506 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: .\templates\layout\footer-home.html:167
+#: .\templates\products\product-grid-sidebar-left.html:299
+#: .\templates\products\product-grid-sidebar-left.html:324
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-10 15:55+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: .\templates\blogs\blog-detail.html:22 .\templates\blogs\blog-detail.html:90
+#: .\templates\blogs\blog-list-sidebar-left.html:22
+#: .\templates\layout\header-base.html:113
+#: .\templates\layout\header-home.html:102 .\templates\pages\about-us.html:20
+#: .\templates\pages\contact.html:23
+#: .\templates\products\product-grid-sidebar-left.html:21
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\blogs\blog-detail.html:63
+msgid "3 minitunes ago"
+msgstr "3 минуты назад"
+
+#: .\templates\blogs\blog-detail.html:64
+msgid "113 Comments"
+msgstr "113 комментариев"
+
+#: .\templates\blogs\blog-detail.html:65
+msgid "TIVATHEME"
+msgstr "TIVATHEME"
+
+#: .\templates\blogs\blog-detail.html:74
+msgid "SEN TO A FRIEND"
+msgstr "Отправить другу"
+
+#: .\templates\blogs\blog-detail.html:78
+msgid "Print"
+msgstr "Печать"
+
+#: .\templates\blogs\blog-detail.html:93
+msgid "Administrator, Web Designer"
+msgstr "Администратор, Веб-дизайнер"
+
+#: .\templates\blogs\blog-detail.html:96
+msgid ""
+"\n"
+"                                                    Lorem ipsum dolor sit "
+"amet, consectetur adipisicing elit,\n"
+"                                                    do eiusmod tempor "
+"incididunt. ut labore et dolore magna aliqua.\n"
+"                                                    "
+msgstr ""
+"\n"
+"                                                    Lorem ipsum dolor sit "
+"amet, consectetur adipisicing elit,\n"
+"                                                    do eiusmod tempor "
+"incididunt. ut labore et dolore magna aliqua.\n"
+"                                                    "
+
+#: .\templates\blogs\blog-detail.html:104
+msgid "Related Blogs"
+msgstr "Связанные блоги"
+
+#: .\templates\blogs\blog-detail.html:125
+msgid "No related blogs found."
+msgstr "Связанные блоги не найдены."
+
+#: .\templates\blogs\blog-detail.html:133
+msgid "Comments"
+msgstr "Комментарии"
+
+#: .\templates\blogs\blog-detail.html:138
+#: .\templates\blogs\blog-detail.html:156
+#: .\templates\blogs\blog-detail.html:176
+msgid "JOHN DOE"
+msgstr "ДЖОН ДУ"
+
+#: .\templates\blogs\blog-detail.html:139
+#: .\templates\blogs\blog-detail.html:157
+#: .\templates\blogs\blog-detail.html:177
+msgid "Posted on Mar 17, 2017 at 6:57am /"
+msgstr "Опубликовано 17 марта 2017 в 6:57 /"
+
+#: .\templates\blogs\blog-detail.html:140
+#: .\templates\blogs\blog-detail.html:158
+#: .\templates\blogs\blog-detail.html:178
+msgid "repost"
+msgstr "репост"
+
+#: .\templates\blogs\blog-detail.html:142
+#: .\templates\blogs\blog-detail.html:160
+#: .\templates\blogs\blog-detail.html:180
+msgid "Reply"
+msgstr "Ответить"
+
+#: .\templates\blogs\blog-detail.html:146
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor\n"
+"                                                    incididunt ut labore et "
+"dolore magna aliqua. Ut enim adminim veniam."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor\n"
+"                                                    incididunt ut labore et "
+"dolore magna aliqua. Ut enim adminim veniam."
+
+#: .\templates\blogs\blog-detail.html:164
+#: .\templates\blogs\blog-detail.html:184
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod\n"
+"                                                        tempor incididunt ut "
+"labore et dolore magna aliqua. Ut enim adminim\n"
+"                                                        veniam."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod\n"
+"                                                        tempor incididunt ut "
+"labore et dolore magna aliqua. Ut enim adminim\n"
+"                                                        veniam."
+
+#: .\templates\blogs\blog-detail.html:192
+msgid "Submit comment"
+msgstr "Отправить комментарий"
+
+#: .\templates\blogs\blog-list-sidebar-left.html:27
+msgid "Blogs"
+msgstr "Блоги"
+
+#: .\templates\blogs\blog-sidebar.html:28
+#: .\templates\products\product-grid-sidebar-left.html:59
+#: .\templates\products\product-grid-sidebar-left.html:89
+msgid "No subcategories"
+msgstr "Подкатегорий нет"
+
+#: .\templates\blogs\blog-sidebar.html:40
+msgid "Recent Posts"
+msgstr "Последние записи"
+
+#: .\templates\blogs\blog-sidebar.html:45
+#: .\templates\blogs\blog-sidebar.html:64
+msgid "Lorem ipsum dolor sit amet"
+msgstr "Lorem ipsum dolor sit amet"
+
+#: .\templates\blogs\blog-sidebar.html:48
+#: .\templates\blogs\blog-sidebar.html:67
+msgid "13 comment"
+msgstr "13 комментариев"
+
+#: .\templates\blogs\blog-sidebar.html:51
+#: .\templates\blogs\blog-sidebar.html:70
+msgid "20 APRIl 2017"
+msgstr "20 АПРЕЛЯ 2017"
+
+#: .\templates\blogs\blog-sidebar.html:53
+#: .\templates\blogs\blog-sidebar.html:72
+msgid ""
+"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam\n"
+"                        nonummy..."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam\n"
+"                        nonummy..."
+
+#: .\templates\blogs\blog-sidebar.html:57
+#: .\templates\blogs\blog-sidebar.html:76
+msgid "READ MORE"
+msgstr "ЧИТАТЬ ДАЛЕЕ"
+
+#: .\templates\layout\footer-base.html:24
+#: .\templates\layout\footer-home.html:30 .\templates\pages\about-us.html:37
+msgid "About Us"
+msgstr "О нас"
+
+#: .\templates\layout\footer-base.html:27
+#: .\templates\layout\footer-home.html:33
+msgid "Reasons to shop"
+msgstr "Причины делать покупки"
+
+#: .\templates\layout\footer-base.html:30
+#: .\templates\layout\footer-home.html:36
+msgid "What our customers say"
+msgstr "Что говорят наши клиенты"
+
+#: .\templates\layout\footer-base.html:33
+msgid "Meet the team"
+msgstr "Наша команда"
+
+#: .\templates\layout\footer-base.html:36
+#: .\templates\layout\footer-home.html:42
+msgid "Contact our buyers"
+msgstr "Свяжитесь с нашими покупателями"
+
+#: .\templates\layout\footer-base.html:52
+#: .\templates\layout\footer-home.html:60 .\templates\pages\contact.html:38
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
+
+#: .\templates\layout\footer-base.html:58
+msgid "Address :"
+msgstr "Адрес :"
+
+#: .\templates\layout\footer-base.html:61
+msgid ""
+"123 Suspendis matti, Visaosang Building VST District NY Accums, North "
+"American"
+msgstr ""
+"123 Suspendis matti, Visaosang Building VST District NY Accums, Северная Америка"
+
+#: .\templates\layout\footer-base.html:68
+msgid "Email :"
+msgstr "Электронная почта :"
+
+#: .\templates\layout\footer-base.html:77
+msgid "Hotline :"
+msgstr "Горячая линия :"
+
+#: .\templates\layout\footer-base.html:86
+msgid "Opening Hours :"
+msgstr "Часы работы :"
+
+#: .\templates\layout\footer-base.html:89
+msgid "Monday - Sunday / 08.00AM- 19.00"
+msgstr "Понедельник - Воскресенье / 08.00 - 19.00"
+
+#: .\templates\layout\footer-base.html:90
+msgid "(Except Holidays)"
+msgstr "(кроме праздничных дней)"
+
+#: .\templates\layout\footer-base.html:99 .\templates\pages\home3.html:1893
+msgid "Newsletter"
+msgstr "Рассылка"
+
+#: .\templates\layout\footer-base.html:100
+msgid ""
+"Sign up to our newsletter to get the latest articles, lookbooks voucher "
+"codes direct to your inbox"
+msgstr "Подпишитесь на нашу рассылку, чтобы получать последние статьи, каталоги и промокоды прямо на вашу почту"
+
+#: .\templates\layout\footer-base.html:105
+msgid "Enter Your Email"
+msgstr "Введите ваш Email"
+
+#: .\templates\layout\footer-base.html:108 .\templates\pages\home3.html:1902
+msgid "subscribe"
+msgstr "подписаться"
+
+#: .\templates\layout\footer-base.html:121
+msgid "Follow us on"
+msgstr "Следите за нами в"
+
+#: .\templates\layout\footer-base.html:156
+msgid "Payment accept"
+msgstr "Принимаем платежи"
+
+#: .\templates\layout\footer-base.html:175
+#: .\templates\layout\footer-home.html:296
+msgid "Templates Hub"
+msgstr "Templates Hub"
+
+#: .\templates\layout\footer-home.html:15
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod "
+"tempor incidi\n"
+"                                        dunt ut labore et dolore magna "
+"aliqua. Ut enim ad minim"
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+
+#: .\templates\layout\footer-home.html:17
+msgid ""
+"Duis aute irure dolor in reprehenderit in voluptate velit exercitation "
+"ullamco"
+msgstr "Duis aute irure dolor in reprehenderit in voluptate velit exercitation ullamco"
+
+#: .\templates\layout\footer-home.html:26 .\templates\pages\about-us.html:46
+msgid "WHO WE ARE"
+msgstr "КТО МЫ"
+
+#: .\templates\layout\footer-home.html:39
+msgid "Meet the teaml"
+msgstr "Наша команда"
+
+#: .\templates\layout\footer-home.html:45
+msgid "Cookies & privacy"
+msgstr "Файлы cookie и конфиденциальность"
+
+#: .\templates\layout\footer-home.html:56
+msgid "CUSTOMER SERVICES"
+msgstr "СЕРВИС ДЛЯ КЛИЕНТОВ"
+
+#: .\templates\layout\footer-home.html:63
+msgid "Help and advice"
+msgstr "Помощь и советы"
+
+#: .\templates\layout\footer-home.html:66
+msgid "Delivery"
+msgstr "Доставка"
+
+#: .\templates\layout\footer-home.html:69
+msgid "Terms and conditions"
+msgstr "Условия и положения"
+
+#: .\templates\layout\footer-home.html:72
+msgid "Refund Policy"
+msgstr "Политика возврата"
+
+#: .\templates\layout\footer-home.html:75
+msgid "FAQs"
+msgstr "Часто задаваемые вопросы"
+
+#: .\templates\layout\footer-home.html:86
+msgid "CONTACT US"
+msgstr "СВЯЖИТЕСЬ С НАМИ"
+
+#: .\templates\layout\footer-home.html:92
+msgid "Showroom:"
+msgstr "Шоурум:"
+
+#: .\templates\layout\footer-home.html:92
+msgid "123 Suspendis matti, Visaosang Building"
+msgstr "123 Suspendis matti, Visaosang Building"
+
+#: .\templates\layout\footer-home.html:98
+msgid "Opening Hours:"
+msgstr "Часы работы:"
+
+#: .\templates\layout\footer-home.html:98
+msgid "08.00AM - 19.00"
+msgstr "08.00 - 19.00"
+
+#: .\templates\layout\footer-home.html:130
+#: .\templates\layout\mobile-menu.html:117 .\templates\pages\home3.html:143
+msgid "LIVING ROOM"
+msgstr "ГОСТИНАЯ"
+
+#: .\templates\layout\footer-home.html:132
+#: .\templates\layout\footer-home.html:187
+#: .\templates\layout\footer-home.html:212
+#: .\templates\layout\footer-home.html:258
+#: .\templates\layout\mobile-menu.html:15 .\templates\pages\home3.html:22
+#: .\templates\pages\home3.html:24
+msgid "SIDE TABLE"
+msgstr "КОФЕЙНЫЙ СТОЛИК"
+
+#: .\templates\layout\footer-home.html:135
+#: .\templates\layout\footer-home.html:190
+#: .\templates\layout\footer-home.html:215
+#: .\templates\layout\footer-home.html:261
+#: .\templates\layout\mobile-menu.html:65 .\templates\pages\home3.html:91
+#: .\templates\pages\home3.html:93
+msgid "FIREPLACE"
+msgstr "КАМИН"
+
+#: .\templates\layout\footer-home.html:138
+#: .\templates\layout\footer-home.html:218
+#: .\templates\layout\footer-home.html:264
+#: .\templates\layout\mobile-menu.html:202
+#: .\templates\layout\mobile-menu.html:203 .\templates\pages\home3.html:298
+#: .\templates\pages\home3.html:299
+msgid "ARMCHAIR"
+msgstr "КРЕСЛО"
+
+#: .\templates\layout\footer-home.html:141
+#: .\templates\layout\footer-home.html:221
+#: .\templates\layout\footer-home.html:267
+#: .\templates\layout\mobile-menu.html:207
+#: .\templates\layout\mobile-menu.html:208 .\templates\pages\home3.html:303
+#: .\templates\pages\home3.html:304
+msgid "CUSHION"
+msgstr "ПОДУШКА"
+
+#: .\templates\layout\footer-home.html:144
+#: .\templates\layout\footer-home.html:224
+#: .\templates\layout\footer-home.html:270
+#: .\templates\layout\mobile-menu.html:212
+#: .\templates\layout\mobile-menu.html:213 .\templates\pages\home3.html:308
+#: .\templates\pages\home3.html:309
+msgid "COFFEE TABLE"
+msgstr "КОФЕЙНЫЙ СТОЛ"
+
+#: .\templates\layout\footer-home.html:147
+#: .\templates\layout\footer-home.html:227
+#: .\templates\layout\footer-home.html:273
+#: .\templates\layout\mobile-menu.html:217
+#: .\templates\layout\mobile-menu.html:218 .\templates\pages\home3.html:313
+#: .\templates\pages\home3.html:314
+msgid "SHELF"
+msgstr "ПОЛКА"
+
+#: .\templates\layout\footer-home.html:150
+#: .\templates\layout\footer-home.html:230
+#: .\templates\layout\footer-home.html:276
+#: .\templates\layout\mobile-menu.html:222
+#: .\templates\layout\mobile-menu.html:223 .\templates\pages\home3.html:318
+#: .\templates\pages\home3.html:319
+msgid "SOFA"
+msgstr "ДИВАН"
+
+#: .\templates\layout\footer-home.html:153
+#: .\templates\layout\footer-home.html:233
+#: .\templates\layout\footer-home.html:279
+#: .\templates\layout\mobile-menu.html:227
+#: .\templates\layout\mobile-menu.html:229 .\templates\pages\home3.html:323
+#: .\templates\pages\home3.html:324
+msgid "DRESSING TABLE"
+msgstr "ТОАЛЕТНЫЙ СТОЛИК"
+
+#: .\templates\layout\footer-home.html:156
+#: .\templates\layout\footer-home.html:199
+#: .\templates\layout\footer-home.html:245
+#: .\templates\layout\footer-home.html:282
+msgid "VIEW ALL"
+msgstr "ПОКАЗАТЬ ВСЕ"
+
+#: .\templates\layout\footer-home.html:169
+#: .\templates\layout\footer-home.html:236
+msgid "WINDOW CURTAIN"
+msgstr "ШТОРА"
+
+#: .\templates\layout\footer-home.html:172
+#: .\templates\layout\footer-home.html:239
+#: .\templates\layout\mobile-menu.html:239
+#: .\templates\layout\mobile-menu.html:241 .\templates\pages\home3.html:333
+#: .\templates\pages\home3.html:334
+msgid "CHANDELIER"
+msgstr "ЛЮСТРА"
+
+#: .\templates\layout\footer-home.html:175
+#: .\templates\layout\footer-home.html:242
+#: .\templates\layout\mobile-menu.html:245
+#: .\templates\layout\mobile-menu.html:247 .\templates\pages\home3.html:338
+#: .\templates\pages\home3.html:339
+msgid "CEILING FAN"
+msgstr "ПОТОЛОЧНЫЙ ВЕНТИЛЯТОР"
+
+#: .\templates\layout\footer-home.html:178
+#: .\templates\layout\mobile-menu.html:251
+#: .\templates\layout\mobile-menu.html:253 .\templates\pages\home3.html:343
+#: .\templates\pages\home3.html:344
+msgid "WARDROBE"
+msgstr "ШКАФ"
+
+#: .\templates\layout\footer-home.html:181
+#: .\templates\layout\mobile-menu.html:257
+#: .\templates\layout\mobile-menu.html:259 .\templates\pages\home3.html:348
+#: .\templates\pages\home3.html:349
+msgid "FLOOR LAMP"
+msgstr "НАПОЛЬНАЯ ЛАМПА"
+
+#: .\templates\layout\footer-home.html:184
+msgid "VASE FLOWER"
+msgstr "ВАЗА С ЦВЕТАМИ"
+
+#: .\templates\layout\footer-home.html:193
+#: .\templates\layout\mobile-menu.html:191
+#: .\templates\layout\mobile-menu.html:192 .\templates\pages\home3.html:219
+#: .\templates\pages\home3.html:220
+msgid "TABLE LAMP"
+msgstr "НАСТОЛЬНАЯ ЛАМПА"
+
+#: .\templates\layout\footer-home.html:196
+msgid "ARMCHIRM"
+msgstr "КРЕСЛО"
+
+#: .\templates\layout\footer-home.html:210
+#: .\templates\layout\mobile-menu.html:141 .\templates\pages\home3.html:167
+msgid "BEDROOM"
+msgstr "СПАЛЬНЯ"
+
+#: .\templates\layout\footer-home.html:256
+#: .\templates\layout\mobile-menu.html:94 .\templates\pages\home3.html:120
+msgid "BATHROOM"
+msgstr "ВАННАЯ"
+
+#: .\templates\layout\header-base.html:56
+#: .\templates\layout\header-base.html:236
+#: .\templates\layout\header-home.html:56
+#: .\templates\layout\header-home.html:341
+msgid "Organic Strawberry Fruits"
+msgstr "Органическая клубника"
+
+#: .\templates\layout\header-base.html:70
+#: .\templates\layout\header-base.html:250
+#: .\templates\layout\header-home.html:70
+#: .\templates\layout\header-home.html:355
+msgid "Total:"
+msgstr "Итого:"
+
+#: .\templates\layout\header-base.html:77
+#: .\templates\layout\header-base.html:257
+#: .\templates\layout\header-home.html:77
+#: .\templates\layout\header-home.html:361
+msgid "View Cart"
+msgstr "Просмотр корзины"
+
+#: .\templates\layout\header-base.html:78
+#: .\templates\layout\header-base.html:174
+#: .\templates\layout\header-base.html:258
+#: .\templates\layout\header-home.html:78
+#: .\templates\layout\header-home.html:151
+#: .\templates\layout\header-home.html:362
+msgid "Checkout"
+msgstr "Оформить заказ"
+
+#: .\templates\layout\header-base.html:116
+#: .\templates\layout\header-home.html:105
+msgid "Blog"
+msgstr "Блог"
+
+#: .\templates\layout\header-base.html:119
+#: .\templates\products\product-grid-sidebar-left.html:5
+msgid "Products"
+msgstr "Продукты"
+
+#: .\templates\layout\header-base.html:122
+#: .\templates\layout\header-home.html:111
+msgid "Contact US"
+msgstr "Связаться с нами"
+
+#: .\templates\layout\header-base.html:143
+msgid "Account"
+msgstr "Аккаунт"
+
+#: .\templates\layout\header-base.html:156
+#: .\templates\layout\header-home.html:134
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: .\templates\layout\header-base.html:162
+#: .\templates\layout\header-home.html:140
+msgid "Sign in"
+msgstr "Войти"
+
+#: .\templates\layout\header-base.html:168
+#: .\templates\layout\header-home.html:146
+msgid "Register Account"
+msgstr "Зарегистрироваться"
+
+#: .\templates\layout\header-base.html:180
+#: .\templates\layout\header-home.html:158
+msgid "My Wishlists"
+msgstr "Мои списки желаний"
+
+#: .\templates\layout\header-home.html:108
+msgid "Page"
+msgstr "Страница"
+
+#: .\templates\layout\header-home.html:290
+msgid "FREE DELIVERY"
+msgstr "БЕСПЛАТНАЯ ДОСТАВКА"
+
+#: .\templates\layout\header-home.html:291
+msgid "From $ 250"
+msgstr "От $ 250"
+
+#: .\templates\layout\header-home.html:303
+msgid "MONEY BACK"
+msgstr "ВОЗВРАТ ДЕНЕГ"
+
+#: .\templates\layout\header-home.html:304
+msgid "GUARANTEED"
+msgstr "ГАРАНТИЯ"
+
+#: .\templates\layout\mobile-menu.html:23
+#: .\templates\layout\mobile-menu.html:34
+#: .\templates\pages\home3.html:30
+#: .\templates\pages\home3.html:31
+#: .\templates\pages\home3.html:43
+#: .\templates\pages\home3.html:44
+msgid "Aliquam lobortis"
+msgstr "Аликам лобортис"
+
+#: .\templates\layout\mobile-menu.html:26
+#: .\templates\layout\mobile-menu.html:37
+#: .\templates\pages\home3.html:35
+#: .\templates\pages\home3.html:36
+#: .\templates\pages\home3.html:48
+#: .\templates\pages\home3.html:49
+msgid "Duis Reprehenderit"
+msgstr "Дуис Репрехендерит"
+
+#: .\templates\layout\mobile-menu.html:40
+#: .\templates\layout\mobile-menu.html:52
+#: .\templates\pages\home3.html:53
+#: .\templates\pages\home3.html:54
+#: .\templates\pages\home3.html:72
+#: .\templates\pages\home3.html:73
+msgid "Voluptate"
+msgstr "Волуптате"
+
+#: .\templates\layout\mobile-menu.html:43
+#: .\templates\layout\mobile-menu.html:55
+#: .\templates\pages\home3.html:58
+#: .\templates\pages\home3.html:59
+#: .\templates\pages\home3.html:77
+#: .\templates\pages\home3.html:78
+msgid "Tongue Est"
+msgstr "Тонг Эст"
+
+#: .\templates\layout\mobile-menu.html:46
+#: .\templates\layout\mobile-menu.html:58
+#: .\templates\pages\home3.html:63
+#: .\templates\pages\home3.html:64
+#: .\templates\pages\home3.html:82
+#: .\templates\pages\home3.html:83
+msgid "Venison Andouille"
+msgstr "Венисон Андуилль"
+
+#: .\templates\layout\mobile-menu.html:64
+msgid "FI"
+msgstr "ФИ"
+
+#: .\templates\layout\mobile-menu.html:76
+#: .\templates\pages\home3.html:102
+msgid "DINNING ROOM"
+msgstr "СТОЛОВАЯ"
+
+#: .\templates\layout\mobile-menu.html:79
+#: .\templates\layout\mobile-menu.html:97
+#: .\templates\layout\mobile-menu.html:126
+#: .\templates\pages\home3.html:105
+#: .\templates\pages\home3.html:123
+#: .\templates\pages\home3.html:152
+msgid "Toshiba"
+msgstr "Тошиба"
+
+#: .\templates\layout\mobile-menu.html:80
+#: .\templates\layout\mobile-menu.html:98
+#: .\templates\layout\mobile-menu.html:127
+#: .\templates\pages\home3.html:106
+#: .\templates\pages\home3.html:124
+#: .\templates\pages\home3.html:153
+msgid "Samsung"
+msgstr "Самсунг"
+
+#: .\templates\layout\mobile-menu.html:81
+#: .\templates\layout\mobile-menu.html:99
+#: .\templates\layout\mobile-menu.html:128
+#: .\templates\layout\mobile-menu.html:144
+#: .\templates\layout\mobile-menu.html:160
+#: .\templates\layout\mobile-menu.html:176
+#: .\templates\pages\home3.html:107
+#: .\templates\pages\home3.html:125
+#: .\templates\pages\home3.html:154
+#: .\templates\pages\home3.html:170
+#: .\templates\pages\home3.html:186
+#: .\templates\pages\home3.html:202
+msgid "LG"
+msgstr "ЛДЖИ"
+
+#: .\templates\layout\mobile-menu.html:82
+#: .\templates\layout\mobile-menu.html:100
+#: .\templates\layout\mobile-menu.html:129
+#: .\templates\layout\mobile-menu.html:145
+#: .\templates\layout\mobile-menu.html:161
+#: .\templates\layout\mobile-menu.html:177
+#: .\templates\pages\home3.html:108
+#: .\templates\pages\home3.html:126
+#: .\templates\pages\home3.html:155
+#: .\templates\pages\home3.html:171
+#: .\templates\pages\home3.html:187
+#: .\templates\pages\home3.html:203
+msgid "Sharp"
+msgstr "Шарп"
+
+#: .\templates\layout\mobile-menu.html:83
+#: .\templates\layout\mobile-menu.html:101
+#: .\templates\layout\mobile-menu.html:130
+#: .\templates\layout\mobile-menu.html:146
+#: .\templates\layout\mobile-menu.html:162
+#: .\templates\layout\mobile-menu.html:178
+#: .\templates\pages\home3.html:109
+#: .\templates\pages\home3.html:127
+#: .\templates\pages\home3.html:156
+#: .\templates\pages\home3.html:172
+#: .\templates\pages\home3.html:188
+#: .\templates\pages\home3.html:204
+msgid "Electrolux"
+msgstr "Электролюкс"
+
+#: .\templates\layout\mobile-menu.html:84
+#: .\templates\layout\mobile-menu.html:102
+#: .\templates\layout\mobile-menu.html:131
+#: .\templates\layout\mobile-menu.html:147
+#: .\templates\layout\mobile-menu.html:163
+#: .\templates\layout\mobile-menu.html:179
+#: .\templates\pages\home3.html:110
+#: .\templates\pages\home3.html:128
+#: .\templates\pages\home3.html:157
+#: .\templates\pages\home3.html:173
+#: .\templates\pages\home3.html:189
+#: .\templates\pages\home3.html:205
+msgid "Hitachi"
+msgstr "Хитачи"
+
+#: .\templates\layout\mobile-menu.html:85
+#: .\templates\layout\mobile-menu.html:103
+#: .\templates\layout\mobile-menu.html:132
+#: .\templates\layout\mobile-menu.html:148
+#: .\templates\layout\mobile-menu.html:164
+#: .\templates\layout\mobile-menu.html:180
+#: .\templates\pages\home3.html:111
+#: .\templates\pages\home3.html:129
+#: .\templates\pages\home3.html:158
+#: .\templates\pages\home3.html:174
+#: .\templates\pages\home3.html:190
+#: .\templates\pages\home3.html:206
+msgid "Panasonic"
+msgstr "Панасоник"
+
+#: .\templates\layout\mobile-menu.html:86
+#: .\templates\layout\mobile-menu.html:104
+#: .\templates\layout\mobile-menu.html:133
+#: .\templates\layout\mobile-menu.html:149
+#: .\templates\layout\mobile-menu.html:165
+#: .\templates\layout\mobile-menu.html:181
+#: .\templates\pages\home3.html:112
+#: .\templates\pages\home3.html:130
+#: .\templates\pages\home3.html:159
+#: .\templates\pages\home3.html:175
+#: .\templates\pages\home3.html:191
+#: .\templates\pages\home3.html:207
+msgid "Mitsubishi Electric"
+msgstr "Мицубиси Электрик"
+
+#: .\templates\layout\mobile-menu.html:87
+#: .\templates\layout\mobile-menu.html:105
+#: .\templates\layout\mobile-menu.html:134
+#: .\templates\layout\mobile-menu.html:150
+#: .\templates\layout\mobile-menu.html:166
+#: .\templates\layout\mobile-menu.html:182
+#: .\templates\pages\home3.html:113
+#: .\templates\pages\home3.html:131
+#: .\templates\pages\home3.html:160
+#: .\templates\pages\home3.html:176
+#: .\templates\pages\home3.html:192
+#: .\templates\pages\home3.html:208
+msgid "Daikin"
+msgstr "Дайкин"
+
+#: .\templates\layout\mobile-menu.html:88
+#: .\templates\layout\mobile-menu.html:135
+#: .\templates\layout\mobile-menu.html:151
+#: .\templates\layout\mobile-menu.html:167
+#: .\templates\layout\mobile-menu.html:183 .\templates\pages\home3.html:114
+#: .\templates\pages\home3.html:161 .\templates\pages\home3.html:177
+#: .\templates\pages\home3.html:193 .\templates\pages\home3.html:209
+msgid "Haier"
+msgstr "Хайер"
+
+#: .\templates\layout\mobile-menu.html:106 .\templates\pages\home3.html:132
+msgid "Haier Media"
+msgstr "Хайер Медиа"
+
+#: .\templates\layout\mobile-menu.html:107
+#: .\templates\layout\mobile-menu.html:121 .\templates\pages\home3.html:133
+#: .\templates\pages\home3.html:147
+msgid "Gee"
+msgstr "Ги"
+
+#: .\templates\layout\mobile-menu.html:108
+#: .\templates\layout\mobile-menu.html:122 .\templates\pages\home3.html:134
+#: .\templates\pages\home3.html:148
+msgid "Digimart"
+msgstr "Дигимарт"
+
+#: .\templates\layout\mobile-menu.html:109
+#: .\templates\layout\mobile-menu.html:123 .\templates\pages\home3.html:135
+#: .\templates\pages\home3.html:149
+msgid "Vitivaa"
+msgstr "Витивaа"
+
+#: .\templates\layout\mobile-menu.html:110
+#: .\templates\layout\mobile-menu.html:124 .\templates\pages\home3.html:136
+#: .\templates\pages\home3.html:150
+msgid "Sanaky"
+msgstr "Санаки"
+
+#: .\templates\layout\mobile-menu.html:111
+#: .\templates\layout\mobile-menu.html:125 .\templates\pages\home3.html:137
+#: .\templates\pages\home3.html:151
+msgid "Sunshine"
+msgstr "Саншайн"
+
+#: .\templates\layout\mobile-menu.html:120 .\templates\pages\home3.html:146
+msgid "Media"
+msgstr "Медиа"
+
+#: .\templates\layout\mobile-menu.html:157 .\templates\pages\home3.html:183
+msgid "KITCHEN"
+msgstr "КУХНЯ"
+
+#: .\templates\layout\mobile-menu.html:173 .\templates\pages\home3.html:199
+msgid "Blender"
+msgstr "Блендер"
+
+#: .\templates\layout\mobile-menu.html:197
+#: .\templates\layout\mobile-menu.html:198 .\templates\pages\home3.html:293
+#: .\templates\pages\home3.html:294
+msgid "OTTOMAN"
+msgstr "ОТТОМАН"
+
+#: .\templates\layout\mobile-menu.html:233
+#: .\templates\layout\mobile-menu.html:235 .\templates\pages\home3.html:328
+#: .\templates\pages\home3.html:329
+msgid "WINDOWN CURTAIN"
+msgstr "ШТОРА ДЛЯ ОКНА"
+
+#: .\templates\layout\mobile-menu.html:263
+#: .\templates\layout\mobile-menu.html:265 .\templates\pages\home3.html:353
+#: .\templates\pages\home3.html:354
+msgid "VASE-FLOWER"
+msgstr "ВАЗА С ЦВЕТАМИ"
+
+#: .\templates\layout\mobile-menu.html:269
+#: .\templates\layout\mobile-menu.html:271 .\templates\pages\home3.html:358
+#: .\templates\pages\home3.html:359
+msgid "BED"
+msgstr "КРОВАТЬ"
+
+#: .\templates\layout\mobile-menu.html:275
+#: .\templates\layout\mobile-menu.html:277 .\templates\pages\home3.html:363
+#: .\templates\pages\home3.html:364
+msgid "BED GIRL"
+msgstr "КРОВАТЬ ДЕВОЧКИ"
+
+#: .\templates\layout\mobile-menu.html:281
+#: .\templates\layout\mobile-menu.html:283 .\templates\pages\home3.html:368
+#: .\templates\pages\home3.html:369
+msgid "BED BOY"
+msgstr "КРОВАТЬ МАЛЬЧИКА"
+
+#: .\templates\layout\mobile-menu.html:298
+msgid "Menu"
+msgstr "Меню"
+
+#: .\templates\layout\mobile-menu.html:299
+msgid "Close"
+msgstr "Закрыть"
+
+#: .\templates\layout\mobile-menu.html:316
+msgid "Home Page 1"
+msgstr "Главная страница 1"
+
+#: .\templates\layout\mobile-menu.html:319
+msgid "Home Page 2"
+msgstr "Главная страница 2"
+
+#: .\templates\layout\mobile-menu.html:322
+msgid "Home Page 3"
+msgstr "Главная страница 3"
+
+#: .\templates\layout\mobile-menu.html:325
+msgid "Home Page 4"
+msgstr "Главная страница 4"
+
+#: .\templates\layout\mobile-menu.html:328
+msgid "Home Page 5"
+msgstr "Главная страница 5"
+
+#: .\templates\layout\mobile-menu.html:345
+#: .\templates\layout\mobile-menu.html:346
+msgid "Blog List (Sidebar Left)"
+msgstr "Список блогов (Слева боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:350
+#: .\templates\layout\mobile-menu.html:351
+msgid "Blog List (Sidebar Left) 2"
+msgstr "Список блогов (Слева боковая панель) 2"
+
+#: .\templates\layout\mobile-menu.html:355
+#: .\templates\layout\mobile-menu.html:356
+msgid "Blog List (Sidebar Right)"
+msgstr "Список блогов (Справа боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:360
+#: .\templates\layout\mobile-menu.html:361
+msgid "Blog List (No Sidebar)"
+msgstr "Список блогов (Без боковой панели)"
+
+#: .\templates\layout\mobile-menu.html:365
+#: .\templates\layout\mobile-menu.html:366
+msgid "Blog Grid (No Sidebar)"
+msgstr "Сетка блогов (Без боковой панели)"
+
+#: .\templates\layout\mobile-menu.html:370
+#: .\templates\layout\mobile-menu.html:371
+msgid "Blog Detail"
+msgstr "Детали блога"
+
+#: .\templates\layout\mobile-menu.html:390
+msgid "Category Style"
+msgstr "Стиль категории"
+
+#: .\templates\layout\mobile-menu.html:395
+msgid "Product Grid (Sidebar Left)"
+msgstr "Сетка продуктов (Слева боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:400
+msgid "Product Grid (Sidebar Right)"
+msgstr "Сетка продуктов (Справа боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:405
+msgid "Product List (Sidebar Left)"
+msgstr "Список продуктов (Слева боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:412
+msgid "Product Detail Style"
+msgstr "Стиль деталей продукта"
+
+#: .\templates\layout\mobile-menu.html:417
+msgid "Product Detail (Sidebar Left)"
+msgstr "Детали продукта (Слева боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:422
+msgid "Product Detail (Sidebar Right)"
+msgstr "Детали продукта (Справа боковая панель)"
+
+#: .\templates\layout\mobile-menu.html:430
+msgid "Bonus Page"
+msgstr "Страница бонусов"
+
+#: .\templates\layout\mobile-menu.html:435
+msgid "404 Page"
+msgstr "Страница 404"
+
+#: .\templates\layout\mobile-menu.html:440
+msgid "About Us Page"
+msgstr "Страница о нас"
+
+#: .\templates\layout\mobile-menu.html:455
+msgid "Contact us"
+msgstr "Связаться с нами"
+
+#: .\templates\pages\404.html:17
+msgid "Page Not Found"
+msgstr "Страница не найдена"
+
+#: .\templates\pages\404.html:58
+msgid " We're sorry â something has gone wrong on our end."
+msgstr "Извините — произошла ошибка на нашем сервере."
+
+#: .\templates\pages\404.html:60
+msgid ""
+"If difficulties persist, please contact the System Administrator of this "
+"site and report\n"
+"                                        the error below."
+msgstr "Если проблемы сохраняются, пожалуйста, свяжитесь с системным администратором этого сайта и сообщите об ошибке ниже."
+
+#: .\templates\pages\404.html:65
+msgid "Back to homepage"
+msgstr "Назад на главную страницу"
+
+#: .\templates\pages\about-us.html:5
+msgid "About"
+msgstr "О нас"
+
+#: .\templates\pages\about-us.html:25
+msgid "About us"
+msgstr "О нашей компании"
+
+#: .\templates\pages\about-us.html:47
+msgid ""
+"We are a team of passionate creators dedicated to bringing your vision to "
+"life.\n"
+"                                                With a foundation built on "
+"quality, innovation, and trust, our mission is to deliver exceptional\n"
+"                                                solutions that not only meet "
+"your needs but also inspire new possibilities. We believe in the power\n"
+"                                                of great ideas and the hard "
+"work it takes to turn them into reality."
+msgstr "Мы — команда увлечённых профессионалов, стремящихся воплотить ваши идеи в жизнь. Наша миссия основана на качестве, инновациях и доверии — предоставлять исключительные решения, которые не только удовлетворяют ваши потребности, но и вдохновляют на новые возможности. Мы верим в силу великих идей и труд, необходимый для их реализации."
+
+#: .\templates\pages\about-us.html:51
+msgid ""
+"Our team has a proven track record of success, with years of experience "
+"helping businesses\n"
+"                                                and individuals achieve "
+"their goals. We are committed to building long-lasting relationships with "
+"our clients,\n"
+"                                                ensuring that every project, "
+"big or small, receives our full attention and dedication. Your success is "
+"our\n"
+"                                                ultimate measure of "
+"achievement."
+msgstr "Наша команда имеет подтверждённый опыт успеха, с многолетним опытом помощи компаниям и частным лицам в достижении их целей. Мы стремимся выстраивать долгосрочные отношения с клиентами, гарантируя, что каждый проект, большой или маленький, получает наше полное внимание и преданность. Ваш успех — наша главная мера достижения."
+
+#: .\templates\pages\about-us.html:57
+msgid "Mr. kwang shang - CEO"
+msgstr "Г-н Кван Шанг — Генеральный директор"
+
+#: .\templates\pages\about-us.html:63
+msgid "WHAT WE DO"
+msgstr "ЧТО МЫ ДЕЛАЕМ"
+
+#: .\templates\pages\about-us.html:64
+msgid ""
+"We specialize in delivering comprehensive and innovative solutions designed "
+"to meet your\n"
+"                                                specific needs. From initial "
+"concept to final execution, our team provides a full range of\n"
+"                                                services that drive results. "
+"Our expertise spans across multiple disciplines, allowing us to create\n"
+"                                                high-quality, impactful "
+"products and experiences for our clients and their customers."
+msgstr "Мы специализируемся на предоставлении комплексных и инновационных решений, разработанных для удовлетворения ваших конкретных потребностей. От первоначальной концепции до финальной реализации, наша команда предоставляет полный спектр услуг, которые приносят результаты. Наш опыт охватывает несколько дисциплин, позволяя нам создавать высококачественные и эффективные продукты и опыт для наших клиентов и их клиентов."
+
+#: .\templates\pages\about-us.html:68
+msgid ""
+"We work closely with you at every stage, offering transparency and "
+"communication to ensure your project is completed\n"
+"                                                to the highest standards. "
+"Our commitment is to deliver not just a product, but a complete solution\n"
+"                                                that empowers your business "
+"to thrive"
+msgstr "Мы тесно сотрудничаем с вами на каждом этапе, обеспечивая прозрачность и коммуникацию, чтобы ваш проект был выполнен по самым высоким стандартам. Наша цель — предоставить не просто продукт, а полное решение, которое помогает вашему бизнесу процветать."
+
+#: .\templates\pages\about-us.html:85
+msgid "MEET OUR TEAM"
+msgstr "ЗНАКОМЬТЕСЬ С НАШЕЙ КОМАНДОЙ"
+
+#: .\templates\pages\about-us.html:88
+msgid "William James"
+msgstr "Уильям Джеймс"
+
+#: .\templates\pages\about-us.html:89
+msgid "Designer - Stylish"
+msgstr "Дизайнер — Стильный"
+
+#: .\templates\pages\about-us.html:90
+msgid ""
+"Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tquis biben dum auctor, nisi elit consequat "
+"ipsum, nec sagittis sem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tnibh id elit. Duis sed odio sit amet nibh "
+"vultate cursus a sit amet\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tmauris. Proin gravida nibh vel velit auctor "
+"aliquet. Aenean sollicudin,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tlorem quis bibendum auctor, nisi elit conse quat "
+"ipsum "
+msgstr "Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem (оставлено как есть для текста-заполнителя)"
+
+#: .\templates\pages\about-us.html:98
+msgid "Seller Smith"
+msgstr "Селлер Смит"
+
+#: .\templates\pages\about-us.html:99
+msgid "Web developer"
+msgstr "Веб-разработчик"
+
+#: .\templates\pages\about-us.html:100
+msgid ""
+"Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tquis biben dum auctor, nisi elit consequat "
+"ipsum, nec sagittis sem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tnibh id elit. Duis sed odio sit amet nibh "
+"vultate cursus a sit amet\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tmauris. "
+msgstr "Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem (оставлено как есть для текста-заполнителя)"
+
+#: .\templates\pages\about-us.html:107
+msgid "Peter Capidal"
+msgstr "Питер Капидал"
+
+#: .\templates\pages\about-us.html:108
+msgid "Front-end Developer"
+msgstr "Фронтенд-разработчик"
+
+#: .\templates\pages\about-us.html:109
+msgid ""
+" }Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tquis biben dum auctor, nisi elit consequat "
+"ipsum, nec sagittis sem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tnibh id elit. Duis sed odio sit amet nibh "
+"vultate cursus a sit amet\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tmauris. Proin gravida nibh vel velit auctor "
+"aliquet. Aenean sollicudin,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tlorem quis bibendum auctor, nisi elit conse quat "
+"ipsum "
+msgstr " }Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem (оставлено как есть для текста-заполнителя)"
+
+#: .\templates\pages\about-us.html:117
+msgid "David James"
+msgstr "Дэвид Джеймс"
+
+#: .\templates\pages\about-us.html:118
+msgid "Developer"
+msgstr "Разработчик"
+
+#: .\templates\pages\about-us.html:119
+msgid ""
+"Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tquis biben dum auctor, nisi elit consequat "
+"ipsum, nec sagittis sem\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tnibh id elit. Duis sed odio sit amet nibh "
+"vultate cursus a sit amet\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tmauris.Proin gravida nibh vel velit auctor "
+"aliquet. Aenean sollicudin,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tlorem quis bibendum auctor, nisi elit conse quat "
+"ipsum "
+msgstr "Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin, lorem (оставлено как есть для текста-заполнителя)"
+
+#: .\templates\pages\contact.html:5 .\templates\pages\contact.html:28
+msgid "Contact"
+msgstr "Связаться"
+
+#: .\templates\pages\contact.html:50
+msgid "Email:"
+msgstr "Эл. почта:"
+
+#: .\templates\pages\contact.html:67
+msgid "Address:"
+msgstr "Адрес:"
+
+#: .\templates\pages\contact.html:69
+msgid ""
+"23 Suspendis matti, Visaosang Building District, NY Accums, North American"
+msgstr "23 Suspendis matti, Visaosang Building District, NY Accums, Северная Америка"
+
+#: .\templates\pages\contact.html:82
+msgid "Hotline:"
+msgstr "Горячая линия:"
+
+#: .\templates\pages\contact.html:98
+msgid ""
+"\"This modern furniture collection combines elegant design with\n"
+"                                        functional comfort. Each piece is "
+"crafted from premium materials,\n"
+"                                        ensuring both durability and style. "
+"Whether you are looking to furnish\n"
+"                                        a new home or refresh an existing "
+"space, our catalog offers the perfect\n"
+"                                        solution to elevate your living "
+"environment. We believe that great design\n"
+"                                        should be accessible to everyone.\""
+msgstr "\"Эта современная коллекция мебели сочетает элегантный дизайн с функциональным комфортом. Каждое изделие выполнено из премиальных материалов, обеспечивая долговечность и стиль. Независимо от того, хотите ли вы обставить новый дом или обновить существующее пространство, наш каталог предлагает идеальное решение для улучшения вашей жилой среды. Мы считаем, что прекрасный дизайн должен быть доступен каждому.\""
+
+#: .\templates\pages\contact.html:118
+msgid "Warning"
+msgstr "Внимание"
+
+#: .\templates\pages\contact.html:126
+msgid "Your name"
+msgstr "Ваше имя"
+
+#: .\templates\pages\contact.html:129
+msgid "Your email"
+msgstr "Ваш Email"
+
+#: .\templates\pages\contact.html:134
+msgid "Subject"
+msgstr "Тема"
+
+#: .\templates\pages\contact.html:139
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\templates\pages\contact.html:145
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: .\templates\pages\home3.html:230
+msgid "Coventry dining"
+msgstr "Обеденный набор Coventry"
+
+#: .\templates\pages\home3.html:232 .\templates\pages\home3.html:244
+#: .\templates\pages\home3.html:258 .\templates\pages\home3.html:270
+msgid "Accessories"
+msgstr "Аксессуары"
+
+#: .\templates\pages\home3.html:233 .\templates\pages\home3.html:245
+#: .\templates\pages\home3.html:259 .\templates\pages\home3.html:271
+msgid "Activewear"
+msgstr "Спортивная одежда"
+
+#: .\templates\pages\home3.html:234 .\templates\pages\home3.html:246
+#: .\templates\pages\home3.html:260 .\templates\pages\home3.html:272
+msgid "ASOS Basic Tops"
+msgstr "Базовые топы ASOS"
+
+#: .\templates\pages\home3.html:235 .\templates\pages\home3.html:247
+#: .\templates\pages\home3.html:261 .\templates\pages\home3.html:273
+msgid "Bags & Purses"
+msgstr "Сумки и кошельки"
+
+#: .\templates\pages\home3.html:236 .\templates\pages\home3.html:248
+#: .\templates\pages\home3.html:262 .\templates\pages\home3.html:274
+msgid "Beauty"
+msgstr "Красота"
+
+#: .\templates\pages\home3.html:237 .\templates\pages\home3.html:249
+#: .\templates\pages\home3.html:263 .\templates\pages\home3.html:275
+msgid "Coats & Jackets"
+msgstr "Пальто и куртки"
+
+#: .\templates\pages\home3.html:238 .\templates\pages\home3.html:250
+#: .\templates\pages\home3.html:264 .\templates\pages\home3.html:276
+msgid "Curve & Plus Size"
+msgstr "Большие размеры"
+
+#: .\templates\pages\home3.html:242
+msgid "Amara stools"
+msgstr "Табуреты Amara"
+
+#: .\templates\pages\home3.html:256
+msgid "Kingston dining"
+msgstr "Обеденный набор Kingston"
+
+#: .\templates\pages\home3.html:268
+msgid "Ellinger dining"
+msgstr "Обеденный набор Ellinger"
+
+#: .\templates\pages\home3.html:372
+msgid "Show More"
+msgstr "Показать больше"
+
+#: .\templates\pages\home3.html:398
+msgid "Modern"
+msgstr "Современный"
+
+#: .\templates\pages\home3.html:398
+msgid "Designer"
+msgstr "Дизайнерский"
+
+#: .\templates\pages\home3.html:398
+msgid "Chair"
+msgstr "Стул"
+
+#: .\templates\pages\home3.html:407 .\templates\pages\home3.html:418
+msgid "Creative"
+msgstr "Креативный"
+
+#: .\templates\pages\home3.html:408 .\templates\pages\home3.html:419
+msgid "Furniture"
+msgstr "Мебель"
+
+#: .\templates\pages\home3.html:409 .\templates\pages\home3.html:420
+msgid "Design"
+msgstr "Дизайн"
+
+#: .\templates\pages\home3.html:462
+msgid "Living Room"
+msgstr "Гостиная"
+
+#: .\templates\pages\home3.html:463
+msgid "LOREM IPSUM DOLOR SIT AMET CONSECTETUR "
+msgstr "ЛОРЕМ ИПСУМ ДОЛОР СИТ АМЕТ КОНСЕКТЕТУР"
+
+#: .\templates\pages\home3.html:467 .\templates\pages\home3.html:1277
+msgid "New Arrivals"
+msgstr "Новинки"
+
+#: .\templates\pages\home3.html:470 .\templates\pages\home3.html:1280
+msgid "Best Seller"
+msgstr "Лидер продаж"
+
+#: .\templates\pages\home3.html:473 .\templates\pages\home3.html:1283
+msgid "Featured Product"
+msgstr "Рекомендуемый товар"
+
+#: .\templates\pages\home3.html:490 .\templates\pages\home3.html:545
+#: .\templates\pages\home3.html:599 .\templates\pages\home3.html:657
+#: .\templates\pages\home3.html:712 .\templates\pages\home3.html:766
+#: .\templates\pages\home3.html:824 .\templates\pages\home3.html:879
+#: .\templates\pages\home3.html:933 .\templates\pages\home3.html:1300
+#: .\templates\pages\home3.html:1355 .\templates\pages\home3.html:1409
+#: .\templates\pages\home3.html:1467 .\templates\pages\home3.html:1522
+#: .\templates\pages\home3.html:1576 .\templates\pages\home3.html:1634
+#: .\templates\pages\home3.html:1689 .\templates\pages\home3.html:1743
+msgid "Beige"
+msgstr "Бежевый"
+
+#: .\templates\pages\home3.html:491 .\templates\pages\home3.html:546
+#: .\templates\pages\home3.html:600 .\templates\pages\home3.html:658
+#: .\templates\pages\home3.html:713 .\templates\pages\home3.html:767
+#: .\templates\pages\home3.html:825 .\templates\pages\home3.html:880
+#: .\templates\pages\home3.html:934 .\templates\pages\home3.html:1301
+#: .\templates\pages\home3.html:1356 .\templates\pages\home3.html:1410
+#: .\templates\pages\home3.html:1468 .\templates\pages\home3.html:1523
+#: .\templates\pages\home3.html:1577 .\templates\pages\home3.html:1635
+#: .\templates\pages\home3.html:1690 .\templates\pages\home3.html:1744
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: .\templates\pages\home3.html:492 .\templates\pages\home3.html:547
+#: .\templates\pages\home3.html:601 .\templates\pages\home3.html:659
+#: .\templates\pages\home3.html:714 .\templates\pages\home3.html:768
+#: .\templates\pages\home3.html:826 .\templates\pages\home3.html:881
+#: .\templates\pages\home3.html:935 .\templates\pages\home3.html:1302
+#: .\templates\pages\home3.html:1357 .\templates\pages\home3.html:1411
+#: .\templates\pages\home3.html:1469 .\templates\pages\home3.html:1524
+#: .\templates\pages\home3.html:1578 .\templates\pages\home3.html:1636
+#: .\templates\pages\home3.html:1691 .\templates\pages\home3.html:1745
+msgid "Green"
+msgstr "Зелёный"
+
+#: .\templates\pages\home3.html:499 .\templates\pages\home3.html:554
+#: .\templates\pages\home3.html:608 .\templates\pages\home3.html:666
+#: .\templates\pages\home3.html:721 .\templates\pages\home3.html:775
+#: .\templates\pages\home3.html:833 .\templates\pages\home3.html:888
+#: .\templates\pages\home3.html:942 .\templates\pages\home3.html:1015
+#: .\templates\pages\home3.html:1056 .\templates\pages\home3.html:1099
+#: .\templates\pages\home3.html:1142 .\templates\pages\home3.html:1185
+#: .\templates\pages\home3.html:1228 .\templates\pages\home3.html:1309
+#: .\templates\pages\home3.html:1364 .\templates\pages\home3.html:1418
+#: .\templates\pages\home3.html:1476 .\templates\pages\home3.html:1531
+#: .\templates\pages\home3.html:1585 .\templates\pages\home3.html:1643
+#: .\templates\pages\home3.html:1698 .\templates\pages\home3.html:1752
+#: .\templates\products\product-grid-sidebar-left.html:296
+#: .\templates\products\product-grid-sidebar-left.html:354
+#: .\templates\products\product-grid-sidebar-left.html:412
+#: .\templates\products\product-grid-sidebar-left.html:470
+#: .\templates\products\product-grid-sidebar-left.html:528
+#: .\templates\products\product-grid-sidebar-left.html:586
+#: .\templates\products\product-grid-sidebar-left.html:645
+#: .\templates\products\product-grid-sidebar-left.html:704
+#: .\templates\products\product-grid-sidebar-left.html:762
+#: .\templates\products\product-grid-sidebar-left.html:820
+#: .\templates\products\product-grid-sidebar-left.html:879
+#: .\templates\products\product-grid-sidebar-left.html:937
+msgid "Nulla et justo non augue"
+msgstr "Ничего лишнего и справедливо"
+
+#: .\templates\pages\home3.html:994
+msgid "Deal Of The Day"
+msgstr "Сделка дня"
+
+#: .\templates\pages\home3.html:995
+msgid "Hurry Up, The Same Time Is Not Extended !!!"
+msgstr "Поторопитесь, время не продлевается!!!"
+
+#: .\templates\pages\home3.html:1272
+msgid "kitchen"
+msgstr "Кухня"
+
+#: .\templates\pages\home3.html:1273
+msgid "LOREM IPSUM DOLOR SIT AMET CONSECTETUR"
+msgstr "ЛОРЕМ ИПСУМ ДОЛОР СИТ АМЕТ КОНСЕКТЕТУР"
+
+#: .\templates\pages\home3.html:1810 .\templates\pages\home3.html:1829
+#: .\templates\pages\home3.html:1848 .\templates\pages\home3.html:1867
+msgid ""
+"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.\n"
+"                                                                    Vestibulum "
+"nunc lorem, scelerisque a tristique non, accumsan\n"
+"                                                                    ornare "
+"eros. Nullam sapien metus, volutpat dictum, accumsan\n"
+"                                                                    ornare "
+"eros. Nullam sapien metus, volutpat dictum"
+msgstr ""
+"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.\n"
+"                                                                    Vestibulum "
+"nunc lorem, scelerisque a tristique non, accumsan\n"
+"                                                                    ornare "
+"eros. Nullam sapien metus, volutpat dictum, accumsan\n"
+"                                                                    ornare "
+"eros. Nullam sapien metus, volutpat dictum"
+
+#: .\templates\pages\home3.html:1817
+msgid "David Jame"
+msgstr "Дэвид Джейм"
+
+#: .\templates\pages\home3.html:1818
+msgid "DESIGNER"
+msgstr "ДИЗАЙНЕР"
+
+#: .\templates\pages\home3.html:1836
+msgid "Max Control"
+msgstr "Макс Контрол"
+
+#: .\templates\pages\home3.html:1837 .\templates\pages\home3.html:1875
+msgid "DEVELOPER"
+msgstr "РАЗРАБОТЧИК"
+
+#: .\templates\pages\home3.html:1855
+msgid "John Do"
+msgstr "Джон До"
+
+#: .\templates\pages\home3.html:1856
+msgid "CSS -HTML"
+msgstr "CSS - HTML"
+
+#: .\templates\pages\home3.html:1874
+msgid "Elizabeth Pham"
+msgstr "Элизабет Фам"
+
+#: .\templates\pages\home3.html:1894
+msgid ""
+"Sign up to our newsletter to get the latest articles, lookbooks voucher "
+"codes\n"
+"                                                    direct to your inbox"
+msgstr "Подпишитесь на нашу рассылку, чтобы получать последние статьи, каталоги и промокоды\n                                                    прямо на вашу почту"
+
+#: .\templates\products\product-grid-sidebar-left.html:43
+#: .\templates\products\product-grid-sidebar-left.html:75
+msgid "Categories"
+msgstr "Категории"
+
+#: .\templates\products\product-grid-sidebar-left.html:71
+msgid "Catalog"
+msgstr "Каталог"
+
+#: .\templates\products\product-grid-sidebar-left.html:95
+msgid "Manufacturer"
+msgstr "Производитель"
+
+#: .\templates\products\product-grid-sidebar-left.html:109
+msgid "No manufacturers"
+msgstr "Нет производителей"
+
+#: .\templates\products\product-grid-sidebar-left.html:116
+msgid "Color"
+msgstr "Цвет"
+
+#: .\templates\products\product-grid-sidebar-left.html:134
+msgid "No colors"
+msgstr "Нет цветов"
+
+#: .\templates\products\product-grid-sidebar-left.html:140
+msgid "By Price"
+msgstr "По цене"
+
+#: .\templates\products\product-grid-sidebar-left.html:159
+msgid "Product Tags"
+msgstr "Теги товара"
+
+#: .\templates\products\product-grid-sidebar-left.html:165
+msgid "Show products matching tag"
+msgstr "Показать товары с этим тегом"
+
+#: .\templates\products\product-grid-sidebar-left.html:186
+msgid "There are 12 products."
+msgstr "Всего 12 товаров."
+
+#: .\templates\products\product-grid-sidebar-left.html:194
+msgid "Sort by"
+msgstr "Сортировать по"
+
+#: .\templates\products\product-grid-sidebar-left.html:195
+msgid "Name, A to Z"
+msgstr "Название, А–Я"
+
+#: .\templates\products\product-grid-sidebar-left.html:196
+msgid "Name, Z to A"
+msgstr "Название, Я–А"
+
+#: .\templates\products\product-grid-sidebar-left.html:197
+msgid "Price, low to high"
+msgstr "Цена, по возрастанию"
+
+#: .\templates\products\product-grid-sidebar-left.html:198
+msgid "Price, high to low"
+msgstr "Цена, по убыванию"
+
+#: .\templates\products\product-grid-sidebar-left.html:317
+#: .\templates\products\product-grid-sidebar-left.html:375
+#: .\templates\products\product-grid-sidebar-left.html:433
+#: .\templates\products\product-grid-sidebar-left.html:491
+#: .\templates\products\product-grid-sidebar-left.html:549
+#: .\templates\products\product-grid-sidebar-left.html:607
+#: .\templates\products\product-grid-sidebar-left.html:666
+#: .\templates\products\product-grid-sidebar-left.html:725
+#: .\templates\products\product-grid-sidebar-left.html:783
+#: .\templates\products\product-grid-sidebar-left.html:841
+#: .\templates\products\product-grid-sidebar-left.html:900
+#: .\templates\products\product-grid-sidebar-left.html:959
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies "
+"eget velit vitae bibendum. Cras condimentum libero\n"
+"                                                                                a "
+"lectus ultricies..."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Также ультриклейс eget velit vitae bibendum. Cras condimentum libero\n                                                                                a lectus ultricies..."
+
+#: .\templates\products\product-grid-sidebar-left.html:440
+#: .\templates\products\product-grid-sidebar-left.html:498
+#: .\templates\products\product-grid-sidebar-left.html:556
+#: .\templates\products\product-grid-sidebar-left.html:614
+#: .\templates\products\product-grid-sidebar-left.html:673
+#: .\templates\products\product-grid-sidebar-left.html:732
+#: .\templates\products\product-grid-sidebar-left.html:790
+#: .\templates\products\product-grid-sidebar-left.html:848
+#: .\templates\products\product-grid-sidebar-left.html:907
+#: .\templates\products\product-grid-sidebar-left.html:966
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: .\templates\products\product-grid-sidebar-left.html:990
+msgid "SHOWING 1-3 OF 3 ITEM(S)"
+msgstr "ПОКАЗАНО 1-3 ИЗ 3 ТОВАРОВ"
+
+#: .\templates\products\product-grid-sidebar-left.html:996
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: .\templates\products\product-grid-sidebar-left.html:1017
+msgid "Next"
+msgstr "Следующий"

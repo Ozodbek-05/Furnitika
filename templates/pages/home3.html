@@ -1,5 +1,7 @@
 {% extends 'layout/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load my_tags %}
 {% block title %}Home{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'libs/slick-slider/css/slick.css' %}">
@@ -17,512 +19,358 @@
                         <div class="verticalmenu" role="navigation">
                             <ul class="menu level1">
                                 <li class="item parent">
-                                    <a href="#" class="hasicon" title="SIDE TABLE">
-                                        <img src="{% static 'img/home/table-lamp.png' %}" alt="img">SIDE TABLE</a>
-                                    <div class="dropdown-menu">
-                                        <div class="menu-items">
-                                            <ul>
-                                                <li class="item">
-                                                    <a href="#" title="Aliquam lobortis">Aliquam lobortis</a>
-                                                </li>
-                                                <li class="item parent-submenu">
-                                                    <a href="#" title="Duis Reprehenderit">Duis Reprehenderit</a>
-                                                    <span class="show-sub fa-active-sub"></span>
-                                                    <div class="dropdown-submenu">
-                                                        <div class="menu-items">
-                                                            <ul>
-                                                                <li class="item">
-                                                                    <a href="#" title="Aliquam lobortis">Aliquam lobortis</a>
-                                                                </li>
-                                                                <li class="item">
-                                                                    <a href="#" title="Duis Reprehenderit">Duis Reprehenderit</a>
-                                                                </li>
-                                                                <li class="item">
-                                                                    <a href="#" title="Voluptate">Voluptate</a>
-                                                                </li>
-                                                                <li class="item">
-                                                                    <a href="#" title="Tongue Est">Tongue Est</a>
-                                                                </li>
-                                                                <li class="item">
-                                                                    <a href="#" title="Venison Andouille">Venison Andouille</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                <a href="#" class="hasicon" title="{% trans 'SIDE TABLE' %}">
+                                    <img src="{% static 'img/home/table-lamp.png' %}" alt="img">
+                                    {% trans "SIDE TABLE" %}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="menu-items">
+                                        <ul>
+                                            <li class="item">
+                                                <a href="#" title="{% trans 'Aliquam lobortis' %}">
+                                                    {% trans "Aliquam lobortis" %}
+                                                </a>
+                                            </li>
+                                            <li class="item parent-submenu">
+                                                <a href="#" title="{% trans 'Duis Reprehenderit' %}">
+                                                    {% trans "Duis Reprehenderit" %}
+                                                </a>
+                                                <span class="show-sub fa-active-sub"></span>
+                                                <div class="dropdown-submenu">
+                                                    <div class="menu-items">
+                                                        <ul>
+                                                            <li class="item">
+                                                                <a href="#" title="{% trans 'Aliquam lobortis' %}">
+                                                                    {% trans "Aliquam lobortis" %}
+                                                                </a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="{% trans 'Duis Reprehenderit' %}">
+                                                                    {% trans "Duis Reprehenderit" %}
+                                                                </a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="{% trans 'Voluptate' %}">
+                                                                    {% trans "Voluptate" %}
+                                                                </a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="{% trans 'Tongue Est' %}">
+                                                                    {% trans "Tongue Est" %}
+                                                                </a>
+                                                            </li>
+                                                            <li class="item">
+                                                                <a href="#" title="{% trans 'Venison Andouille' %}">
+                                                                    {% trans "Venison Andouille" %}
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </li>
-                                                <li class="item">
-                                                    <a href="#" title="Voluptate">Voluptate</a>
-                                                </li>
-                                                <li class="item">
-                                                    <a href="#" title="Tongue Est">Tongue Est</a>
-                                                </li>
-                                                <li class="item">
-                                                    <a href="#" title="Venison Andouille">Venison Andouille</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" title="{% trans 'Voluptate' %}">
+                                                    {% trans "Voluptate" %}
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" title="{% trans 'Tongue Est' %}">
+                                                    {% trans "Tongue Est" %}
+                                                </a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#" title="{% trans 'Venison Andouille' %}">
+                                                    {% trans "Venison Andouille" %}
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </li>
+                                </div>
+                            </li>
                                 <li class="item parent group">
-                                    <a href="#" class="hasicon" title="FI">
-                                        <img src="{% static 'img/home/fireplace.png' %}" alt="img">FIREPLACE
-                                    </a>
-                                    <div class="dropdown-menu menu-2">
-                                        <div class="menu-items">
-                                            <div class="item">
-                                                <div class="menu-content">
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>DINNING ROOM</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Toshiba</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Samsung</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier</a>
-                                                            </li>
-                                                        </ul>
+                                <a href="#" class="hasicon" title="{% trans 'FIREPLACE' %}">
+                                    <img src="{% static 'img/home/fireplace.png' %}" alt="img">
+                                    {% trans "FIREPLACE" %}
+                                </a>
+                                <div class="dropdown-menu menu-2">
+                                    <div class="menu-items">
+                                        <div class="item">
+                                            <div class="menu-content">
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans "DINNING ROOM" %}</b>
                                                     </div>
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>BATHROOM</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Toshiba</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Samsung</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier Media</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Gee</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Digimart</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Vitivaa</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sanaky</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sunshine</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>LIVING ROOM</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Media</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Gee</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Digimart</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Vitivaa</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sanaky</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sunshine</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Toshiba</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Samsung</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>BEDROOM</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>KITCHEN</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tags">
-                                                        <div class="title float-left">
-                                                            <b>Blender</b>
-                                                        </div>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">
-                                                                <a href="#">LG</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Sharp</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Electrolux</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Hitachi</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Panasonic</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Mitsubishi Electric</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Daikin</a>
-                                                            </li>
-                                                            <li class="list-inline-item">
-                                                                <a href="#">Haier</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "Toshiba" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Samsung" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier" %}</a></li>
+                                                    </ul>
                                                 </div>
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans "BATHROOM" %}</b>
+                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "Toshiba" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Samsung" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier Media" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Gee" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Digimart" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Vitivaa" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sanaky" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sunshine" %}</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans "LIVING ROOM" %}</b>
+                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "Media" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Gee" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Digimart" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Vitivaa" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sanaky" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sunshine" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Toshiba" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Samsung" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier" %}</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans 'BEDROOM' %}</b>
+                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier" %}</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans "KITCHEN" %}</b>
+                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier" %}</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="tags">
+                                                    <div class="title float-left">
+                                                        <b>{% trans "Blender" %}</b>
+                                                    </div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">{% trans "LG" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Sharp" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Electrolux" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Hitachi" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Panasonic" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Mitsubishi Electric" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Daikin" %}</a></li>
+                                                        <li class="list-inline-item"><a href="#">{% trans "Haier" %}</a></li>
+                                                    </ul>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </div>
+                            </li>
                                 <li class="item group-category-img parent group">
-                                    <a href="#" class="hasicon" title="TABLE LAMP">
-                                        <img src="{% static 'img/home/table-lamp.png' %}" alt="img">TABLE LAMP</a>
-                                    <div class="dropdown-menu menu-3">
-                                        <div class="menu-items">
-                                            <div class="item">
-                                                <div class="menu-content">
-                                                    <div class="row group-category">
-                                                        <div class="mt-20">
-                                                            <div class="d-flex">
-                                                                <div class="col">
-                                                                    <span class="menu-title">Coventry dining</span>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="#">Accessories</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Activewear</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">ASOS Basic Tops</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Bags &amp; Purses</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Beauty</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Coats &amp; Jackets</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Curve &amp; Plus Size</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <span class="menu-title">Amara stools</span>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="#">Accessories</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Activewear</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">ASOS Basic Tops</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Bags &amp; Purses</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Beauty</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Coats &amp; Jackets</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Curve &amp; Plus Size</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                <a href="#" class="hasicon" title="{% trans 'TABLE LAMP' %}">
+                                    <img src="{% static 'img/home/table-lamp.png' %}" alt="img">{% trans 'TABLE LAMP' %}
+                                </a>
+                                <div class="dropdown-menu menu-3">
+                                    <div class="menu-items">
+                                        <div class="item">
+                                            <div class="menu-content">
+                                                <div class="row group-category">
+                                                    <div class="mt-20">
+                                                        <div class="d-flex">
+                                                            <div class="col">
+                                                                <span class="menu-title">{% trans 'Coventry dining' %}</span>
+                                                                <ul>
+                                                                    <li><a href="#">{% trans 'Accessories' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Activewear' %}</a></li>
+                                                                    <li><a href="#">{% trans 'ASOS Basic Tops' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Bags & Purses' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Beauty' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Coats & Jackets' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Curve & Plus Size' %}</a></li>
+                                                                </ul>
                                                             </div>
-                                                            <div class="d-flex">
-                                                                <div class="col">
-                                                                    <span class="menu-title">Kingston dining</span>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="#">Accessories</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Activewear</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">ASOS Basic Tops</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Bags &amp; Purses</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Beauty</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Coats &amp; Jackets</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Curve &amp; Plus Size</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <span class="menu-title">Ellinger dining</span>
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="#">Accessories</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Activewear</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">ASOS Basic Tops</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Bags &amp; Purses</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Beauty</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Coats &amp; Jackets</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">Curve &amp; Plus Size</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                            <div class="col">
+                                                                <span class="menu-title">{% trans 'Amara stools' %}</span>
+                                                                <ul>
+                                                                    <li><a href="#">{% trans 'Accessories' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Activewear' %}</a></li>
+                                                                    <li><a href="#">{% trans 'ASOS Basic Tops' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Bags & Purses' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Beauty' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Coats & Jackets' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Curve & Plus Size' %}</a></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="ml-15">
-                                                            <a href="#">
-                                                                <img class="img-fluid" src="{% static 'img/home/img-menu.jpg' %}" alt="img">
-                                                            </a>
+                                                        <div class="d-flex">
+                                                            <div class="col">
+                                                                <span class="menu-title">{% trans 'Kingston dining' %}</span>
+                                                                <ul>
+                                                                    <li><a href="#">{% trans 'Accessories' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Activewear' %}</a></li>
+                                                                    <li><a href="#">{% trans 'ASOS Basic Tops' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Bags & Purses' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Beauty' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Coats & Jackets' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Curve & Plus Size' %}</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col">
+                                                                <span class="menu-title">{% trans 'Ellinger dining' %}</span>
+                                                                <ul>
+                                                                    <li><a href="#">{% trans 'Accessories' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Activewear' %}</a></li>
+                                                                    <li><a href="#">{% trans 'ASOS Basic Tops' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Bags & Purses' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Beauty' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Coats & Jackets' %}</a></li>
+                                                                    <li><a href="#">{% trans 'Curve & Plus Size' %}</a></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="ml-15">
+                                                        <a href="#">
+                                                            <img class="img-fluid" src="{% static 'img/home/img-menu.jpg' %}" alt="img">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </div>
+                            </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="OTTOMAN">
-                                        <img src="{% static 'img/home/ottoman.png' %}" alt="img">OTTOMAN
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="#" class="hasicon" title="ARMCHAIR">
-                                        <img src="{% static 'img/home/armchair.png' %}" alt="img">ARMCHAIR
+                                    <a href="#" class="hasicon" title="{% trans 'OTTOMAN' %}">
+                                        <img src="{% static 'img/home/ottoman.png' %}" alt="img">{% trans 'OTTOMAN' %}
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="CUSHION">
-                                        <img src="{% static 'img/home/cushion.png' %}" alt="img">CUSHION
+                                    <a href="#" class="hasicon" title="{% trans 'ARMCHAIR' %}">
+                                        <img src="{% static 'img/home/armchair.png' %}" alt="img">{% trans 'ARMCHAIR' %}
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="COFFEE TABLE">
-                                        <img src="{% static 'img/home/coffee_table.png' %}" alt="img">COFFEE TABLE
-									</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#" class="hasicon" title="SHELF">
-                                        <img src="{% static 'img/home/shelf.png' %}" alt="img">SHELF
+                                    <a href="#" class="hasicon" title="{% trans 'CUSHION' %}">
+                                        <img src="{% static 'img/home/cushion.png' %}" alt="img">{% trans 'CUSHION' %}
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="SOFA">
-                                        <img src="{% static 'img/home/sofa.png' %}" alt="img">SOFA
+                                    <a href="#" class="hasicon" title="{% trans 'COFFEE TABLE' %}">
+                                        <img src="{% static 'img/home/coffee_table.png' %}" alt="img">{% trans 'COFFEE TABLE' %}
                                     </a>
                                 </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="DRESSING TABLE">
-                                        <img src="{% static 'img/home/dressing.png' %}" alt="img">DRESSING TABLE
-									</a>
+                                    <a href="#" class="hasicon" title="{% trans 'SHELF' %}">
+                                        <img src="{% static 'img/home/shelf.png' %}" alt="img">{% trans 'SHELF' %}
+                                    </a>
                                 </li>
                                 <li class="item">
-                                    <a href="#" class="hasicon" title="WINDOWN CURTAIN">
-                                        <img src="{% static 'img/home/windown.png' %}" alt="img">WINDOWN CURTAIN
-									</a>
+                                    <a href="#" class="hasicon" title="{% trans 'SOFA' %}">
+                                        <img src="{% static 'img/home/sofa.png' %}" alt="img">{% trans 'SOFA' %}
+                                    </a>
                                 </li>
-                                <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="CHANDELIER">
-                                        <img src="{% static 'img/home/chandelier.png' %}" alt="img">CHANDELIER
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="{% trans 'DRESSING TABLE' %}">
+                                        <img src="{% static 'img/home/dressing.png' %}" alt="img">{% trans 'DRESSING TABLE' %}
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="{% trans 'WINDOWN CURTAIN' %}">
+                                        <img src="{% static 'img/home/windown.png' %}" alt="img">{% trans 'WINDOWN CURTAIN' %}
                                     </a>
                                 </li>
                                 <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="CEILING FAN">
-                                        <img src="{% static 'img/home/ceiling_fan.png' %}" alt="img">CEILING FAN
-									</a>
-                                </li>
-                                <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="WARDROBE">
-                                        <img src="{% static 'img/home/wardrobe.png' %}" alt="img">WARDROBE
+                                    <a href="#" class="hasicon" title="{% trans 'CHANDELIER' %}">
+                                        <img src="{% static 'img/home/chandelier.png' %}" alt="img">{% trans 'CHANDELIER' %}
                                     </a>
                                 </li>
                                 <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="FLOOR LAMP">
-                                        <img src="{% static 'img/home/floor_lamp.png' %}" alt="img">FLOOR LAMP
-									</a>
-                                </li>
-                                <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="VASE-FLOWER">
-                                        <img src="{% static 'img/home/vase-flower.png' %}" alt="img">VASE-FLOWER
+                                    <a href="#" class="hasicon" title="{% trans 'CEILING FAN' %}">
+                                        <img src="{% static 'img/home/ceiling_fan.png' %}" alt="img">{% trans 'CEILING FAN' %}
                                     </a>
                                 </li>
                                 <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="BED">
-                                        <img src="{% static 'img/home/bed.png' %}" alt="img">BED
+                                    <a href="#" class="hasicon" title="{% trans 'WARDROBE' %}">
+                                        <img src="{% static 'img/home/wardrobe.png' %}" alt="img">{% trans 'WARDROBE' %}
                                     </a>
                                 </li>
                                 <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="BED GIRL">
-                                        <img src="{% static 'img/home/bed.png' %}" alt="img">BED GIRL
-									</a>
+                                    <a href="#" class="hasicon" title="{% trans 'FLOOR LAMP' %}">
+                                        <img src="{% static 'img/home/floor_lamp.png' %}" alt="img">{% trans 'FLOOR LAMP' %}
+                                    </a>
                                 </li>
                                 <li class="item toggleable menu-hidden">
-                                    <a href="#" class="hasicon" title="BED BOY">
-                                        <img src="{% static 'img/home/bed.png' %}" alt="img">BED BOY
-									</a>
+                                    <a href="#" class="hasicon" title="{% trans 'VASE-FLOWER' %}">
+                                        <img src="{% static 'img/home/vase-flower.png' %}" alt="img">{% trans 'VASE-FLOWER' %}
+                                    </a>
                                 </li>
-                                <li class="more item">Show More</li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="{% trans 'BED' %}">
+                                        <img src="{% static 'img/home/bed.png' %}" alt="img">{% trans 'BED' %}
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="{% trans 'BED GIRL' %}">
+                                        <img src="{% static 'img/home/bed.png' %}" alt="img">{% trans 'BED GIRL' %}
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="{% trans 'BED BOY' %}">
+                                        <img src="{% static 'img/home/bed.png' %}" alt="img">{% trans 'BED BOY' %}
+                                    </a>
+                                </li>
+                                <li class="more item">{% trans 'Show More' %}</li>
+
                             </ul>
                         </div>
                     </div>
@@ -547,7 +395,7 @@
                         <div class="tiva-caption">
                             <div class="left-right hidden-xs">
                                 <p class="caption-1">
-									Modern <span>Designer</span> Chair
+									{% trans 'Modern' %} <span>{% trans 'Designer' %}</span> {% trans 'Chair' %}
 								</p>
                             </div>
                         </div>
@@ -556,9 +404,9 @@
                         <div class="tiva-caption">
                             <div class="left-right hidden-xs">
                                 <p class="caption-2">
-                                    <span class="text-1">Creative</span>
-                                    <span class="text-2">Furniture</span>
-                                    <span class="text-3">Design</span>
+                                    <span class="text-1">{% trans 'Creative' %}</span>
+                                    <span class="text-2">{% trans 'Furniture' %}</span>
+                                    <span class="text-3">{% trans 'Design' %}</span>
                                 </p>
                             </div>
                         </div>
@@ -567,9 +415,9 @@
                         <div class="left-right hidden-xs">
                             <div class="tiva-caption">
                                 <p class="caption-3">
-                                    <span class="text-1">Creative</span>
-                                    <span class="text-2">Furniture</span>
-                                    <span class="text-3">Design</span>
+                                    <span class="text-1">{% trans 'Creative' %}</span>
+                                    <span class="text-2">{% trans 'Furniture' %}</span>
+                                    <span class="text-3">{% trans 'Design' %}</span>
                                 </p>
                             </div>
                         </div>
@@ -611,18 +459,18 @@
                                         <div class="tab-content">
                                             <div class="title-tab-content product-tab justify-content-between">
                                                 <div class="title-product">
-                                                    <h2>Living Room</h2>
-                                                    <p>LOREM IPSUM DOLOR SIT AMET CONSECTETUR </p>
+                                                    <h2>{% trans 'Living Room' %}</h2>
+                                                    <p>{% blocktrans %}LOREM IPSUM DOLOR SIT AMET CONSECTETUR {% endblocktrans %}</p>
                                                 </div>
                                                 <ul class="nav nav-tabs">
                                                     <li>
-                                                        <a href="#new" class="active" data-toggle="tab">New Arrivals</a>
+                                                        <a href="" class="active" data-toggle="tab">{% trans 'New Arrivals' %}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#best" data-toggle="tab">Best Seller</a>
+                                                        <a href="" data-toggle="tab">{% trans 'Best Seller' %}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#sale" data-toggle="tab">Featured Product</a>
+                                                        <a href="" data-toggle="tab">{% trans 'Featured Product' %}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -639,16 +487,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -694,16 +542,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -748,16 +596,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -806,16 +654,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -861,16 +709,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -915,16 +763,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -973,16 +821,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-																			<a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1028,16 +876,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1082,16 +930,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1143,8 +991,8 @@
                                         <div>
                                             <div class="title-tab-content product-tab">
                                                 <div class="title-product text-center">
-                                                    <h2>Deal Of The Day</h2>
-                                                    <p>Hurry Up, The Same Time Is Not Extended !!!</p>
+                                                    <h2>{% trans 'Deal Of The Day' %}</h2>
+                                                    <p>{% trans 'Hurry Up, The Same Time Is Not Extended !!!' %}</p>
                                                 </div>
                                                 <div class="tab-content">
                                                     <div id="deal_of_day" class="slick">
@@ -1164,7 +1012,7 @@
                                                                     </div>
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <span class="price">£20.08</span>
@@ -1205,7 +1053,7 @@
                                                                             <div class="seconds"></div>
                                                                         </div>
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
@@ -1248,7 +1096,7 @@
                                                                             <div class="seconds"></div>
                                                                         </div>
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
@@ -1291,7 +1139,7 @@
                                                                     </div>
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
@@ -1334,7 +1182,7 @@
                                                                             <div class="seconds"></div>
                                                                         </div>
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
@@ -1377,7 +1225,7 @@
                                                                             <div class="seconds"></div>
                                                                         </div>
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
@@ -1421,18 +1269,18 @@
                                         <div class="tab-content">
                                             <div class="title-tab-content product-tab justify-content-between">
                                                 <div class="title-product">
-                                                    <h2>kitchen</h2>
-                                                    <p>LOREM IPSUM DOLOR SIT AMET CONSECTETUR </p>
+                                                    <h2>{% trans 'kitchen' %}</h2>
+                                                    <p>{% blocktrans %}LOREM IPSUM DOLOR SIT AMET CONSECTETUR{% endblocktrans %} </p>
                                                 </div>
                                                 <ul class="nav nav-tabs">
                                                     <li>
-                                                        <a href="#new1" class="active" data-toggle="tab">New Arrivals</a>
+                                                        <a href="#new1" class="active" data-toggle="tab">{% trans 'New Arrivals' %}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#best1" data-toggle="tab">Best Seller</a>
+                                                        <a href="#best1" data-toggle="tab">{% trans 'Best Seller' %}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#sale1" data-toggle="tab">Featured Product</a>
+                                                        <a href="#sale1" data-toggle="tab">{% trans 'Featured Product' %}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1449,16 +1297,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-																			<a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1504,16 +1352,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1558,16 +1406,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1616,16 +1464,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1671,16 +1519,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1725,16 +1573,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1783,16 +1631,16 @@
                                                                     <div class="product-flags discount">-30%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1838,16 +1686,16 @@
                                                                     <div class="product-flags discount">-10%</div>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1892,16 +1740,16 @@
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            <a href="#" class="color beige" title="{% trans 'Beige' %}"></a>
+                                                                            <a href="#" class="color orange" title="{% trans 'Orange' %}"></a>
+                                                                            <a href="#" class="color green" title="{% trans 'Green' %}"></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="product-detail.html">{% trans 'Nulla et justo non augue' %}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -1959,15 +1807,15 @@
                                                     <div class="desc-testimonial">
                                                         <div class="testimonial-content">
                                                             <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
+                                                                <p>"{% blocktrans %}Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
                                                                     Vestibulum nunc lorem, scelerisque a tristique non, accumsan
                                                                     ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
+                                                                    ornare eros. Nullam sapien metus, volutpat dictum{% endblocktrans %}"</p>
                                                             </div>
                                                         </div>
                                                         <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">David Jame</h5>
-                                                            <p class="box-dress">DESIGNER</p>
+                                                            <h5 class="mt-0 box-info">{% trans 'David Jame' %}</h5>
+                                                            <p class="box-dress">{% trans 'DESIGNER' %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1978,15 +1826,15 @@
                                                     <div class="desc-testimonial">
                                                         <div class="testimonial-content">
                                                             <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
+                                                                <p>"{% blocktrans %}Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
                                                                     Vestibulum nunc lorem, scelerisque a tristique non, accumsan
                                                                     ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
+                                                                    ornare eros. Nullam sapien metus, volutpat dictum{% endblocktrans %}"</p>
                                                             </div>
                                                         </div>
                                                         <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">Max Control</h5>
-                                                            <p class="box-dress">DEVELOPER</p>
+                                                            <h5 class="mt-0 box-info">{% trans 'Max Control' %}</h5>
+                                                            <p class="box-dress">{% trans 'DEVELOPER' %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1997,15 +1845,15 @@
                                                     <div class="desc-testimonial">
                                                         <div class="testimonial-content">
                                                             <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
+                                                                <p>"{% blocktrans %}Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
                                                                     Vestibulum nunc lorem, scelerisque a tristique non, accumsan
                                                                     ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
+                                                                    ornare eros. Nullam sapien metus, volutpat dictum{% endblocktrans %}"</p>
                                                             </div>
                                                         </div>
                                                         <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">John Do</h5>
-                                                            <p class="box-dress">CSS -HTML</p>
+                                                            <h5 class="mt-0 box-info">{% trans 'John Do' %}</h5>
+                                                            <p class="box-dress">{% trans 'CSS -HTML' %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2016,15 +1864,15 @@
                                                     <div class="desc-testimonial">
                                                         <div class="testimonial-content">
                                                             <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
+                                                                <p>"{% blocktrans %}Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
                                                                     Vestibulum nunc lorem, scelerisque a tristique non, accumsan
                                                                     ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
+                                                                    ornare eros. Nullam sapien metus, volutpat dictum{% endblocktrans %}"</p>
                                                             </div>
                                                         </div>
                                                         <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">Elizabeth Pham</h5>
-                                                            <p class="box-dress">DEVELOPER</p>
+                                                            <h5 class="mt-0 box-info">{% trans 'Elizabeth Pham' %}</h5>
+                                                            <p class="box-dress">{% trans 'DEVELOPER' %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2042,16 +1890,16 @@
                                     <div class="news-content">
                                         <div class="tiva-modules">
                                             <div class="block">
-                                                <div class="title-block">Newsletter</div>
-                                                <div class="sub-title">Sign up to our newsletter to get the latest articles, lookbooks voucher codes
-                                                    direct to your inbox</div>
+                                                <div class="title-block">{% trans 'Newsletter' %}</div>
+                                                <div class="sub-title">{% blocktrans %}Sign up to our newsletter to get the latest articles, lookbooks voucher codes
+                                                    direct to your inbox{% endblocktrans %}</div>
                                                 <div class="block-newsletter">
                                                     <form action="#" method="post">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" name="email" value="" placeholder="Enter Your Email">
                                                             <span class="input-group-btn">
                                                                 <button class="effect-btn btn btn-secondary" name="submitNewsletter" type="submit">
-                                                                    <span>subscribe</span>
+                                                                    <span>{% trans 'subscribe' %}</span>
                                                                 </button>
                                                             </span>
                                                         </div>
