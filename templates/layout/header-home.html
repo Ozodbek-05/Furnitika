@@ -220,37 +220,52 @@
 
                         <!-- language -->
                         <div class="desktop-language-selector language-selector groups-selector hidden-sm-down d-flex align-items-center">
+                            {% get_current_language as current_lang %}
+                            {% get_available_languages as all_langs %}
+
                             <div class="dropdown-language myaccount-title">
                                 <a href="#language" data-toggle="collapse" class="acount">
                                     <span class="expand-more">
-                                        <img class="img-fluid" src="{%static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
+                                        {% for lang in all_langs %}
+                                            {% if lang.0 == current_lang %}
+                                                {% if lang.0 == 'en' %}
+                                                    <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
+                                                {% elif lang.0 == 'uz' %}
+                                                    <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="16" height="11">
+                                                {% elif lang.0 == 'ru' %}
+                                                    <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="16" height="11">
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
                                     </span>
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                             </div>
+
                             <div id="language" class="collapse">
                                 <div class="language-list-content">
-                                    <div class="language-item current flex-first language-list-content">
-                                        <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
-                                            <span>English</span>
-                                        </a>
-                                    </div>
-                                    <div class="language-item language-list-content">
-                                        <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg2.jpg' %}" alt="Uzbek" width="16" height="11">
-                                            <span>Uzbek</span>
-                                        </a>
-                                    </div>
-                                    <div class="language-item language-list-content">
-                                        <a href="#">
-                                            <img class="img-fluid" src="{%static 'img/home/lg3.jpg' %}" alt="Russian" width="16" height="11">
-                                            <span>Russian</span>
-                                        </a>
-                                    </div>
+                                    {% for lang in all_langs %}
+                                        {% if lang.0 != current_lang %}
+                                            <div class="language-item language-list-content">
+                                                <a href="{% get_full_url request lang.0 %}" style="display:flex; align-items:center;">
+                                                    {% if lang.0 == 'en' %}
+                                                        <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="16" height="11">
+                                                        <span style="margin-left:5px;">English</span>
+                                                    {% elif lang.0 == 'uz' %}
+                                                        <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="16" height="11">
+                                                        <span style="margin-left:5px;">Uzbek</span>
+                                                    {% elif lang.0 == 'ru' %}
+                                                        <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="16" height="11">
+                                                        <span style="margin-left:5px;">Russian</span>
+                                                    {% endif %}
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
