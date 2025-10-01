@@ -1,21 +1,25 @@
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Count, Min, Max
+from django.db.models import Count, Min, Max, Q
 
-from .models import ProductModel, ProductCategoryModel, ManufacturerModel, ProductTagModel, ColorModel
+from .models import ProductModel, ProductCategoryModel, ManufacturerModel, ProductTagModel, ColorModel, DealOfTheDayModel
 
 def product_filter_view(request, filter_type=None, pk=None):
+    # Barcha PUBLISHED productlar
     products = ProductModel.objects.filter(status=ProductModel.ProductStatus.PUBLISHED)
+
     filter_title = ""
     filter_name = ""
     breadcrumbs = []
 
+    # GET parametrlari
     selected_child_ids = request.GET.getlist("child")
     selected_manufacturers = request.GET.getlist("manufacturer")
     selected_tags = request.GET.getlist("tag")
     selected_colors = request.GET.getlist("color")
     price_range = request.GET.get("price")
 
-
+    # Kategoriyalar
     parent_categories = ProductCategoryModel.objects.filter(parent__isnull=True).annotate(
         product_count=Count("products", distinct=True)
     )
@@ -24,51 +28,45 @@ def product_filter_view(request, filter_type=None, pk=None):
             product_count=Count("products", distinct=True)
         )
 
+    child_categories = ProductCategoryModel.objects.filter(parent__isnull=False).annotate(
+        product_count=Count("products", distinct=True)
+    )
 
+    # Category filter
     if filter_type == "category" and pk:
         category = get_object_or_404(ProductCategoryModel, id=pk)
 
-
+        # Breadcrumbs
         current = category
         while current is not None:
             breadcrumbs.insert(0, current)
             current = current.parent
 
         filter_title = " > ".join([c.title for c in breadcrumbs])
-        if breadcrumbs:
-            filter_name = breadcrumbs[-1].title
-        else:
-            filter_name = ""
+        filter_name = breadcrumbs[-1].title if breadcrumbs else ""
 
-        child_categories = category.children.annotate(
-            product_count=Count("products", distinct=True)
-        )
+        # Tanlangan category va uning barcha child category idlari
+        child_categories_ids = list(category.children.values_list('id', flat=True))
+        all_category_ids = [category.id] + child_categories_ids
+
         if selected_child_ids:
             products = products.filter(category__id__in=selected_child_ids)
         else:
-            if child_categories.exists():
-                products = products.filter(category__in=child_categories)
-            else:
-                products = products.filter(category=category)
-    else:
-        child_categories = ProductCategoryModel.objects.filter(parent__isnull=False).annotate(
-            product_count=Count("products", distinct=True)
-        )
+            products = products.filter(category__id__in=all_category_ids)
 
-
-    manufacturers = ManufacturerModel.objects.all()
+    # Manufacturer filter
     if selected_manufacturers:
         products = products.filter(manufacturer__id__in=selected_manufacturers)
 
-
-    tags = ProductTagModel.objects.all()
+    # Tag filter
     if selected_tags:
         products = products.filter(tags__id__in=selected_tags).distinct()
 
-    colors = ColorModel.objects.all()
+    # Color filter
     if selected_colors:
-        products = products.filter(color__id__in=selected_colors).distinct()
+        products = products.filter(colors__id__in=selected_colors).distinct()
 
+    # Price filter
     min_price = products.aggregate(Min("price"))["price__min"] or 0
     max_price = products.aggregate(Max("price"))["price__max"] or 0
     if price_range:
@@ -85,9 +83,9 @@ def product_filter_view(request, filter_type=None, pk=None):
         "breadcrumbs": breadcrumbs,
         "parent_categories": parent_categories,
         "child_categories": child_categories,
-        "manufacturers": manufacturers,
-        "tags": tags,
-        "colors": colors,
+        "manufacturers": ManufacturerModel.objects.all(),
+        "tags": ProductTagModel.objects.all(),
+        "colors": ColorModel.objects.all(),
         "min_price": min_price,
         "max_price": max_price,
         "selected_child_ids": list(map(int, selected_child_ids)),
@@ -96,9 +94,25 @@ def product_filter_view(request, filter_type=None, pk=None):
         "selected_colors": list(map(int, selected_colors)),
         "price_range": price_range or f"{min_price};{max_price}",
     }
-    return render(request, "products/product-grid-sidebar-left.html", context)
+
+    return render(request, "products/products.html", context)
 
 
+def product_detail_view(request, pk):
+    product = get_object_or_404(ProductModel, pk=pk)
+    return render(request, 'products/product-detail.html',{"product": product})
 
-def product_detail_view(request):
-    return render(request, 'products/product-detail.html')
+
+def deal_of_the_day_view(request):
+    now = timezone.now()
+    deals = DealOfTheDayModel.objects.filter(
+        start_time__lte=now,
+        end_time__gte=now
+    ).select_related("product")
+
+    context = {
+        "deals": deals
+    }
+    return render(request, "pages/hom3.html", context)
+
+

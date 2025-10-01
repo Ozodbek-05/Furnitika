@@ -36,7 +36,5 @@ class BlogModelAdmin(admin.ModelAdmin):
 
 @admin.register(BlogViewModel)
 class BlogViewModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user_ip', 'blog__title', 'created_at']
-    search_fields = ['user_ip']
-    list_filter = ['created_at', 'user_ip']
-    fields = ['image', 'title', 'content', 'status', 'author', 'category', 'tag']
+    list_display = ('user_ip', 'blog')
+    fields = ('user_ip', 'blog')

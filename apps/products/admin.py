@@ -5,7 +5,7 @@ from .models import (
     ColorModel,
     ProductTagModel,
     ProductModel,
-    ProductImageModel
+    ProductImageModel, DealOfTheDayModel
 )
 
 # Inline for multiple images
@@ -40,7 +40,7 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(ProductModel)
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductImageInline]  # Inline qo‘shildi
+    inlines = [ProductImageInline]
     list_display = (
         "id",
         "title",
@@ -54,3 +54,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ("category", "manufacturer", "colors", "tags")
     search_fields = ("title", "description")
     filter_horizontal = ("colors", "tags")
+
+
+@admin.register(DealOfTheDayModel)
+class DealOfTheDayAdmin(admin.ModelAdmin):
+    list_display = ("product", "deal_price", "start_time", "end_time", "is_active")
+    list_filter = ("start_time", "end_time")
+    search_fields = ("product__title",)
+    ordering = ("-start_time",)
+
+    readonly_fields = ("is_active",)

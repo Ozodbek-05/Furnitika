@@ -68,3 +68,26 @@ class ProductImageModel(BaseModel):
 
     def __str__(self):
         return f"{self.product.title} Image"
+
+
+class DealOfTheDayModel(BaseModel):
+    product = models.OneToOneField(
+        ProductModel,
+        on_delete=models.CASCADE,
+        related_name="deal_of_the_day"
+    )
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    deal_price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"Deal for {self.product.title}"
+
+    @property
+    def is_active(self):
+        from django.utils import timezone
+        now = timezone.now()
+        if self.start_time is None or self.end_time is None:
+            return False
+        return self.start_time <= now <= self.end_time
+

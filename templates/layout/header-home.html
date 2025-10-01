@@ -1,6 +1,13 @@
 {% load static %}
 {% load i18n %}
 {% load my_tags %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <header>
         <!-- header left mobie -->
         <div class="header-mobile d-md-none">
