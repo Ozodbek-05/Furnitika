@@ -1,89 +1,97 @@
+from django.http import Http404
 from django.shortcuts import render
-
+from django.views.generic import ListView, DetailView
 
 from apps.blogs.models import BlogModel, BlogCategoryModel, BlogTagModel
 
 
-def blog_list_view(request):
-    blogs = BlogModel.objects.filter(
-        status=BlogModel.BlogStatus.PUBLISHED
-    )
-    tags = BlogTagModel.objects.all()
-    parent_categories = BlogCategoryModel.objects.filter(parent__isnull=True)
+class BlogListView(ListView):
+    template_name = 'blogs/blog-list-sidebar-left.html'
+
+    def get_queryset(self):
+        return BlogModel.objects.filter(
+            status=BlogModel.BlogStatus.PUBLISHED
+        )
 
 
-    context = {
-        "blogs": blogs,
-        "tags": tags,
-        "parent_categories": parent_categories
-    }
-    return render(
-        request, 'blogs/blog-list-sidebar-left.html',
-        context
-    )
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        categories = BlogCategoryModel.objects.all()
+        tags = BlogTagModel.objects.all()
+        parent_categories = BlogCategoryModel.objects.filter(parent__isnull=True)
+
+        context["blogs"] = self.get_queryset()
+        context["categories"] = categories
+        context["tags"] = tags
+        context["parent_categories"] = parent_categories
+
+        return context
 
 
-def blog_detail_view(request, pk):
-    try:
-        blog = BlogModel.objects.get(id=pk)
-    except BlogModel.DoesNotExist: 
-        return render(request, 'pages/404.html')
-    
-    category = blog.category.first()
-    parent_category = category.parent if category else None
 
-    related_blogs = BlogModel.objects.filter(
-        category__in=blog.category.all()
-    ).exclude(id=blog.id).distinct()[:3]
+class BlogDetailView(DetailView):
+    model = BlogModel
+    template_name = "blogs/blog-detail.html"
+    pk_url_kwarg = "pk"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        blog = self.get_object()
 
-    categories = BlogCategoryModel.objects.all()
-    tags = BlogTagModel.objects.all()
-    parent_categories = BlogCategoryModel.objects.filter(parent__isnull=True)
-    
-    context = {
-        'blog': blog,
-        'category': category,          
-        'parent_category': parent_category,  
-        "categories": categories,
-        "tags": tags,
-        "parent_categories": parent_categories,
-        'related_blogs': related_blogs
-    }
-    return render(request, 'blogs/blog-detail.html', context)
+        category = blog.category.first()
+        parent_category = category.parent if category else None
+
+        related_blogs = BlogModel.objects.filter(
+            category__in=blog.category.all()
+        ).exclude(id=blog.id).distinct()[:3]
+
+        context["blogs"] = self.get_queryset()
+        context["category"] = category
+        context["parent_category"] = parent_category
+        context["categories"] = BlogCategoryModel.objects.all()
+        context["tags"] = BlogTagModel.objects.all()
+        context["parent_categories"] = BlogCategoryModel.objects.filter(parent__isnull=True)
+        context["related_blogs"] = related_blogs
+        return context
 
 
-def blog_filter_view(request, filter_type, pk):
-    blogs = BlogModel.objects.filter(status=BlogModel.BlogStatus.PUBLISHED)
-    filter_title = ""
 
-    if filter_type == "category":
-        try:
-            category = BlogCategoryModel.objects.get(id=pk)
-            blogs = blogs.filter(category=category)
-            filter_title = category.title
-        except BlogCategoryModel.DoesNotExist:
-            return render(request, "pages/404.html")
+class BlogFilterView(ListView):
+    template_name = 'blogs/blog-list-sidebar-left.html'
+    context_object_name = "blogs"
 
-    elif filter_type == "tag":
-        try:
-            tag = BlogTagModel.objects.get(id=pk)
-            blogs = blogs.filter(tag=tag)
-            filter_title = tag.title
-        except BlogTagModel.DoesNotExist:
-            return render(request, "pages/404.html")
+    def get_queryset(self):
+        filter_type = self.kwargs.get("filter_type")
+        pk = self.kwargs.get("pk")
 
-    else:
-        return render(request, "pages/404.html")
+        blogs = BlogModel.objects.filter(status=BlogModel.BlogStatus.PUBLISHED)
+        if filter_type == "category":
+            try:
+                category = BlogCategoryModel.objects.get(id=pk)
+                blogs = blogs.filter(category=category)
+                self.filter_title = category.title
+            except BlogCategoryModel.DoesNotExist:
+                raise Http404("Category not found")
 
-    tags = BlogTagModel.objects.all()
-    parent_categories = BlogCategoryModel.objects.filter(parent__isnull=True)
+        elif filter_type == "tag":
+            try:
+                tag = BlogTagModel.objects.get(id=pk)
+                blogs = blogs.filter(tag=tag)
+                self.filter_title = tag.title
+            except BlogTagModel.DoesNotExist:
+                raise Http404("Tag not found")
 
-    context = {
-        "blogs": blogs,
-        "filter_title": filter_title,
-        "filter_type": filter_type,   # ⬅️ BU YO'Q EDI, QO‘SHILDI
-        "tags": tags,
-        "parent_categories": parent_categories,
-    }
-    return render(request, "blogs/blog-list-sidebar-left.html", context)
+        else:
+            raise Http404("Invalid filter type")
+
+        return blogs
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["filter_title"] = getattr(self, "filter_title", "")
+        context["filter_type"] = self.kwargs.get("filter_type")
+        context["tags"] = BlogTagModel.objects.all()
+        context["parent_categories"] = BlogCategoryModel.objects.filter(parent__isnull=True)
+        return context

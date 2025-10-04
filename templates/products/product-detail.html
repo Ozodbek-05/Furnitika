@@ -1,6 +1,8 @@
 {% extends 'layout/base.html' %}
 {% load static %}
-{% block title %}Product Detail{% endblock %}
+{% load i18n %}
+{% load my_tags %}
+{% block title %}{{ product.title }}{% endblock %}
 {% block body_id %}product-detail{% endblock %}
 {% block content %}
     <div class="main-content">
@@ -8,26 +10,32 @@
             <div id="content-wrapper">
                 <div id="main">
                     <div class="page-home">
-
                         <!-- breadcrumb -->
                         <nav class="breadcrumb-bg">
                             <div class="container no-index">
                                 <div class="breadcrumb">
                                     <ol>
                                         <li>
-                                            <a href="#">
-                                                <span>Home</span>
+                                            <a href="{% url 'products:home' %}">
+                                                <span>{% trans 'Home' %}</span>
                                             </a>
                                         </li>
+                                        {% if parent_category %}
                                         <li>
-                                            <a href="#">
-                                                <span>Living Room</span>
+                                            <a href="{% url 'products:filter' 'category' parent_category.id %}">
+                                                <span>{{ parent_category.title }}</span>
                                             </a>
                                         </li>
+                                        {% endif %}
+                                        {% if category %}
                                         <li>
-                                            <a href="#">
-                                                <span>Sofa</span>
+                                            <a href="{% url 'products:filter' 'category' category.id %}">
+                                                <span>{{ category.title }}</span>
                                             </a>
+                                        </li>
+                                        {% endif %}
+                                        <li>
+                                            <span>{{ product.title }}</span>
                                         </li>
                                     </ol>
                                 </div>
@@ -37,147 +45,30 @@
                             <div class="content">
                                 <div class="row">
                                     <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
-
                                         <!-- category -->
                                         <div class="sidebar-block">
                                             <div class="title-block">Categories</div>
                                             <div class="block-content">
+                                                {% for parent in all_categories %}
                                                 <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapse-icons collapsed" data-toggle="collapse" data-target="#livingroom">
+                                                    <span class="arrow collapse-icons collapsed" data-toggle="collapse" data-target="#cat{{ parent.id }}">
                                                         <i class="zmdi zmdi-minus"></i>
                                                         <i class="zmdi zmdi-plus"></i>
                                                     </span>
-                                                    <a class="cateItem" href="#">Living Room</a>
-                                                    <div class="subCategory collapse" id="livingroom" aria-expanded="true" role="status">
+                                                    <a class="cateItem" href="{% url 'products:filter' 'category' parent.id %}">{{ parent.title }}</a>
+                                                    <div class="subCategory collapse" id="cat{{ parent.id }}" aria-expanded="true" role="status">
+                                                        {% for child in parent.children.all %}
                                                         <div class="cateTitle">
-                                                            <a href="#" class="cateItem">Side Table</a>
-                                                            <div class="subCategory collapse" id="subCategory-fruits" aria-expanded="true" role="status">
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">Side Table</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">FIREPLACE</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">FIREPLACE</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">floor lamp</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">ottoman</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">armchair</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">cushion</a>
-                                                                </div>
-                                                            </div>
+                                                            <a href="{% url 'products:filter' 'category' child.id %}" class="cateItem">{{ child.title }}</a>
                                                         </div>
+                                                        {% empty %}
                                                         <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FIREPLACE</a>
+                                                            <span class="text-muted">{% trans 'No subcategories' %}</span>
                                                         </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FIREPLACE</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">floor lamp</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ottoman</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">armchair</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">cushion</a>
-                                                        </div>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bathroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Bathroom</a>
-                                                    <div class="subCategory collapse" id="bathroom">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BROCCOLI</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">CABBAGE</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">CUCUMBER</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">EGGPLANT</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#diningroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Dining Rooom</a>
-                                                    <div class="subCategory collapse" id="diningroom" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">DRY BREAD</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BREAD SLICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FRENCH BREAD</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BLACK BREAD</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bedroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">BedRoom</a>
-                                                    <div class="subCategory collapse" id="bedroom" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">APPLE JUICES</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#kitchen">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Kitchen</a>
-                                                    <div class="subCategory collapse" id="kitchen" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">APPLE JUICES</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
 
@@ -188,102 +79,51 @@
                                             </div>
                                             <div class="product-content tab-content">
                                                 <div class="row">
+                                                    {% for seller in best_sellers %}
                                                     <div class="item col-md-12">
                                                         <div class="product-miniature item-one first-item d-flex">
                                                             <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="{% static 'img/product/1.jpg' %}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{% static 'img/product/22.jpg' %}" alt="img">
+                                                                <a href="{% url 'products:detail' pk=seller.id %}">
+                                                                    {% if seller.images.all %}
+                                                                    <img class="img-fluid image-cover" src="{{ seller.images.all.0.image.url }}" alt="{{ seller.title }}">
+                                                                    {% if seller.images.all|length > 1 %}
+                                                                    <img class="img-fluid image-secondary" src="{{ seller.images.all.1.image.url }}" alt="{{ seller.title }}">
+                                                                    {% else %}
+                                                                    <img class="img-fluid image-secondary" src="{{ seller.images.all.0.image.url }}" alt="{{ seller.title }}">
+                                                                    {% endif %}
+                                                                    {% else %}
+                                                                    <img class="img-fluid image-cover" src="{% static 'img/product/placeholder.jpg' %}" alt="No image">
+                                                                    {% endif %}
                                                                 </a>
                                                             </div>
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
+                                                                        <a href="{% url 'products:detail' pk=seller.id %}">{{ seller.title }}</a>
                                                                     </div>
                                                                     <div class="rating">
                                                                         <div class="star-content">
+                                                                            {% for i in "12345" %}
+                                                                            {% if forloop.counter <= seller.rating|floatformat:0 %}
+                                                                            <div class="star filled"></div>
+                                                                            {% else %}
                                                                             <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
+                                                                            {% endif %}
+                                                                            {% endfor %}
                                                                         </div>
                                                                     </div>
                                                                     <div class="product-group-price">
                                                                         <div class="product-price-and-shipping">
-                                                                            <span class="price">£28.08</span>
+                                                                            <span class="price">£{{ seller.price }}</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="item col-md-12">
-                                                        <div class="product-miniature item-one first-item d-flex">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{% static 'img/product/11.jpg' %}" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£31.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item col-md-12">
-                                                        <div class="product-miniature item-one first-item d-flex">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{% static 'img/product/14.jpg' %}" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£20.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {% endfor %}
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <!-- product tag -->
@@ -293,188 +133,98 @@
                                             </div>
                                             <div class="block-content">
                                                 <ul class="listSidebarBlog list-unstyled">
+                                                    {% for tag in all_tags %}
                                                     <li>
-                                                        <a href="#" title="Show products matching tag Hot Trend">Hot Trend</a>
+                                                        <a href="{% url 'products:filter' 'tag' tag.id %}" title="Show products matching tag {{ tag.title }}">{{ tag.title }}</a>
                                                     </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Jewelry">Jewelry</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="man.html" title="Show products matching tag Man">Man</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Party">Party</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag SamSung">SamSung</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Shirt Dresses">Shirt Dresses</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Shoes">Shoes</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Summer">Summer</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Sweaters">Sweaters</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Winter">Winter</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" title="Show products matching tag Woman">Woman</a>
-                                                    </li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-lg-9 col-md-9">
                                         <div class="main-product-detail">
-                                            <h2>Lorem ipsum dolor</h2>
+                                            <h2>{{ product.title }}</h2>
                                             <div class="product-single row">
                                                 <div class="product-detail col-xs-12 col-md-5 col-sm-5">
                                                     <div class="page-content" id="content">
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content border">
+                                                                {% for image in product.images.all %}
+                                                                <div id="item{{ forloop.counter }}" class="tab-pane fade {% if forloop.first %}active in show{% endif %}">
+                                                                    <img src="{{ image.image.url }}" alt="{{ product.title }}">
+                                                                </div>
+                                                                {% empty %}
                                                                 <div id="item1" class="tab-pane fade active in show">
-                                                                    <img src="{% static 'img/product/1.jpg' %}" alt="img">
+                                                                    <img src="{% static 'img/product/placeholder.jpg' %}" alt="No image">
                                                                 </div>
-                                                                <div id="item2" class="tab-pane fade">
-                                                                    <img src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                </div>
-                                                                <div id="item3" class="tab-pane fade">
-                                                                    <img src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                </div>
-                                                                <div id="item4" class="tab-pane fade">
-                                                                    <img src="{% static 'img/product/5.jpg' %}" alt="img">
-                                                                </div>
-                                                                <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
-                                                                    <i class="fa fa-expand"></i>
-                                                                </div>
+                                                                {% endfor %}
                                                             </div>
-                                                            <ul class="product-tab nav nav-tabs d-flex">
-                                                                <li class="active col">
-                                                                    <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show">
-                                                                        <img src="{% static 'img/product/1.jpg' %}" alt="img">
+                                                            {% if product.images.all|length > 1 %}
+                                                            <ul class="product-thumbnail nav nav-tabs" style="margin-top:10px;">
+                                                                {% for image in product.images.all %}
+                                                                <li {% if forloop.first %}class="active"{% endif %}>
+                                                                    <a href="#item{{ forloop.counter }}" data-toggle="tab">
+                                                                        <img src="{{ image.image.url }}" alt="{{ product.title }}" style="width:60px;height:60px;object-fit:cover;">
                                                                     </a>
                                                                 </li>
-                                                                <li class="col">
-                                                                    <a href="#item2" data-toggle="tab">
-                                                                        <img src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                    </a>
-                                                                </li>
-                                                                <li class="col">
-                                                                    <a href="#item3" data-toggle="tab">
-                                                                        <img src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                    </a>
-                                                                </li>
-                                                                <li class="col">
-                                                                    <a href="#item4" data-toggle="tab">
-                                                                        <img src="{% static 'img/product/5.jpg' %}" alt="img">
-                                                                    </a>
-                                                                </li>
+                                                                {% endfor %}
                                                             </ul>
-                                                            <div class="modal fade" id="product-modal" role="dialog">
-                                                                <div class="modal-dialog">
-
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <div class="modal-body">
-                                                                                <div class="product-detail">
-                                                                                    <div>
-                                                                                        <div class="images-container">
-                                                                                            <div class="js-qv-mask mask tab-content">
-                                                                                                <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                    <img src="{% static 'img/product/1.jpg' %}" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item2" class="tab-pane fade">
-                                                                                                    <img src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item3" class="tab-pane fade">
-                                                                                                    <img src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item4" class="tab-pane fade">
-                                                                                                    <img src="{% static 'img/product/5.jpg' %}" alt="img">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <ul class="product-tab nav nav-tabs">
-                                                                                                <li class="active">
-                                                                                                    <a href="#modal-item1" data-toggle="tab" class=" active show">
-                                                                                                        <img src="{% static 'img/product/1.jpg' %}" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item2" data-toggle="tab">
-                                                                                                        <img src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item3" data-toggle="tab">
-                                                                                                        <img src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <a href="#modal-item4" data-toggle="tab">
-                                                                                                        <img src="{% static 'img/product/5.jpg' %}" alt="img">
-                                                                                                    </a>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            {% endif %}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="product-info col-xs-12 col-md-7 col-sm-7">
                                                     <div class="detail-description">
                                                         <div class="price-del">
-                                                            <span class="price">£150.00</span>
+                                                            <span class="price">$ {{ product.price }}</span>
                                                             <span class="float-right">
                                                                 <span class="availb">Availability: </span>
                                                                 <span class="check">
-                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
+                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                                                    {% if product.quantity > 0 %}IN STOCK{% else %}OUT OF STOCK{% endif %}
+                                                                </span>
                                                             </span>
                                                         </div>
-                                                        <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                            auctor, nisi elit consequat etiam non auctor.</p>
+                                                        <p class="description">{{ product.description }}</p>
                                                         <div class="option has-border d-lg-flex size-color">
-                                                            <div class="size">
-                                                                <span class="size">size :</span>
-                                                                <select>
-                                                                    <option value="">Choose your size</option>
-                                                                    <option value="">M</option>
-                                                                    <option value="">l</option>
-                                                                    <option value="">xl</option>
-                                                                </select>
-                                                            </div>
                                                             <div class="colors">
                                                                 <b class="title">Color : </b>
-                                                                <span class="blue"></span>
-                                                                <span class="yellow"></span>
-                                                                <span class="pink"></span>
-                                                                <span class="green"></span>
-                                                                <span class="brown"></span>
-                                                                <span class="red"></span>
+                                                                {% for color in product.colors.all %}
+                                                               <span
+                                                                    class="color-option"
+                                                                    data-color-id="{{ color.id }}"
+                                                                    style="display:inline-block;
+                                                                           width:25px;
+                                                                           height:25px;
+                                                                           border-radius:4px;
+                                                                           margin-right:8px;
+                                                                           background-color:{{ color.code }};
+                                                                           border:2px solid #ccc;
+                                                                           cursor:pointer;"
+                                                                    title="{{ color.title }}"
+                                                                >
+                                                                </span>
+                                                                {% empty %}
+                                                                <span class="text-muted">No colors available</span>
+                                                                {% endfor %}
                                                             </div>
                                                         </div>
+                                                        {% if product.manufacturer %}
+                                                        <div class="has-border" style="padding:10px 0;">
+                                                            <b>Manufacturer:</b> {{ product.manufacturer.name }}
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if product.tags.all %}
+                                                        <div class="has-border" style="padding:10px 0;">
+                                                            <b>Tags:</b>
+                                                            {% for tag in product.tags.all %}
+                                                            <a href="{% url 'products:filter' 'tag' tag.id %}" class="badge badge-secondary" style="margin-right:5px;padding:5px 10px;background:#007bff;color:#fff;text-decoration:none;border-radius:3px;">
+                                                                {{ tag.title }}
+                                                            </a>
+                                                            {% endfor %}
+                                                        </div>
+                                                        {% endif %}
                                                         <div class="has-border cart-area">
                                                             <div class="product-quantity">
                                                                 <div class="qty">
@@ -526,16 +276,19 @@
                                                         </div>
                                                         <div class="rating-comment has-border d-flex">
                                                             <div class="review-description d-flex">
-                                                                <span>REVIEW :</span>
+                                                                <span>RATING :</span>
                                                                 <div class="rating">
                                                                     <div class="star-content">
+                                                                        {% for i in "12345" %}
+                                                                        {% if forloop.counter <= product.rating|floatformat:0 %}
+                                                                        <div class="star filled"></div>
+                                                                        {% else %}
                                                                         <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
+                                                                        {% endif %}
+                                                                        {% endfor %}
                                                                     </div>
                                                                 </div>
+                                                                <span style="margin-left:10px;">({{ product.rating }})</span>
                                                             </div>
                                                             <div class="read after-has-border">
                                                                 <a href="#review">
@@ -550,33 +303,11 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <div class="content">
-                                                            <p>SKU :
-                                                                <span class="content2">
-                                                                    <a href="#">e-02154</a>
-                                                                </span>
-                                                            </p>
-                                                            <p>Categories :
-                                                                <span class="content2">
-                                                                    <a href="#">Clothing</a>,
-                                                                    <a href="#">Men's Jackets</a>
-                                                                </span>
-                                                            </p>
-                                                            <p>tags :
-                                                                <span class="content2">
-                                                                    <a href="#">Jacket</a>,
-                                                                    <a href="#">Overcoat</a>,
-                                                                    <a href="#">Luxury</a>,
-                                                                    <a href="#">men</a>,
-                                                                    <a href="#">summer</a>,
-                                                                    <a href="#">autumn</a>
-                                                                </span>
-                                                            </p>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-											
+
                                             <div class="review">
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
@@ -589,21 +320,12 @@
                                                         <a data-toggle="tab" href="#review">Reviews (2)</a>
                                                     </li>
                                                 </ul>
-												
+
                                                 <div class="tab-content">
                                                     <div id="description" class="tab-pane fade in active show">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
+                                                        <p>{{ product.description }}</p>
                                                     </div>
-													
+
                                                     <div id="review" class="tab-pane fade">
                                                         <div class="spr-form">
                                                             <div class="user-comment">
@@ -706,16 +428,15 @@
                                                         </form>
                                                     </div>
                                                     <div id="tag" class="tab-pane fade in">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
+                                                        <div style="padding:15px;">
+                                                            {% for tag in product.tags.all %}
+                                                            <a href="{% url 'products:filter' 'tag' tag.id %}" style="display:inline-block;margin:5px;padding:8px 15px;background:#f0f0f0;border-radius:5px;text-decoration:none;color:#333;">
+                                                                {{ tag.title }}
+                                                            </a>
+                                                            {% empty %}
+                                                            <p>No tags available for this product.</p>
+                                                            {% endfor %}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -727,89 +448,49 @@
                                                 </div>
                                                 <div class="tab-content">
                                                     <div class="row">
-                                                        <div class="item text-center col-md-4">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border border">
-                                                                    <a href="product-detail.html">
-                                                                        <img class="img-fluid image-cover" src="{% static 'img/product/1.jpg' %}" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="{% static 'img/product/22.jpg' %}" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£28.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        {% for related in related_products %}
                                                         <div class="item text-center col-md-4">
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
-                                                                    <a href="product-detail.html">
-                                                                        <img class="img-fluid image-cover" src="{% static 'img/product/2.jpg' %}" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="{% static 'img/product/11.jpg' %}" alt="img">
+                                                                    <a href="{% url 'products:detail' pk=related.id %}">
+                                                                        {% if related.images.all %}
+                                                                        <img class="img-fluid image-cover" src="{{ related.images.all.0.image.url }}" alt="{{ related.title }}">
+                                                                        {% if related.images.all|length > 1 %}
+                                                                        <img class="img-fluid image-secondary" src="{{ related.images.all.1.image.url }}" alt="{{ related.title }}">
+                                                                        {% else %}
+                                                                        <img class="img-fluid image-secondary" src="{{ related.images.all.0.image.url }}" alt="{{ related.title }}">
+                                                                        {% endif %}
+                                                                        {% else %}
+                                                                        <img class="img-fluid image-cover" src="{% static 'img/product/placeholder.jpg' %}" alt="No image">
+                                                                        {% endif %}
                                                                     </a>
                                                                     <div class="highlighted-informations">
                                                                         <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
+                                                                            {% for color in related.colors.all|slice:":3" %}
+                                                                            <a href="#" class="color" title="{{ color.title }}" style="background-color:{{ color.code }}"></a>
+                                                                            {% endfor %}
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="{% url 'products:detail' pk=related.id %}">{{ related.title }}</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
+                                                                                {% for i in "12345" %}
+                                                                                {% if forloop.counter <= related.rating|floatformat:0 %}
+                                                                                <div class="star filled"></div>
+                                                                                {% else %}
                                                                                 <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
+                                                                                {% endif %}
+                                                                                {% endfor %}
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
-                                                                                <span class="price">£31.08</span>
+                                                                                <span class="price">£{{ related.price }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -819,7 +500,7 @@
                                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                                             </a>
                                                                         </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                        <a class="addToWishlist" href="#" data-rel="{{ related.id }}">
                                                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                                                         </a>
                                                                         <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
@@ -829,57 +510,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="item text-center col-md-4">
-                                                            <div class="product-miniature js-product-miniature item-one first-item">
-                                                                <div class="thumbnail-container border">
-                                                                    <a href="product-detail.html">
-                                                                        <img class="img-fluid image-cover" src="{% static 'img/product/3.jpg' %}" alt="img">
-                                                                        <img class="img-fluid image-secondary" src="{% static 'img/product/14.jpg' %}" alt="img">
-                                                                    </a>
-                                                                    <div class="highlighted-informations">
-                                                                        <div class="variant-links">
-                                                                            <a href="#" class="color beige" title="Beige"></a>
-                                                                            <a href="#" class="color orange" title="Orange"></a>
-                                                                            <a href="#" class="color green" title="Green"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
-                                                                        </div>
-                                                                        <div class="rating">
-                                                                            <div class="star-content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span class="price">£20.08</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-buttons d-flex justify-content-center">
-                                                                        <form action="#" method="post" class="formAddToCart">
-                                                                            <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </form>
-                                                                        <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                        <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        {% empty %}
+                                                        <div class="col-12 text-center" style="padding:40px;">
+                                                            <p style="color:#999;">No related products found</p>
                                                         </div>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,118 +1,131 @@
-from django.utils import timezone
-from django.shortcuts import render, get_object_or_404
-from django.db.models import Count, Min, Max, Q
+from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+from django.db.models import Count, Min, Max
+from .models import ProductModel, ProductCategoryModel, ManufacturerModel, ProductTagModel, ColorModel
 
-from .models import ProductModel, ProductCategoryModel, ManufacturerModel, ProductTagModel, ColorModel, DealOfTheDayModel
 
-def product_filter_view(request, filter_type=None, pk=None):
-    # Barcha PUBLISHED productlar
-    products = ProductModel.objects.filter(status=ProductModel.ProductStatus.PUBLISHED)
+class ProductFilterView(ListView):
+    model = ProductModel
+    template_name = "products/product-grid-sidebar-left.html"
+    context_object_name = "products"
+    paginate_by = 3
 
-    filter_title = ""
-    filter_name = ""
-    breadcrumbs = []
+    def get_queryset(self):
+        queryset = ProductModel.objects.filter(status=ProductModel.ProductStatus.PUBLISHED)
 
-    # GET parametrlari
-    selected_child_ids = request.GET.getlist("child")
-    selected_manufacturers = request.GET.getlist("manufacturer")
-    selected_tags = request.GET.getlist("tag")
-    selected_colors = request.GET.getlist("color")
-    price_range = request.GET.get("price")
+        filter_type = self.kwargs.get("filter_type")
+        pk = self.kwargs.get("pk")
 
-    # Kategoriyalar
-    parent_categories = ProductCategoryModel.objects.filter(parent__isnull=True).annotate(
-        product_count=Count("products", distinct=True)
-    )
-    for parent in parent_categories:
-        parent.child_list = parent.children.annotate(
-            product_count=Count("products", distinct=True)
-        )
+        selected_child_ids = self.request.GET.getlist("child")
+        selected_manufacturers = self.request.GET.getlist("manufacturer")
+        selected_tags = self.request.GET.getlist("tag")
+        selected_colors = self.request.GET.getlist("color")
+        price_range = self.request.GET.get("price")
 
-    child_categories = ProductCategoryModel.objects.filter(parent__isnull=False).annotate(
-        product_count=Count("products", distinct=True)
-    )
+        # 🟢 Category filter
+        if filter_type == "category" and pk:
+            category = get_object_or_404(ProductCategoryModel, id=pk)
+            child_categories = category.children.all()
 
-    # Category filter
-    if filter_type == "category" and pk:
-        category = get_object_or_404(ProductCategoryModel, id=pk)
+            if child_categories.exists():
+                queryset = queryset.filter(category__in=[category, *child_categories])
+            else:
+                queryset = queryset.filter(category=category)
 
-        # Breadcrumbs
-        current = category
-        while current is not None:
-            breadcrumbs.insert(0, current)
-            current = current.parent
-
-        filter_title = " > ".join([c.title for c in breadcrumbs])
-        filter_name = breadcrumbs[-1].title if breadcrumbs else ""
-
-        # Tanlangan category va uning barcha child category idlari
-        child_categories_ids = list(category.children.values_list('id', flat=True))
-        all_category_ids = [category.id] + child_categories_ids
-
-        if selected_child_ids:
-            products = products.filter(category__id__in=selected_child_ids)
+            self.category = category
         else:
-            products = products.filter(category__id__in=all_category_ids)
+            self.category = None
 
-    # Manufacturer filter
-    if selected_manufacturers:
-        products = products.filter(manufacturer__id__in=selected_manufacturers)
+        # 🟢 Tag filter
+        if filter_type == "tag" and pk:
+            selected_tags = [pk]
 
-    # Tag filter
-    if selected_tags:
-        products = products.filter(tags__id__in=selected_tags).distinct()
+        # 🟢 Other filters
+        if selected_manufacturers:
+            queryset = queryset.filter(manufacturer__id__in=map(int, selected_manufacturers))
+        if selected_tags:
+            queryset = queryset.filter(tags__id__in=map(int, selected_tags)).distinct()
+        if selected_colors:
+            queryset = queryset.filter(colors__id__in=map(int, selected_colors)).distinct()
 
-    # Color filter
-    if selected_colors:
-        products = products.filter(colors__id__in=selected_colors).distinct()
+        # 🟢 Price filter
+        min_price = ProductModel.objects.aggregate(Min("price"))["price__min"] or 0
+        max_price = ProductModel.objects.aggregate(Max("price"))["price__max"] or 0
+        if price_range:
+            try:
+                min_val, max_val = map(int, price_range.split(";"))
+            except:
+                min_val, max_val = int(min_price), int(max_price)
+        else:
+            min_val, max_val = int(min_price), int(max_price)
+        queryset = queryset.filter(price__gte=min_val, price__lte=max_val)
 
-    # Price filter
-    min_price = products.aggregate(Min("price"))["price__min"] or 0
-    max_price = products.aggregate(Max("price"))["price__max"] or 0
-    if price_range:
-        try:
-            min_val, max_val = map(int, price_range.split(";"))
-            products = products.filter(price__gte=min_val, price__lte=max_val)
-        except:
-            pass
+        self.min_price = min_price
+        self.max_price = max_price
 
-    context = {
-        "products": products,
-        "filter_title": filter_title,
-        "filter_name": filter_name,
-        "breadcrumbs": breadcrumbs,
-        "parent_categories": parent_categories,
-        "child_categories": child_categories,
-        "manufacturers": ManufacturerModel.objects.all(),
-        "tags": ProductTagModel.objects.all(),
-        "colors": ColorModel.objects.all(),
-        "min_price": min_price,
-        "max_price": max_price,
-        "selected_child_ids": list(map(int, selected_child_ids)),
-        "selected_manufacturers": list(map(int, selected_manufacturers)),
-        "selected_tags": list(map(int, selected_tags)),
-        "selected_colors": list(map(int, selected_colors)),
-        "price_range": price_range or f"{min_price};{max_price}",
-    }
+        # 🟢 Agar mahsulot topilmasa
+        if not queryset.exists():
+            self.empty_message = "No products found for your selected filters."
+        else:
+            self.empty_message = ""
 
-    return render(request, "products/products.html", context)
+        return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-def product_detail_view(request, pk):
-    product = get_object_or_404(ProductModel, pk=pk)
-    return render(request, 'products/product-detail.html',{"product": product})
+        # 🟢 Breadcrumbs
+        breadcrumbs = []
+        category = getattr(self, "category", None)
+        if category:
+            current = category
+            while current:
+                breadcrumbs.insert(0, current)
+                current = current.parent
 
-
-def deal_of_the_day_view(request):
-    now = timezone.now()
-    deals = DealOfTheDayModel.objects.filter(
-        start_time__lte=now,
-        end_time__gte=now
-    ).select_related("product")
-
-    context = {
-        "deals": deals
-    }
-    return render(request, "pages/hom3.html", context)
+        context.update({
+            "breadcrumbs": breadcrumbs,
+            "parent_categories": ProductCategoryModel.objects.filter(parent__isnull=True).annotate(
+                product_count=Count("products", distinct=True)
+            ),
+            "child_categories": ProductCategoryModel.objects.filter(parent__isnull=False),
+            "manufacturers": ManufacturerModel.objects.all(),
+            "tags": ProductTagModel.objects.all(),
+            "colors": ColorModel.objects.all(),
+            "selected_child_ids": list(map(int, self.request.GET.getlist("child"))),
+            "selected_manufacturers": list(map(int, self.request.GET.getlist("manufacturer"))),
+            "selected_tags": list(map(int, self.request.GET.getlist("tag"))),
+            "selected_colors": list(map(int, self.request.GET.getlist("color"))),
+            "min_price": getattr(self, "min_price", 0),
+            "max_price": getattr(self, "max_price", 0),
+            "price_range": self.request.GET.get(
+                "price",
+                f"{int(getattr(self, 'min_price', 0))};{int(getattr(self, 'max_price', 0))}"
+            ),
+            "empty_message": getattr(self, "empty_message", ""),
+        })
+        return context
 
 
+class ProductDetailView(DetailView):
+    template_name = "products/product-detail.html"
+    queryset = ProductModel.objects.all()
+    context_object_name = "product"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.object
+
+        context['category'] = product.category
+        context['parent_category'] = product.category.parent if product.category else None
+        context['related_products'] = ProductModel.objects.filter(
+            category=product.category,
+            status=ProductModel.ProductStatus.PUBLISHED
+        ).exclude(id=product.id)[:3]
+        context['best_sellers'] = ProductModel.objects.filter(
+            status=ProductModel.ProductStatus.PUBLISHED
+        ).order_by('-rating')[:3]
+        context['all_tags'] = ProductTagModel.objects.all()
+        context['all_categories'] = ProductCategoryModel.objects.filter(parent__isnull=True)
+
+        return context

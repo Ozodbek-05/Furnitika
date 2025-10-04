@@ -1,4 +1,6 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
+
 from .models import (
     ProductCategoryModel,
     ManufacturerModel,
@@ -8,39 +10,49 @@ from .models import (
     ProductImageModel, DealOfTheDayModel
 )
 
-# Inline for multiple images
+class MyTranslationAdmin(TranslationAdmin):
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
 class ProductImageInline(admin.TabularInline):
     model = ProductImageModel
-    extra = 2  # boshlang'ichda 2 rasm qo'shish
+    extra = 2
     max_num = 5
 
 @admin.register(ProductCategoryModel)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(MyTranslationAdmin):
     list_display = ("id", "title", "created_at")
     search_fields = ("title",)
 
 
 @admin.register(ManufacturerModel)
-class ManufacturerAdmin(admin.ModelAdmin):
+class ManufacturerAdmin(MyTranslationAdmin):
     list_display = ("id", "name", "created_at")
     search_fields = ("name",)
 
 
 @admin.register(ColorModel)
-class ColorAdmin(admin.ModelAdmin):
+class ColorAdmin(MyTranslationAdmin):
     list_display = ("id", "title", "code", "created_at")
     search_fields = ("title", "code")
 
 
 @admin.register(ProductTagModel)
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(MyTranslationAdmin):
     list_display = ("id", "title", "created_at")
     search_fields = ("title",)
 
 
 @admin.register(ProductModel)
-class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductImageInline]
+class ProductAdmin(MyTranslationAdmin):
+    inlines = [ProductImageInline]  # Inline qo‘shildi
     list_display = (
         "id",
         "title",
@@ -53,7 +65,8 @@ class ProductAdmin(admin.ModelAdmin):
     )
     list_filter = ("category", "manufacturer", "colors", "tags")
     search_fields = ("title", "description")
-    filter_horizontal = ("colors", "tags")
+    filter_horizontal = ("colors", "tags")  # rang va teglarni tanlash osonroq
+
 
 
 @admin.register(DealOfTheDayModel)

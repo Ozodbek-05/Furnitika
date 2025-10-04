@@ -3,9 +3,11 @@
 {% load my_tags %}
 {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-primary" role="alert">
-            {{ message }}
-        </div>
+        {% if "logged" in message.tags or "success" in message.tags %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endif %}
     {% endfor %}
 {% endif %}
 <header>
@@ -36,7 +38,7 @@
                 <div id="mobile_search_content">
                     <form method="get" action="#">
 
-                        <input type="text" name="s" value="" placeholder="Search">
+                        <input type="text" name="s" value="" placeholder="{% trans 'Search' %}">
                         <button type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -164,13 +166,13 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="{% url 'accounts:login' %}" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-sign-in"></i>
                                             <span>{% trans 'Sign in' %}</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                        <a class="register" href="{% url 'accounts:register' %}" rel="nofollow" title="Register Account">
                                             <i class="fa fa-user"></i>
                                             <span>{% trans 'Register Account' %}</span>
                                         </a>
@@ -201,37 +203,37 @@
                                         </ul>
                                     </div>
                                     <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
-                                        <ul class="list-inline">
-                                            {% get_current_language as current_lang %}
-                                            {% get_available_languages as all_langs %}
+    <ul class="list-inline">
+        {% get_current_language as current_lang %}
+        {% get_available_languages as all_langs %}
 
-                                            {% for lang in all_langs %}
-                                                {% if lang.0 != current_lang %}
-                                                    <li class="list-inline-item">
-                                                        <a href="{% get_full_url request lang.0 %}">
-                                                            {% if lang.0 == 'en' %}
-                                                                <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
-                                                            {% elif lang.0 == 'uz' %}
-                                                                <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
-                                                            {% elif lang.0 == 'ru' %}
-                                                                <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
-                                                            {% endif %}
-                                                        </a>
-                                                    </li>
-                                                {% else %}
-                                                    <li class="list-inline-itemcurrent">
-                                                        {% if lang.0 == 'en' %}
-                                                            <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
-                                                        {% elif lang.0 == 'uz' %}
-                                                            <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
-                                                        {% elif lang.0 == 'ru' %}
-                                                            <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
-                                                        {% endif %}
-                                                    </li>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
+        {% for lang in all_langs %}
+            {% if lang.0 != current_lang %}
+                <li class="list-inline-item">
+                    <a href="{% get_full_url request lang.0 %}">
+                        {% if lang.0 == 'en' %}
+                            <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
+                        {% elif lang.0 == 'uz' %}
+                            <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
+                        {% elif lang.0 == 'ru' %}
+                            <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
+                        {% endif %}
+                    </a>
+                </li>
+            {% else %}
+                <li class="list-inline-itemcurrent">
+                    {% if lang.0 == 'en' %}
+                        <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
+                    {% elif lang.0 == 'uz' %}
+                        <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
+                    {% elif lang.0 == 'ru' %}
+                        <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
 
                                 </div>
                             </div>

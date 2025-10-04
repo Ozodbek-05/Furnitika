@@ -1,9 +1,21 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
+
 from apps.blogs.models import BlogCategoryModel, BlogTagModel, BlogAuthorModel, BlogModel, BlogViewModel
 
+class MyTranslationAdmin(TranslationAdmin):
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 @admin.register(BlogCategoryModel)
-class BlogCategoryModelAdmin(admin.ModelAdmin):
+class BlogCategoryModelAdmin(MyTranslationAdmin):
     list_display = ['id', 'title']
     search_fields = ['title']
     list_filter = ['created_at']
@@ -13,14 +25,14 @@ class BlogCategoryModelAdmin(admin.ModelAdmin):
 
 
 @admin.register(BlogTagModel)
-class BlogTagModelAdmin(admin.ModelAdmin):
+class BlogTagModelAdmin(MyTranslationAdmin):
     list_display = ['id', 'title']
     search_fields = ['title']
     list_filter = ['created_at']
 
 
 @admin.register(BlogAuthorModel)
-class BlogAuthorModelAdmin(admin.ModelAdmin):
+class BlogAuthorModelAdmin(MyTranslationAdmin):
     list_display = ['id', 'full_name']
     search_fields = ['full_name']
     list_filter = ['created_at']
@@ -28,7 +40,7 @@ class BlogAuthorModelAdmin(admin.ModelAdmin):
 
 
 @admin.register(BlogModel)
-class BlogModelAdmin(admin.ModelAdmin):
+class BlogModelAdmin(MyTranslationAdmin):
     list_display = ['id', 'title', 'status', 'created_at']
     search_fields = ['title', 'content']
     list_filter = ['created_at', 'status']
@@ -36,5 +48,7 @@ class BlogModelAdmin(admin.ModelAdmin):
 
 @admin.register(BlogViewModel)
 class BlogViewModelAdmin(admin.ModelAdmin):
-    list_display = ('user_ip', 'blog')
-    fields = ('user_ip', 'blog')
+    list_display = ['id', 'user_ip', 'blog__title', 'created_at']
+    search_fields = ['user_ip']
+    list_filter = ['created_at', 'user_ip']
+    fields = ['image', 'title', 'content', 'status', 'author', 'category', 'tag']

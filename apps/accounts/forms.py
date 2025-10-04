@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-
 class RegisterModelForm(UserCreationForm):
     class Meta:
         model = User
@@ -31,3 +30,5 @@ class LoginForm(forms.Form):
             raise forms.ValidationError("Username or password is incorrect")
 
         return super().clean()
+
+

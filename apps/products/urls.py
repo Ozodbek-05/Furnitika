@@ -1,11 +1,10 @@
 from django.urls import path
-from . import views
+from .views import ProductFilterView, ProductDetailView
 
-app_name = 'products'
-
+app_name = "products"
 
 urlpatterns = [
-    path('', views.product_filter_view, name='home'),
-    path("filter/<str:filter_type>/<int:pk>/", views.product_filter_view, name="filter"),
-    path('detail/<int:pk>/', views.product_detail_view, name='product_detail'),
+    path("", ProductFilterView.as_view(), name="home"),
+    path("filter/<str:filter_type>/<int:pk>/", ProductFilterView.as_view(), name="filter"),
+    path("<int:pk>/", ProductDetailView.as_view(), name="detail"),
 ]

@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -10,7 +12,7 @@ def basket_detail(request):
     Display the basket contents.
     """
     basket = Basket(request)
-    return render(request, 'products/cart.html', {'basket': basket})
+    return render(request, 'products/product-cart.html', {'basket': basket})
 
 
 def basket_add(request, product_id):

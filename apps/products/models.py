@@ -11,12 +11,21 @@ class ProductCategoryModel(BaseModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 
 class ManufacturerModel(BaseModel):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
+
+    class Meta:
+        verbose_name = 'manufacturer'
+        verbose_name_plural = 'manufacturers'
 
 
 class ColorModel(BaseModel):
@@ -27,11 +36,21 @@ class ColorModel(BaseModel):
         return self.title
 
 
+    class Meta:
+        verbose_name = 'color'
+        verbose_name_plural = 'colors'
+
+
 class ProductTagModel(BaseModel):
     title = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.title
+
+
+    class Meta:
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
 
 
 class ProductModel(BaseModel):
@@ -62,6 +81,11 @@ class ProductModel(BaseModel):
         return self.title
 
 
+    class Meta:
+        verbose_name = 'product'
+        verbose_name_plural = 'products'
+
+
 class ProductImageModel(BaseModel):
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="products/")
@@ -79,15 +103,38 @@ class DealOfTheDayModel(BaseModel):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     deal_price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to="deals/", null=True, blank=True)
 
     def __str__(self):
         return f"Deal for {self.product.title}"
 
     @property
+    def display_image(self):
+        if self.image:
+            return self.image.url
+        first_image = self.product.images.first()
+        return first_image.image.url if first_image else None
+
+    @property
     def is_active(self):
         from django.utils import timezone
         now = timezone.now()
-        if self.start_time is None or self.end_time is None:
-            return False
-        return self.start_time <= now <= self.end_time
+        return self.start_time and self.end_time and self.start_time <= now <= self.end_time
+
+    @property
+    def time_left(self):
+        from django.utils import timezone
+        now = timezone.now()
+        if self.end_time and now < self.end_time:
+            return self.end_time - now
+        return None
+
+    class Meta:
+        verbose_name = 'deal'
+        verbose_name_plural = 'deals'
+
+
+
+
+
 

@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 {% block title %}About{% endblock %}
-{% block body_id %}product-cart checkout-cart blog{% endblock %}
+{% block body_class %}product-cart checkout-cart blog{% endblock %}
 {% block content %}	
     <div class="main-content" id="cart">
         <!-- main -->
@@ -41,7 +41,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.html">
-                                                                    <img class="img-fluid" src="img/product/3.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="{% static 'img/product/3.jpg' %}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>
@@ -101,7 +101,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.html">
-                                                                    <img class="img-fluid" src="img/product/2.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="{% static 'img/product/2.jpg' %}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>
@@ -162,7 +162,7 @@
                                                         <div class="product-line-grid-left col-md-2">
                                                             <span class="product-image media-middle">
                                                                 <a href="product-detail.html">
-                                                                    <img class="img-fluid" src="img/product/1.jpg" alt="Organic Strawberry Fruits">
+                                                                    <img class="img-fluid" src="{% static 'img/product/1.jpg' %}" alt="Organic Strawberry Fruits">
                                                                 </a>
                                                             </span>
                                                         </div>
@@ -254,19 +254,19 @@
                                         <ul>
                                             <li>
                                                 <div class="block-reassurance-item">
-                                                    <img src="img/product/check1.png" alt="Security policy (edit with Customer reassurance module)">
+                                                    <img src="{% static 'img/product/check1.png' %}" alt="Security policy (edit with Customer reassurance module)">
                                                     <span>Security policy (edit with Customer reassurance module)</span>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="block-reassurance-item">
-                                                    <img src="img/product/check2.png" alt="Delivery policy (edit with Customer reassurance module)">
+                                                    <img src="{% static 'img/product/check2.png' %}" alt="Delivery policy (edit with Customer reassurance module)">
                                                     <span>Delivery policy (edit with Customer reassurance module)</span>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="block-reassurance-item">
-                                                    <img src="img/product/check3.png" alt="Return policy (edit with Customer reassurance module)">
+                                                    <img src="{% static 'img/product/check3.png' %}" alt="Return policy (edit with Customer reassurance module)">
                                                     <span>Return policy (edit with Customer reassurance module)</span>
                                                 </div>
                                             </li>

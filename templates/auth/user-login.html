@@ -1,11 +1,9 @@
 {% extends 'layout/base.html' %}
 {% load static %}
-{% load i18n %}
-{% load my_tags %}
-{% block title %}Log in{% endblock %}
-{% block body_class %}blog{% endblock %}
+{% block title %}Login{% endblock %}
+{% block body_class %}user-login blog{% endblock %}
 {% block content %}
-<div class="main-content">
+    <div class="main-content">
         <div class="wrap-banner">
 
             <!-- breadcrumb -->
@@ -14,12 +12,12 @@
                     <div class="breadcrumb">
                         <ol>
                             <li>
-                                <a href="#">
+                                <a href="{% url 'pages:home' %}">
                                     <span>Home</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{% url 'accounts:login' %}">
                                     <span>Login</span>
                                 </a>
                             </li>
@@ -29,8 +27,6 @@
             </nav>
 
         </div>
-
-        <!-- main -->
         <div id="wrapper-site">
             <div id="content-wrapper" class="full-width">
                 <div id="main">
@@ -39,6 +35,16 @@
                         <div class="login-form">
                             <form id="customer-form" action="{% url 'accounts:login' %}" method="post">
                                 {% csrf_token %}
+                                {% if messages %}
+                                  {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error!</strong> {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endif %}
                                 <div>
                                     <input type="hidden" name="back" value="my-account">
                                     <div class="form-group no-gutters">

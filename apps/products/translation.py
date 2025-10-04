@@ -6,20 +6,24 @@ from .models import ProductModel, ProductCategoryModel, ProductTagModel, ColorMo
 
 @register(ProductModel)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title', 'description',)
 
-@register(ProductCategoryModel)
+
+@register(ManufacturerModel)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', )
+    fields = ('name',)
+
+
+@register(ColorModel)
+class NewsTranslationOptions(TranslationOptions):
+    fields = ('title',)
+
 
 @register(ProductTagModel)
 class NewsTranslationOptions(TranslationOptions):
     fields = ('title',)
 
-@register(ColorModel)
-class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', )
 
-@register(ManufacturerModel)
+@register(ProductCategoryModel)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('name', )
+    fields = ('title',)

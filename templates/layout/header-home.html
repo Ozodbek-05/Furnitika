@@ -3,9 +3,11 @@
 {% load my_tags %}
 {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-primary" role="alert">
-            {{ message }}
-        </div>
+        {% if "logged" in message.tags %}
+            <div style="text-align: center" class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endif %}
     {% endfor %}
 {% endif %}
 <header>
@@ -36,7 +38,7 @@
                 <div id="mobile_search_content">
                     <form method="get" action="#">
 
-                        <input type="text" name="s" value="" placeholder="Search">
+                        <input type="text" name="s" value="" placeholder="{% trans 'Search' %}">
                         <button type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -112,7 +114,7 @@
                                     <a href="{% url 'blogs:blogs_home' %}" class="parent">{% trans 'Blog' %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'products:home' %}" class="parent">{% trans 'Page' %}</a>
+                                    <a href="{% url 'products:home' %}" class="parent">{% trans 'Products' %}</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'pages:contact' %}" class="parent">{% trans 'Contact US' %}</a>
@@ -129,7 +131,7 @@
                             <div class="myaccount-title">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <a href="#acount" data-toggle="collapse" class="acount">
-                                    <span>My Account</span>
+                                    <span>{% trans 'My Account' %}</span>
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -142,13 +144,13 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="{% url 'accounts:login' %}" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-sign-in"></i>
                                             <span>{% trans 'Sign in' %}</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                        <a class="register" href="{% url 'accounts:register' %}" rel="nofollow" title="Register Account">
                                             <i class="fa fa-user"></i>
                                             <span>{% trans 'Register Account' %}</span>
                                         </a>
@@ -336,7 +338,7 @@
                         <form method="get" action="#">
 
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                            <input type="text" name="s" value="" placeholder="{% trans 'Search' %}" class="ui-autocomplete-input" autocomplete="off">
                             <button type="button">
                                 <i class="fa fa-search"></i>
                             </button>
