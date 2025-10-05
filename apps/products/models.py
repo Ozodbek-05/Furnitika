@@ -135,17 +135,24 @@ class DealOfTheDayModel(BaseModel):
 
 
 class CommentModel(BaseModel):
+    product = models.ForeignKey(
+        ProductModel,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        null=True,
+        blank=True
+    )
+
     name = models.CharField(max_length=128)
     email = models.EmailField()
     comment = models.TextField()
 
     def __str__(self):
-        return self.email
+        return f"{self.name} - {self.product.title}"
 
     class Meta:
         verbose_name = 'comment'
         verbose_name_plural = 'comments'
-
 
 
 

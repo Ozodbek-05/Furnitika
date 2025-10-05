@@ -4,162 +4,179 @@
 {% block title %}Shopping Cart{% endblock %}
 {% block body_class %}product-cart checkout-cart blog{% endblock %}
 {% block content %}	
-    <div class="main-content" id="cart">
-        <!-- main -->
-        <div id="wrapper-site">
-            <!-- breadcrumb -->
-            <nav class="breadcrumb-bg">
-                <div class="container no-index">
-                    <div class="breadcrumb">
-                        <ol>
-                            <li>
-                                <a href="{% url 'basket:detail' %}">
-                                    <span>Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>Shopping Cart</span>
-                                </a>
-                            </li>
-                        </ol>
-                    </div>
+<div class="main-content" id="cart">
+    <div id="wrapper-site">
+        <nav class="breadcrumb-bg">
+            <div class="container no-index">
+                <div class="breadcrumb">
+                    <ol>
+                        <li><a href="{% url 'products:home' %}"><span>Home</span></a></li>
+                        <li><a href="#"><span>Shopping Cart</span></a></li>
+                    </ol>
                 </div>
-            </nav>
-            <div class="container">
-                <div class="row">
-                    <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
-                        <section id="main">
-                            <div class="cart-grid row">
-                                <div class="col-md-9 col-xs-12 check-info">
-                                    <h1 class="title-page">Shopping Cart</h1>
-                                    <div class="cart-container">
-                                        <div class="cart-overview js-cart">
-                                            <ul class="cart-items">
-                                                {% for item in basket %}
-                                                <li class="cart-item">
-                                                    <div class="product-line-grid row justify-content-between">
-                                                        <!--  product left content: image-->
-                                                        <div class="product-line-grid-left col-md-2">
-                                                            <span class="product-image media-middle">
-                                                                <a href="{% url 'products:detail' item.product.id %}">
-                                                                    {% if item.image %}
-                                                                        <img class="img-fluid" src="{{ item.image }}" alt="{{ item.product.title }}">
-                                                                    {% else %}
-                                                                        <img class="img-fluid" src="{% static 'img/no-image.png' %}" alt="No image">
-                                                                    {% endif %}
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                        <div class="product-line-grid-body col-md-6">
-                                                            <div class="product-line-info">
-                                                                <a class="label" href="#" data-id_customization="0">{{ item.product.title }}</a>
-                                                            </div>
-                                                            <div class="product-line-info product-price">
-                                                                <span class="value">$ {{ item.product.price }}</span>
-                                                            </div>
-                                                            <div class="product-line-info">
-                                                                <span class="label-atrr">Color:</span>
-                                                                <span class="value">Blue</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-line-grid-right text-center product-line-actions col-md-4">
-                                                            <div class="row">
-                                                                <div class="col-md-5 col qty">
-                                                                    <div class="label">Qty:</div>
-                                                                    <div class="quantity">
-                                                                        <input type="text" name="qty" value="1" class="input-group form-control">
+            </div>
+        </nav>
 
-                                                                        <span class="input-group-btn-vertical">
-                                                                            <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-up" type="button">
-                                                                                +
-                                                                            </button>
-                                                                            <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-down" type="button">
-                                                                                -
-                                                                            </button>
-                                                                        </span>
-                                                                    </div>
+        <div class="container">
+            <div class="row">
+                <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                    <section id="main">
+                        <div class="cart-grid row">
+
+                            <!-- 🧺 LEFT SIDE -->
+                            <div class="col-md-9 col-xs-12 check-info">
+                                <h1 class="title-page">Shopping Cart</h1>
+
+                                <div class="cart-container">
+                                    <div class="cart-overview js-cart">
+                                        <ul class="cart-items">
+                                            {% for item in basket %}
+                                            <li class="cart-item">
+                                                <div class="product-line-grid row justify-content-between">
+
+                                                    <!-- 🖼 Image -->
+                                                    <div class="product-line-grid-left col-md-2">
+                                                        <span class="product-image media-middle">
+                                                            <a href="{% url 'products:detail' item.product.id %}">
+                                                                {% if item.image %}
+                                                                    <img class="img-fluid" src="{{ item.image }}" alt="{{ item.product.title }}">
+                                                                {% else %}
+                                                                    <img class="img-fluid" src="{% static 'img/no-image.png' %}" alt="No image">
+                                                                {% endif %}
+                                                            </a>
+                                                        </span>
+                                                    </div>
+
+                                                    <!-- 📋 Info -->
+                                                    <div class="product-line-grid-body col-md-6">
+                                                        <div class="product-line-info">
+                                                            <a class="label" href="{% url 'products:detail' item.product.id %}">{{ item.product.title }}</a>
+                                                        </div>
+                                                        <div class="product-line-info product-price">
+                                                            <span class="value">$ {{ item.product.price }}</span>
+                                                        </div>
+                                                        <div class="product-line-info">
+                                                            <span class="label-atrr">Stock:</span>
+                                                            <span class="value">{{ item.product.stock }} available</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 🔢 Quantity + Total -->
+                                                    <div class="product-line-grid-right text-center product-line-actions col-md-4">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col qty">
+                                                                <div class="label">Qty:</div>
+                                                                <div class="quantity">
+                                                                    <input type="text"
+                                                                           name="qty"
+                                                                           value="{{ item.quantity }}"
+                                                                           id="quantity_{{ item.product.id }}"
+                                                                           class="input-group form-control quantity-input"
+                                                                           data-product-id="{{ item.product.id }}"
+                                                                           data-price="{{ item.product.price }}"
+                                                                           data-stock="{{ item.product.stock }}"
+                                                                           readonly>
+                                                                    <span class="input-group-btn-vertical">
+                                                                        <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-up"
+                                                                                type="button"
+                                                                                data-product-id="{{ item.product.id }}">
+                                                                            +
+                                                                        </button>
+                                                                        <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-down"
+                                                                                type="button"
+                                                                                data-product-id="{{ item.product.id }}">
+                                                                            -
+                                                                        </button>
+                                                                    </span>
                                                                 </div>
-                                                                <div class="col-md-5 col price">
-                                                                    <div class="label">Total:</div>
-                                                                    <div class="product-price total">
-                                                                        {{ item.total_price }}
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-5 col price">
+                                                                <div class="label">Total:</div>
+                                                                <div class="product-price total" id="total_{{ item.product.id }}">
+                                                                    $ {{ item.total_price }}
                                                                 </div>
-                                                                <div class="col-md-2 col text-xs-right align-self-end">
-                                                                    <div class="cart-line-product-actions ">
-                                                                        <a class="remove-from-cart" rel="nofollow" href="{% url 'basket:basket_remove' item.product.id %}" data-link-action="delete-from-cart" data-id-product="1">
-                                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-2 col text-xs-right align-self-end">
+                                                                <div class="cart-line-product-actions">
+                                                                    <a class="remove-from-cart"
+                                                                       rel="nofollow"
+                                                                       href="{% url 'basket:basket_remove' item.product.id %}">
+                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <a href="product-checkout.html" class="continue btn btn-primary pull-xs-right">
-                                        Continue
-                                    </a>
-                                </div>
-                                <div class="cart-grid-right col-xs-12 col-lg-3">
-                                    <div class="cart-summary">
-                                        <div class="cart-detailed-totals">
-                                            <div class="cart-summary-products">
-                                                <div class="summary-label">There are 3 item in your cart</div>
-                                            </div>
-                                            <div class="cart-summary-line" id="cart-subtotal-products">
-                                                <span class="label js-subtotal">
-                                                    Total products:
-                                                </span>
-                                                <span class="value">£200.00</span>
-                                            </div>
-                                            <div class="cart-summary-line" id="cart-subtotal-shipping">
-                                                <span class="label">
-                                                    Total Shipping:
-                                                </span>
-                                                <span class="value">Free</span>
-                                                <div>
-                                                    <small class="value"></small>
-                                                </div>
-                                            </div>
-                                            <div class="cart-summary-line cart-total">
-                                                <span class="label">Total:</span>
-                                                <span class="value">£200.00 (tax incl.)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="block-reassurance">
-                                        <ul>
-                                            <li>
-                                                <div class="block-reassurance-item">
-                                                    <img src="{% static 'img/product/check1.png' %}" alt="Security policy (edit with Customer reassurance module)">
-                                                    <span>Security policy (edit with Customer reassurance module)</span>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div class="block-reassurance-item">
-                                                    <img src="{% static 'img/product/check2.png' %}" alt="Delivery policy (edit with Customer reassurance module)">
-                                                    <span>Delivery policy (edit with Customer reassurance module)</span>
-                                                </div>
+                                            {% empty %}
+                                            <li class="text-center" style="padding:40px;">
+                                                <h4>Your cart is empty</h4>
+                                                <a href="{% url 'products:home' %}" class="btn btn-primary" style="margin-top:20px;">Continue Shopping</a>
                                             </li>
-                                            <li>
-                                                <div class="block-reassurance-item">
-                                                    <img src="{% static 'img/product/check3.png' %}" alt="Return policy (edit with Customer reassurance module)">
-                                                    <span>Return policy (edit with Customer reassurance module)</span>
-                                                </div>
-                                            </li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
+
+                                {% if basket %}
+                                <a href="{% url 'products:home' %}" class="continue btn btn-primary pull-xs-right">
+                                    Continue Shopping
+                                </a>
+                                {% endif %}
                             </div>
-                        </section>
-                    </div>
+
+                            <!-- 💰 RIGHT SIDE -->
+                            <div class="cart-grid-right col-xs-12 col-lg-3">
+                                <div class="cart-summary">
+                                    <div class="cart-detailed-totals">
+                                        <div class="cart-summary-products">
+                                            <div class="summary-label">
+                                                There are {{ basket|length }} item{% if basket|length != 1 %}s{% endif %} in your cart
+                                            </div>
+                                        </div>
+                                        <div class="cart-summary-line" id="cart-subtotal-products">
+                                            <span class="label js-subtotal">Total products:</span>
+                                            <span class="value" id="cart-total-price">$ {{ basket.get_total_price }}</span>
+                                        </div>
+                                        <div class="cart-summary-line" id="cart-subtotal-shipping">
+                                            <span class="label">Total Shipping:</span>
+                                            <span class="value">Free</span>
+                                        </div>
+                                        <div class="cart-summary-line cart-total">
+                                            <span class="label">Total:</span>
+                                            <span class="value" id="final-total">$ {{ basket.get_total_price }} (tax incl.)</span>
+                                        </div>
+                                    </div>
+
+                                    {% if basket %}
+                                    <a href="#" class="btn btn-primary btn-block" style="margin-top:20px;">Proceed to Checkout</a>
+                                    {% endif %}
+                                </div>
+
+                                <div id="block-reassurance">
+                                    <ul>
+                                        <li><div class="block-reassurance-item">
+                                            <img src="{% static 'img/product/check1.png' %}" alt="Security policy">
+                                            <span>Security policy</span></div></li>
+                                        <li><div class="block-reassurance-item">
+                                            <img src="{% static 'img/product/check2.png' %}" alt="Delivery policy">
+                                            <span>Delivery policy</span></div></li>
+                                        <li><div class="block-reassurance-item">
+                                            <img src="{% static 'img/product/check3.png' %}" alt="Return policy">
+                                            <span>Return policy</span></div></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/mainn.js' %}"></script>
 {% endblock %}

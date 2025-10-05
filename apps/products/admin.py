@@ -81,7 +81,7 @@ class DealOfTheDayAdmin(admin.ModelAdmin):
 
 @admin.register(CommentModel)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "email", "comment", "created_at")
-    search_fields = ("name", "email", "comment")
-    list_filter = ("created_at",)
+    list_display = ("id", "product", "name", "email", "comment", "created_at")
+    search_fields = ("name", "email", "comment", "product__title")
+    list_filter = ("created_at", "product")
     ordering = ("-created_at",)
