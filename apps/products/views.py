@@ -1,7 +1,15 @@
-from django.views.generic import ListView, DetailView
-from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView
+from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Count, Min, Max
-from .models import ProductModel, ProductCategoryModel, ManufacturerModel, ProductTagModel, ColorModel
+from django.urls import reverse
+from .models import (
+    ProductModel,
+    ProductCategoryModel,
+    ManufacturerModel,
+    ProductTagModel,
+    ColorModel,
+    CommentModel,
+)
 
 
 class ProductFilterView(ListView):
@@ -22,25 +30,20 @@ class ProductFilterView(ListView):
         selected_colors = self.request.GET.getlist("color")
         price_range = self.request.GET.get("price")
 
-        # 🟢 Category filter
         if filter_type == "category" and pk:
             category = get_object_or_404(ProductCategoryModel, id=pk)
             child_categories = category.children.all()
-
             if child_categories.exists():
                 queryset = queryset.filter(category__in=[category, *child_categories])
             else:
                 queryset = queryset.filter(category=category)
-
             self.category = category
         else:
             self.category = None
 
-        # 🟢 Tag filter
         if filter_type == "tag" and pk:
             selected_tags = [pk]
 
-        # 🟢 Other filters
         if selected_manufacturers:
             queryset = queryset.filter(manufacturer__id__in=map(int, selected_manufacturers))
         if selected_tags:
@@ -48,7 +51,6 @@ class ProductFilterView(ListView):
         if selected_colors:
             queryset = queryset.filter(colors__id__in=map(int, selected_colors)).distinct()
 
-        # 🟢 Price filter
         min_price = ProductModel.objects.aggregate(Min("price"))["price__min"] or 0
         max_price = ProductModel.objects.aggregate(Max("price"))["price__max"] or 0
         if price_range:
@@ -63,7 +65,6 @@ class ProductFilterView(ListView):
         self.min_price = min_price
         self.max_price = max_price
 
-        # 🟢 Agar mahsulot topilmasa
         if not queryset.exists():
             self.empty_message = "No products found for your selected filters."
         else:
@@ -73,8 +74,6 @@ class ProductFilterView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        # 🟢 Breadcrumbs
         breadcrumbs = []
         category = getattr(self, "category", None)
         if category:
@@ -128,4 +127,17 @@ class ProductDetailView(DetailView):
         context['all_tags'] = ProductTagModel.objects.all()
         context['all_categories'] = ProductCategoryModel.objects.filter(parent__isnull=True)
 
+        # 🟢 Shu yerda commentlar va comment qo‘shish formasi
+        context['comments'] = CommentModel.objects.all().order_by('-created_at')
         return context
+
+
+class CommentCreateView(CreateView):
+    model = CommentModel
+    fields = ['name', 'email', 'comment']
+
+    def form_valid(self, form):
+        product = get_object_or_404(ProductModel, pk=self.kwargs['pk'])
+        form.instance.product = product
+        form.save()
+        return redirect('products:detail', pk=product.pk)

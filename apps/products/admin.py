@@ -7,7 +7,7 @@ from .models import (
     ColorModel,
     ProductTagModel,
     ProductModel,
-    ProductImageModel, DealOfTheDayModel
+    ProductImageModel, DealOfTheDayModel, CommentModel
 )
 
 class MyTranslationAdmin(TranslationAdmin):
@@ -77,3 +77,11 @@ class DealOfTheDayAdmin(admin.ModelAdmin):
     ordering = ("-start_time",)
 
     readonly_fields = ("is_active",)
+
+
+@admin.register(CommentModel)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "email", "comment", "created_at")
+    search_fields = ("name", "email", "comment")
+    list_filter = ("created_at",)
+    ordering = ("-created_at",)
