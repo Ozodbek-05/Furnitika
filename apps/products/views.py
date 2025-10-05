@@ -1,7 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import get_object_or_404, redirect
-from django.db.models import Count, Min, Max
-from django.urls import reverse
+from django.db.models import Count, Min, Max, Q
 from .models import (
     ProductModel,
     ProductCategoryModel,
@@ -10,6 +9,61 @@ from .models import (
     ColorModel,
     CommentModel,
 )
+
+
+class ProductSearchView(ListView):
+    model = ProductModel
+    template_name = "products/product-grid-sidebar-left.html"
+    context_object_name = "products"
+    paginate_by = 9
+
+    def get_queryset(self):
+        query = self.request.GET.get('s', '').strip()
+
+        if query:
+            words = query.split()
+            q_objects = Q()
+
+            for word in words:
+                q_objects |= (
+                        Q(title__icontains=word) |
+                        Q(description__icontains=word) |
+                        Q(category__title__icontains=word) |
+                        Q(manufacturer__name__icontains=word) |
+                        Q(tags__title__icontains=word) |
+                        Q(colors__title__icontains=word)
+                )
+
+            queryset = ProductModel.objects.filter(
+                q_objects,
+                status=ProductModel.ProductStatus.PUBLISHED
+            ).distinct()
+        else:
+            queryset = ProductModel.objects.filter(status=ProductModel.ProductStatus.PUBLISHED)
+
+        self.search_query = query
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = getattr(self, 'search_query', '')
+
+        context.update({
+            "search_query": query,
+            "parent_categories": ProductCategoryModel.objects.filter(parent__isnull=True).annotate(
+                product_count=Count("products", distinct=True)
+            ),
+            "child_categories": ProductCategoryModel.objects.filter(parent__isnull=False),
+            "manufacturers": ManufacturerModel.objects.all(),
+            "tags": ProductTagModel.objects.all(),
+            "colors": ColorModel.objects.all(),
+            "selected_child_ids": [],
+            "selected_manufacturers": [],
+            "selected_tags": [],
+            "selected_colors": [],
+            "empty_message": f'No products found for "{query}"' if query and not context['products'] else '',
+        })
+        return context
 
 
 class ProductFilterView(ListView):
@@ -126,9 +180,8 @@ class ProductDetailView(DetailView):
         ).order_by('-rating')[:3]
         context['all_tags'] = ProductTagModel.objects.all()
         context['all_categories'] = ProductCategoryModel.objects.filter(parent__isnull=True)
+        context['comments'] = CommentModel.objects.filter(product=product).order_by('-created_at')
 
-        # 🟢 Shu yerda commentlar va comment qo‘shish formasi
-        context['comments'] = CommentModel.objects.all().order_by('-created_at')
         return context
 
 

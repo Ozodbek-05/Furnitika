@@ -136,10 +136,8 @@
 
                     <!-- search and acount -->
                     <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
-                        <form method="get" action="#">
-
-                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                        <form method="get" action="{% url 'products:search' %}">
+                            <input type="text" name="s" value="{{ search_query|default:'' }}" placeholder="Search products..." class="ui-autocomplete-input" autocomplete="off">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -184,7 +182,7 @@
                                         </a>
                                     </div>
                                     <div class="link_wishlist">
-                                        <a href="user-wishlist.html" title="My Wishlists">
+                                        <a href="{% url 'wishlist:list' %}" title="My Wishlists">
                                             <i class="fa fa-heart"></i>
                                             <span>{% trans 'My Wishlists' %}</span>
                                         </a>
@@ -203,90 +201,94 @@
                                         </ul>
                                     </div>
                                     <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
-    <ul class="list-inline">
-        {% get_current_language as current_lang %}
-        {% get_available_languages as all_langs %}
+                                        <ul class="list-inline">
+                                            {% get_current_language as current_lang %}
+                                            {% get_available_languages as all_langs %}
 
-        {% for lang in all_langs %}
-            {% if lang.0 != current_lang %}
-                <li class="list-inline-item">
-                    <a href="{% get_full_url request lang.0 %}">
-                        {% if lang.0 == 'en' %}
-                            <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
-                        {% elif lang.0 == 'uz' %}
-                            <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
-                        {% elif lang.0 == 'ru' %}
-                            <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
-                        {% endif %}
-                    </a>
-                </li>
-            {% else %}
-                <li class="list-inline-itemcurrent">
-                    {% if lang.0 == 'en' %}
-                        <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
-                    {% elif lang.0 == 'uz' %}
-                        <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
-                    {% elif lang.0 == 'ru' %}
-                        <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
-                    {% endif %}
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
+                                            {% for lang in all_langs %}
+                                                {% if lang.0 != current_lang %}
+                                                    <li class="list-inline-item">
+                                                        <a href="{% get_full_url request lang.0 %}">
+                                                            {% if lang.0 == 'en' %}
+                                                                <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
+                                                            {% elif lang.0 == 'uz' %}
+                                                                <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
+                                                            {% elif lang.0 == 'ru' %}
+                                                                <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
+                                                            {% endif %}
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="list-inline-itemcurrent">
+                                                        {% if lang.0 == 'en' %}
+                                                            <img class="img-fluid" src="{% static 'img/home/lg1.jpg' %}" alt="English" width="18" height="13">
+                                                        {% elif lang.0 == 'uz' %}
+                                                            <img class="img-fluid" src="{% static 'img/home/lg2.jpg' %}" alt="Uzbek" width="18" height="13">
+                                                        {% elif lang.0 == 'ru' %}
+                                                            <img class="img-fluid" src="{% static 'img/home/lg3.jpg' %}" alt="Russian" width="18" height="13">
+                                                        {% endif %}
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="desktop_cart">
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
-                                    <span class="cart-products-count">1</span>
+                                    <span class="cart-products-count">{{ basket|length }}</span>
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </div>
                                 <div class="dropdown-content">
+
                                     <div class="cart-content">
                                         <table>
                                             <tbody>
+                                             {% for item in basket %}
                                                 <tr>
                                                     <td class="product-image">
-                                                        <a href="product-detail.html">
-                                                            <img src="{% static 'img/product/5.jpg' %}" alt="Product">
+                                                        <a href="{% url 'products:detail' pk=item.product.id %}">
+                                                            {% if item.image %}
+                                                                <img src="{{ item.image }}" alt="{{ item.product.title }}">
+                                                            {% else %}
+                                                                <img src="{% static 'img/no-image.png' %}" alt="No image">
+                                                            {% endif %}
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <div class="product-name">
-                                                            <a href="product-detail.html">{% trans 'Organic Strawberry Fruits' %}</a>
+                                                            <a href="product-detail.html">{{ item.product.title }}</a>
                                                         </div>
                                                         <div>
-                                                            2 x
-                                                            <span class="product-price">£28.98</span>
+                                                            {{ item.quantity }} x
+                                                            <span class="product-price">$ {{ item.product.price }}</span>
                                                         </div>
                                                     </td>
                                                     <td class="action">
-                                                        <a class="remove" href="#">
+                                                        <a class="remove" href="{% url 'basket:basket_remove' item.product.id %}">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
                                                 <tr class="total">
                                                     <td colspan="2">{% trans 'Total:' %}</td>
-                                                    <td>£92.96</td>
+                                                    <td>$ {{ item.total_price }}</td>
                                                 </tr>
-
-                                                <tr>
+                                             {% endfor %}
+                                                <td>
                                                     <td colspan="3" class="d-flex justify-content-center">
                                                         <div class="cart-button">
-                                                            <a href="product-cart.html" title="View Cart">{% trans 'View Cart' %}</a>
-                                                            <a href="product-checkout.html" title="Checkout">{% trans 'Checkout' %}</a>
+                                                            <a href="{% url 'basket:detail' %}" title="View Cart">{% trans 'View Cart' %}</a>
+                                                            <a href="{% url 'orders:create' %}" title="Checkout">{% trans 'Checkout' %}</a>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </td>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

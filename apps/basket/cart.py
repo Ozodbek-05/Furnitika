@@ -64,6 +64,10 @@ class Basket:
                 item['price'] = Decimal(item['price'])
                 item['total_price'] = item['price'] * item['quantity']
                 item['product'] = product  # Add product object to the yielded item
+
+                first_image = product.images.first()
+                item["image"] = first_image.image.url if first_image else None
+
                 yield item
 
     def __len__(self):

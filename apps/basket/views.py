@@ -24,7 +24,7 @@ def basket_add(request, product_id):
 
     basket.add(product=product, quantity=1)
     messages.success(request, f'{product.title} added to your basket!')
-    return redirect('products:list')
+    return redirect('products:home')
 
 
 def basket_remove(request, product_id):
@@ -35,4 +35,7 @@ def basket_remove(request, product_id):
     product = get_object_or_404(ProductModel, id=product_id)
     basket.remove(product)
     messages.success(request, f'{product.title} removed from your basket!')
-    return redirect('products:list')
+    referer = request.META.get('HTTP_REFERER')
+    if referer:
+        return redirect(referer)
+    return redirect('products:home')

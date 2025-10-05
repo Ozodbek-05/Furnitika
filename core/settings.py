@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.accounts',
     'apps.basket',
+    'apps.wishlist',
+    'apps.orders',
     'django_extensions',
     'ckeditor',
     'ckeditor_uploader',
@@ -167,8 +169,8 @@ EMAIL_HOST_USER = 'ozodbekhoshimov53@gmail.com'
 EMAIL_HOST_PASSWORD = 'inse hnyf xscl jiov'
 
 BASKET_SESSION_ID = 'basket'
-# SESSION_COOKIE_AGE = 86400  # 1 day
-# SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 86400  # 1 day
+SESSION_SAVE_EVERY_REQUEST = True
 
 try:
     from .locale_settings import *

@@ -1,5 +1,3 @@
-from importlib.util import module_for_loader
-
 from django.db import models
 from apps.pages.models import BaseModel
 
@@ -135,6 +133,7 @@ class DealOfTheDayModel(BaseModel):
         verbose_name = 'deal'
         verbose_name_plural = 'deals'
 
+
 class CommentModel(BaseModel):
     name = models.CharField(max_length=128)
     email = models.EmailField()
@@ -146,6 +145,11 @@ class CommentModel(BaseModel):
     class Meta:
         verbose_name = 'comment'
         verbose_name_plural = 'comments'
+
+
+
+
+
 
 
 
