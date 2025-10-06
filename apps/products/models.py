@@ -129,6 +129,12 @@ class DealOfTheDayModel(BaseModel):
             return self.end_time - now
         return None
 
+    @property
+    def discount_percent(self):
+        if self.product.price and self.deal_price < self.product.price:
+            return round((self.product.price - self.deal_price) / self.product.price * 100)
+        return 0
+
     class Meta:
         verbose_name = 'deal'
         verbose_name_plural = 'deals'

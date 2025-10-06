@@ -194,3 +194,42 @@ class CommentCreateView(CreateView):
         form.instance.product = product
         form.save()
         return redirect('products:detail', pk=product.pk)
+
+
+class LivingRoomProductsView(ListView):
+    model = ProductModel
+    template_name = "products/product-grid-sidebar-left.html"
+    context_object_name = "products"
+    paginate_by = 9
+
+    def get_queryset(self):
+        living_room_category = get_object_or_404(
+            ProductCategoryModel,
+            title__iexact="Living Room"
+        )
+
+        queryset = ProductModel.objects.filter(
+            category=living_room_category,
+            status=ProductModel.ProductStatus.PUBLISHED
+        )
+
+        # DEBUG
+        print(f"🔍 Living Room products count: {queryset.count()}")
+        for product in queryset[:3]:
+            print(f"   - {product.title}")
+            print(f"     Image: {product.image.url if product.image else 'NO IMAGE'}")
+            print(f"     Price: {product.price}")
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # DEBUG
+        print(f"🔍 Context products count: {len(context['products'])}")
+        context.update({
+            "parent_categories": ProductCategoryModel.objects.filter(parent__isnull=True),
+            "manufacturers": ManufacturerModel.objects.all(),
+            "tags": ProductTagModel.objects.all(),
+            "colors": ColorModel.objects.all(),
+        })
+        return context
