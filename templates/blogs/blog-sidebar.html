@@ -1,105 +1,85 @@
 {% load static %}
-{% load static %}
 {% load i18n %}
+
 <!-- category -->
-    <div class="sidebar-block">
-        <div class="title-block">Categories</div>
-        <div class="block-content">
-            {% for parent in parent_categories %}
-                <div class="cateTitle hasSubCategory open level1">
-                    <span class="arrow collapse-icons collapsed"
-                        data-toggle="collapse"
-                        data-target="#category{{ parent.id }}"
-                        aria-expanded="false" role="status">
-                        <i class="zmdi zmdi-minus"></i>
-                        <i class="zmdi zmdi-plus"></i>
-                    </span>
-                    <a class="cateItem" href="{% url 'blogs:blog_filter' 'category' parent.id %}">{{ parent.title }}</a>
+<div class="sidebar-block">
+    <div class="title-block">Categories</div>
+    <div class="block-content">
+        {% for parent in parent_categories %}
+            <div class="cateTitle hasSubCategory open level1">
+                <span class="arrow collapse-icons collapsed"
+                    data-toggle="collapse"
+                    data-target="#category{{ parent.id }}"
+                    aria-expanded="false" role="status">
+                    <i class="zmdi zmdi-minus"></i>
+                    <i class="zmdi zmdi-plus"></i>
+                </span>
+                <a class="cateItem" href="{% url 'blogs:blog_filter' 'category' parent.id %}">{{ parent.title }}</a>
 
-                    <div class="subCategory collapse"
-                        id="category{{ parent.id }}"
-                        aria-expanded="true" role="status">
-                        {% for child in parent.children.all %}
-                            <div class="cateTitle">
-                                <a href="{% url 'blogs:blog_filter' 'category' child.id %}" class="cateItem">{{ child.title }}</a>
-                            </div>
-                        {% empty %}
-                            <div class="cateTitle">
-                                <span class="text-muted">{% trans 'No subcategories' %}</span>
-                            </div>
-                        {% endfor %}
-                    </div>
+                <div class="subCategory collapse"
+                    id="category{{ parent.id }}"
+                    aria-expanded="true" role="status">
+                    {% for child in parent.children.all %}
+                        <div class="cateTitle">
+                            <a href="{% url 'blogs:blog_filter' 'category' child.id %}" class="cateItem">{{ child.title }}</a>
+                        </div>
+                    {% empty %}
+                        <div class="cateTitle">
+                            <span class="text-muted">{% trans 'No subcategories' %}</span>
+                        </div>
+                    {% endfor %}
                 </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- recent posts -->
+<div class="sidebar-block">
+    <div class="title-block">{% trans 'Recent Posts' %}</div>
+    <div class="post-item-content">
+        {% for blog in recent_blogs %}
+        <div>
+            <div class="late-item {% if forloop.first %}first-child{% endif %}">
+                <a href="{% url 'blogs:detail' blog.id %}">
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid mb-2">
+                    {% endif %}
+                    <p class="content-title">{{ blog.title|upper }}</p>
+                </a>
+                <span>
+                    <i class="zmdi zmdi-comments"></i>{{ blog.comments.count }} comment{{ blog.comments.count|pluralize }}
+                </span>
+                <span>
+                    <i class="zmdi zmdi-calendar-note"></i>{{ blog.created_at|date:"d F Y" }}
+                </span>
+                <p class="description">{{ blog.content|striptags|truncatewords:15 }}</p>
+                <p class="remove">
+                    <a href="{% url 'blogs:detail' blog.id %}">{% trans 'READ MORE' %}</a>
+                </p>
+            </div>
+        </div>
+        {% empty %}
+        <p style="text-align:center;color:#999;padding:20px;">{% trans 'No recent posts found.' %}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- product tag -->
+<div class="sidebar-block product-tags">
+    <div class="title-block">
+        Blog Tags
+    </div>
+
+    <div class="block-content">
+        <ul class="listSidebarBlog list-unstyled">
+            {% for tag in tags %}
+            <li>
+                <a href="{% url 'blogs:blog_filter' 'tag' tag.id %}" title="Show blogs matching tag {{ tag.title }}">{{ tag.title }}</a>
+            </li>
+            {% empty %}
+            <li><span class="text-muted">{% trans 'No tags available' %}</span></li>
             {% endfor %}
-        </div>
+        </ul>
     </div>
-
-
-    <!-- recent posts -->
-    <div class="sidebar-block">
-        <div class="title-block">{% trans 'Recent Posts' %}</div>
-        <div class="post-item-content">
-            <div>
-                <div class="late-item first-child">
-                    <a href="blog-detail.html">
-                        <p class="content-title">{% trans 'Lorem ipsum dolor sit amet' %}</p>
-                    </a>
-                    <span>
-                        <i class="zmdi zmdi-comments"></i>{% trans '13 comment' %}
-                    </span>
-                    <span>
-                        <i class="zmdi zmdi-calendar-note"></i>{% trans '20 APRIl 2017' %}
-                    </span>
-                    <p class="description">{% blocktrans %}Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                        nonummy...{% endblocktrans %}
-                    </p>
-                    <p class="remove">
-                        <a href="blog-detail.html">{% trans 'READ MORE' %}</a>
-                    </p>
-                </div>
-            </div>
-            <div>
-                <div class="late-item">
-                    <a href="blog-detail.html">
-                        <p class="content-title">{% trans 'Lorem ipsum dolor sit amet' %}</p>
-                    </a>
-                    <span>
-                        <i class="zmdi zmdi-comments"></i>{% trans '13 comment' %}
-                    </span>
-                    <span>
-                        <i class="zmdi zmdi-calendar-note"></i>{% trans '20 APRIl 2017' %}
-                    </span>
-                    <p class="description">{% blocktrans %}Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                        nonummy...{% endblocktrans %}
-                    </p>
-                    <p class="remove">
-                        <a href="blog-detail.html">{% trans 'READ MORE' %}</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- product tag -->
-    <div class="sidebar-block product-tags">
-        <div class="title-block">
-            Blog Tags
-        </div>
-        
-        <div class="block-content">
-            <ul class="listSidebarBlog list-unstyled">
-                {% for tag in tags %}
-                <li>
-                    <a href="{% url 'blogs:blog_filter' 'tag' tag.id %}" title="Show products matching tag {{ tag.title }}">{{ tag.title }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    <!-- advertising -->
-    <div class="sidebar-block group-image-special">
-        <div class="effect">
-            <a href="#">
-                <img class="img-fluid" src="{% static 'img/blog/advertising.jpg' %}" alt="banner-2" title="banner-2">
-            </a>
-        </div>
-    </div>
+</div>

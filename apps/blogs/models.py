@@ -96,3 +96,27 @@ class BlogViewModel(BaseModel):
     class Meta:
         verbose_name = 'Blog view'
         verbose_name_plural = 'Blog views'
+
+
+from django.db import models
+
+
+class BlogCommentModel(BaseModel):
+    blog = models.ForeignKey(
+        BlogModel,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        null=True,
+        blank=True
+    )
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    website = models.URLField(blank=True, null=True)
+    message = models.TextField()
+
+    class Meta:
+        verbose_name = 'Contact Message'
+        verbose_name_plural = 'Contact Messages'
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"

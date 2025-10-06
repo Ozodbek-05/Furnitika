@@ -77,26 +77,45 @@
                                     {% endif %}
                                         <div class="page-list col">
                                             <ul class="justify-content-center d-flex">
-                                                <li>
-                                                    <a rel="prev" href="#" class="previous disabled js-search-link">
-                                                        Previous
-                                                    </a>
-                                                </li>
-                                                <li class="current active">
-                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
-                                                        1
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a rel="nofollow" href="#" class="disabled js-search-link">
-                                                        2
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a rel="next" href="#" class="next disabled js-search-link">
-                                                        Next
-                                                    </a>
-                                                </li>
+                                                {% if page_obj.has_previous %}
+                                                    <li>
+                                                        <a rel="prev" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&s={{ search_query }}{% endif %}" class="previous js-search-link">
+                                                            Previous
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li>
+                                                        <span class="previous disabled">Previous</span>
+                                                    </li>
+                                                {% endif %}
+
+                                                {% for num in page_obj.paginator.page_range %}
+                                                    {% if page_obj.number == num %}
+                                                        <li class="current active">
+                                                            <a rel="nofollow" href="#" class="disabled js-search-link">
+                                                                {{ num }}
+                                                            </a>
+                                                        </li>
+                                                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                                        <li>
+                                                            <a rel="nofollow" href="?page={{ num }}{% if search_query %}&s={{ search_query }}{% endif %}" class="js-search-link">
+                                                                {{ num }}
+                                                            </a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+
+                                                {% if page_obj.has_next %}
+                                                    <li>
+                                                        <a rel="next" href="?page={{ page_obj.next_page_number }}{% if search_query %}&s={{ search_query }}{% endif %}" class="next js-search-link">
+                                                            Next
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li>
+                                                        <span class="next disabled">Next</span>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                         </div>
                                     </div>

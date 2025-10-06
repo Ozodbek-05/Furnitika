@@ -136,12 +136,17 @@
 
                     <!-- search and acount -->
                     <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
-                        <form method="get" action="{% url 'products:search' %}">
-                            <input type="text" name="s" value="{{ search_query|default:'' }}" placeholder="Search products..." class="ui-autocomplete-input" autocomplete="off">
+                        <form method="get" action="{% if search_type == 'blogs' %}{% url 'blogs:search' %}{% else %}{% url 'products:search' %}{% endif %}">
+                            <input type="text"
+                                   name="s"
+                                   value="{{ search_query|default:'' }}"
+                                   placeholder="{% if search_type == 'blogs' %}Search blogs...{% else %}Search products...{% endif %}"
+                                   autocomplete="off">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>
+
 
                         <div id="block_myaccount_infos" class="hidden-sm-down dropdown">
                             <div class="myaccount-title ">
