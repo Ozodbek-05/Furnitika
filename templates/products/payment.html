@@ -403,7 +403,6 @@
     </div>
 
     <!-- Payment Modal -->
-    <!-- Payment Modal -->
 <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -517,8 +516,8 @@
                             Order Summary
                         </h6>
                         <div class="summary-row">
-                            <span class="summary-label">Subtotal:</span>
-                            <span class="summary-value">${{ order.total_price|floatformat:2 }}</span>
+                            <span class="summary-label">Total Products:</span>
+                            <span class="summary-value">{{ basket|length }}</span>
                         </div>
                         <div class="summary-row">
                             <span class="summary-label">Shipping:</span>
@@ -527,7 +526,7 @@
                         <div class="summary-divider"></div>
                         <div class="summary-total">
                             <span class="total-label">Total:</span>
-                            <span class="total-amount">${{ order.total_price|floatformat:2 }}</span>
+                            <span class="total-amount">${{ basket.get_total_price }}</span>
                         </div>
                     </div>
 

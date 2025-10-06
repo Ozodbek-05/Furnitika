@@ -233,7 +233,7 @@
                                                 </div>
                                                 <div class="cart-summary-line" id="cart-subtotal-products">
                                                     <span class="label js-subtotal">Total products:</span>
-                                                    <span class="value">${{ basket.get_total_price }}</span>
+                                                    <span class="value">{{ basket|length }}</span>
                                                 </div>
                                                 <div class="cart-summary-line" id="cart-subtotal-shipping">
                                                     <span class="label">Total Shipping:</span>
@@ -270,16 +270,15 @@
                                             </ul>
                                         </div>
                                         {% if user.is_authenticated %}
-    <div class="checkout-btn" style="margin-top: 30px;">
-        <a href="{% url 'orders:payment_page' unique_id=unique_id %}">
-            <button type="button" class="btn btn-primary btn-block"
-                    style="padding: 15px; font-size: 16px; font-weight: bold; background-color: #007bff; border-color: #007bff;">
-                PROCEED TO PAYMENT
-            </button>
-        </a>
-    </div>
-{% endif %}
-
+                                            <div class="checkout-btn" style="margin-top: 30px;">
+                                                <a href="{% url 'orders:payment_page' unique_id=unique_id %}">
+                                                    <button type="button" class="btn btn-primary btn-block"
+                                                            style="padding: 15px; font-size: 16px; font-weight: bold; background-color: #007bff; border-color: #007bff;">
+                                                        PROCEED TO PAYMENT
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

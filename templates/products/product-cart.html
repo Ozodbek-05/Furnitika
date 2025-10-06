@@ -150,7 +150,7 @@
                                     </div>
 
                                     {% if basket %}
-                                    <a href="#" class="btn btn-primary btn-block" style="margin-top:20px;">Proceed to Checkout</a>
+                                    <a href="{% url 'orders:create' %}" class="btn btn-primary btn-block" style="margin-top:20px;">Proceed to Checkout</a>
                                     {% endif %}
                                 </div>
 
