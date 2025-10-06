@@ -1,13 +1,36 @@
 {% extends 'layout/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load my_tags %}
 
 {% block title %}Product Checkout{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'libs/slick-slider/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'libs/slick-slider/css/slick-theme.css' %}">
+    <style>
+        .user-info-display {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .user-info-display p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .user-info-display strong {
+            display: inline-block;
+            width: 120px;
+        }
+        .edit-info-btn {
+            margin-top: 10px;
+        }
+    </style>
 {% endblock %}
+
 {% block body_class %}product-checkout checkout-cart{% endblock %}
+
 {% block content %}
     <div id="checkout" class="main-content">
         <div class="wrap-banner">
@@ -17,14 +40,17 @@
                     <div class="breadcrumb">
                         <ol>
                             <li>
-                                <a href="#">
+                                <a href="{% url 'pages:home' %}">
                                     <span>Home</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span>Checkout</span>
+                                <a href="{% url 'basket:detail' %}">
+                                    <span>Cart</span>
                                 </a>
+                            </li>
+                            <li>
+                                <span>Checkout</span>
                             </li>
                         </ol>
                     </div>
@@ -39,180 +65,221 @@
                             <div id="main">
                                 <div class="cart-grid row">
                                     <div class="col-md-9 check-info">
-                                        <div class="checkout-personal-step">
-                                            <h3 class="step-title h3 info">
-                                                <span class="step-number">1</span>PERSONAL INFORMATION
-                                            </h3>
-                                        </div>
-                                        <div class="content">
-                                            <ul class="nav nav-inline">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#checkout-guest-form">
-                                                        ORDER AS A GUEST
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#checkout-login-form">
-                                                        SIGN IN
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active show" id="checkout-guest-form" role="tabpanel">
-                                                    <form action="#" id="customer-form" class="js-customer-form" method="post">
-                                                        <div>
-                                                            <input type="hidden" name="id_customer" value="">
-                                                            <div class="form-group row">
-                                                                <input class="form-control" name="firstname" type="text" placeholder="Full name">
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <input class="form-control" name="email" type="email" placeholder="Email">
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <input class="form-control" name="email" type="email" placeholder="Phone">
-                                                            </div>
-                                                            <div class="desc-password">
-                                                                <span class="font-weight-bold">Create an account</span>
-                                                                <span>(optional)</span>
-                                                                <br>
-                                                                <span class="text-muted">And save time on your next order!</span>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="input-group js-parent-focus">
-                                                                    <input class="form-control js-child-focus" name="password" type="password" placeholder=" Password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="hidden-comment">
-                                                                <div class="form-group row">
-                                                                    <input class="form-control" name="birthday" type="text" value="" placeholder=" Birthdate">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row check-input">
-                                                                <span class="custom-checkbox d-inline-flex">
-                                                                    <input class="check" name="optin" type="checkbox" value="1">
-                                                                    <label class="label-absolute">Receive offers from our partners</label>
-                                                                </span>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <span class="custom-checkbox d-inline-flex check-input">
-                                                                    <input class="check" name="newsletter" type="checkbox" value="1">
-                                                                    <label>Sign up for our newsletter
-                                                                        <br>
-                                                                        <em>You may unsubscribe at any moment. For that purpose,
-                                                                            please find our contact info in the legal notice.
-                                                                        </em>
-                                                                    </label>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="clearfix">
-                                                            <div class="row">
-                                                                <input type="hidden" name="submitCreate" value="1">
-
-                                                                <button class="continue btn btn-primary pull-xs-right" name="continue" data-link-action="register-new-customer" type="submit"
-                                                                    value="1">
-                                                                    Continue
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
+                                        {% if user.is_authenticated %}
+                                            <!-- Authenticated User Section -->
+                                            <div class="checkout-personal-step">
+                                                <h3 class="step-title h3 info">
+                                                    <span class="step-number">1</span>PERSONAL INFORMATION
+                                                </h3>
+                                            </div>
+                                            <div class="content">
+                                                <div class="user-info-display">
+                                                    <p><strong>Full Name:</strong> {{ user.get_full_name|default:user.username }}</p>
+                                                    <p><strong>Email:</strong> {{ user.email }}</p>
+                                                    {% if user.phone %}
+                                                        <p><strong>Phone:</strong> {{ user.phone }}</p>
+                                                    {% endif %}
                                                 </div>
-                                                <div class="tab-pane fade" id="checkout-login-form" role="tabpanel">
-                                                    <form id="login-form" action="#" method="post" class="customer-form">
-                                                        <div>
-                                                            <input type="hidden" name="back" value="">
+                                            </div>
+
+                                            <!-- Shipping Address Section -->
+                                            <div class="checkout-personal-step" style="margin-top: 30px;">
+                                                <h3 class="step-title h3 info">
+                                                    <span class="step-number">2</span>SHIPPING ADDRESS
+                                                </h3>
+                                            </div>
+                                            <div class="content">
+                                                <form action="{% url 'orders:create' %}" id="shipping-form" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="form-group row">
+                                                        <label>City *</label>
+                                                        <input class="form-control" name="city" type="text" required placeholder="Enter your city">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label>District *</label>
+                                                        <input class="form-control" name="district" type="text" required placeholder="Enter your district">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label>Street *</label>
+                                                        <input class="form-control" name="street" type="text" required placeholder="Enter your street address">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label>Home Number *</label>
+                                                        <input class="form-control" name="home_number" type="text" required placeholder="Enter your home/apartment number">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label>Additional Information (Optional)</label>
+                                                        <textarea class="form-control" name="additional_info" rows="3" placeholder="Any special delivery instructions"></textarea>
+                                                    </div>
+                                                    <input type="hidden" name="checkout_step" value="shipping">
+                                                </form>
+                                            </div>
+
+                                            {% else %}
+                                            <!-- Guest User - Redirect to Register -->
+                                            <div class="checkout-personal-step">
+                                                <h3 class="step-title h3 info">
+                                                    <span class="step-number">1</span>AUTHENTICATION REQUIRED
+                                                </h3>
+                                            </div>
+                                            <div class="content">
+                                                <div class="alert alert-info" style="margin: 20px 0;">
+                                                    <h4>Please sign in to continue</h4>
+                                                    <p>You need to be logged in to proceed with checkout. Please sign in to your account or create a new one.</p>
+                                                </div>
+
+                                                <ul class="nav nav-inline">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="tab" href="#checkout-login-form">
+                                                            SIGN IN
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#checkout-register-form">
+                                                            CREATE ACCOUNT
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <!-- Login Form -->
+                                                    <div class="tab-pane fade in active show" id="checkout-login-form" role="tabpanel">
+                                                        <form id="login-form" action="{% url 'account:login' %}" method="post" class="customer-form">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="next" value="{% url 'checkout:checkout' %}">
                                                             <div class="form-group row">
-                                                                <input class="form-control" name="email" type="email" placeholder="Email">
+                                                                <input class="form-control" name="username" type="text" placeholder="Email or Username" required>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="input-group js-parent-focus">
-                                                                    <input class="form-control js-child-focus js-visible-password" name="password" type="password" placeholder="Password">
+                                                                    <input class="form-control js-child-focus js-visible-password" name="password" type="password" placeholder="Password" required>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="forgot-password">
-                                                                    <a href="user-reset-password.html" rel="nofollow">
+                                                                    <a href="{% url 'account:password_reset' %}" rel="nofollow">
                                                                         Forgot your password?
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="clearfix">
-                                                            <div class="row">
-                                                                <button class="continue btn btn-primary pull-xs-right" name="continue" data-link-action="sign-in" type="submit" value="1">
-                                                                    Continue
-                                                                </button>
+                                                            <div class="clearfix">
+                                                                <div class="row">
+                                                                    <button class="continue btn btn-primary pull-xs-right" name="continue" type="submit" value="1">
+                                                                        Sign In
+                                                                    </button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    </div>
+
+                                                    <!-- Register Form -->
+                                                    <div class="tab-pane fade" id="checkout-register-form" role="tabpanel">
+                                                        <form action="{% url 'account:register' %}" id="customer-form" class="js-customer-form" method="post">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="next" value="{% url 'checkout:checkout' %}">
+                                                            <div class="form-group row">
+                                                                <input class="form-control" name="username" type="text" placeholder="Username" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <input class="form-control" name="first_name" type="text" placeholder="First name" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <input class="form-control" name="last_name" type="text" placeholder="Last name" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <input class="form-control" name="email" type="email" placeholder="Email" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <input class="form-control" name="phone" type="tel" placeholder="Phone" required>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="input-group js-parent-focus">
+                                                                    <input class="form-control js-child-focus" name="password1" type="password" placeholder="Password" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="input-group js-parent-focus">
+                                                                    <input class="form-control js-child-focus" name="password2" type="password" placeholder="Confirm Password" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row check-input">
+                                                                <span class="custom-checkbox d-inline-flex">
+                                                                    <input class="check" name="newsletter" type="checkbox" value="1">
+                                                                    <label class="label-absolute">Sign up for our newsletter</label>
+                                                                </span>
+                                                            </div>
+                                                            <div class="clearfix">
+                                                                <div class="row">
+                                                                    <button class="continue btn btn-primary pull-xs-right" name="continue" type="submit" value="1">
+                                                                        Create Account
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="checkout-personal-step">
-                                            <h3 class="step-title h3">
-                                                <span class="step-number">2</span>Addresses
-                                            </h3>
-                                        </div>
-                                        <div class="checkout-personal-step">
-                                            <h3 class="step-title h3">
-                                                <span class="step-number">3</span>Shipping Method
-                                            </h3>
-                                        </div>
-                                        <div class="checkout-personal-step">
-                                            <h3 class="step-title h3">
-                                                <span class="step-number">4</span>Payment
-                                            </h3>
-                                        </div>
+                                        {% endif %}
                                     </div>
+
+                                    <!-- Cart Summary Sidebar -->
                                     <div class="cart-grid-right col-xs-12 col-lg-3">
                                         <div class="cart-summary">
                                             <div class="cart-detailed-totals">
                                                 <div class="cart-summary-products">
-                                                    <div class="summary-label">There are 3 item in your cart</div>
+                                                    <div class="summary-label">
+                                                        There are {{ basket|length }} item{% if basket|length != 1 %}s{% endif %} in your cart
+                                                    </div>
                                                 </div>
                                                 <div class="cart-summary-line" id="cart-subtotal-products">
-                                                    <span class="label js-subtotal">
-                                                        Total products:
-                                                    </span>
-                                                    <span class="value">£200.00</span>
+                                                    <span class="label js-subtotal">Total products:</span>
+                                                    <span class="value">${{ basket.get_total_price }}</span>
                                                 </div>
                                                 <div class="cart-summary-line" id="cart-subtotal-shipping">
-                                                    <span class="label">
-                                                        Total Shipping:
-                                                    </span>
+                                                    <span class="label">Total Shipping:</span>
                                                     <span class="value">Free</span>
-                                                    <div>
-                                                        <small class="value"></small>
-                                                    </div>
                                                 </div>
                                                 <div class="cart-summary-line cart-total">
                                                     <span class="label">Total:</span>
-                                                    <span class="value">£200.00 (tax incl.)</span>
+                                                    <span class="value" id="final-total">${{ basket.get_total_price }} (tax incl.)</span>
                                                 </div>
                                             </div>
+
                                         </div>
+
                                         <div id="block-reassurance">
                                             <ul>
                                                 <li>
                                                     <div class="block-reassurance-item">
-                                                        <img src="{% static 'img/product/check1.png' %}" alt="Security policy (edit with Customer reassurance module)">
-                                                        <span>Security policy (edit with Customer reassurance module)</span>
+                                                        <img src="{% static 'img/product/check1.png' %}" alt="Security policy">
+                                                        <span>Security policy</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="block-reassurance-item">
-                                                        <img src="{% static 'img/product/check2.png' %}" alt="Delivery policy (edit with Customer reassurance module)">
-                                                        <span>Delivery policy (edit with Customer reassurance module)</span>
+                                                        <img src="{% static 'img/product/check2.png' %}" alt="Delivery policy">
+                                                        <span>Delivery policy</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="block-reassurance-item">
-                                                        <img src="{% static 'img/product/check3.png' %}" alt="Return policy (edit with Customer reassurance module)">
-                                                        <span>Return policy (edit with Customer reassurance module)</span>
+                                                        <img src="{% static 'img/product/check3.png' %}" alt="Return policy">
+                                                        <span>Return policy</span>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </div>
+                                        {% if user.is_authenticated %}
+    <div class="checkout-btn" style="margin-top: 30px;">
+        <a href="{% url 'orders:payment_page' unique_id=unique_id %}">
+            <button type="button" class="btn btn-primary btn-block"
+                    style="padding: 15px; font-size: 16px; font-weight: bold; background-color: #007bff; border-color: #007bff;">
+                PROCEED TO PAYMENT
+            </button>
+        </a>
+    </div>
+{% endif %}
+
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +290,7 @@
         </div>
     </div>
 {% endblock %}
+
 {% block extra_js %}
     <script src="{% static 'libs/slick-slider/js/slick.min.js' %}"></script>
 {% endblock %}

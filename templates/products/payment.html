@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Modal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-content {
+            border-radius: 24px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #fff;
+            border: none;
+            padding: 32px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-title i {
+            font-size: 28px;
+        }
+
+        .modal-subtitle {
+            margin: 10px 0 0 0;
+            font-size: 15px;
+            opacity: 0.95;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+        }
+
+        .close {
+            color: #fff;
+            opacity: 1;
+            text-shadow: none;
+            position: relative;
+            z-index: 3;
+            font-size: 32px;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 40px;
+            background: #fafbfc;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #6366f1;
+            font-size: 20px;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .payment-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .payment-label {
+            cursor: pointer;
+            margin: 0;
+            display: block;
+        }
+
+        .payment-card {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            background: #ffffff;
+            border: 2.5px solid #e2e8f0;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .payment-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-label .payment-card {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f7ff 100%);
+            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .payment-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .payment-logo i {
+            font-size: 32px;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Uzum Bank - Purple */
+        .logo-uzum {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+        }
+
+        /* Agrobank - Green */
+        .logo-agrobank {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        /* TBC Bank - Blue */
+        .logo-tbc {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+
+        /* Cash - Orange/Gold */
+        .logo-cash {
+            background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 4px 0;
+        }
+
+        .payment-desc {
+            font-size: 13px;
+            color: #64748b;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .payment-check {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .payment-check i {
+            font-size: 24px;
+            color: #6366f1;
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-label .payment-check {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .order-summary {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .summary-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-title i {
+            color: #6366f1;
+            font-size: 18px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .summary-label {
+            font-size: 15px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .summary-free {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+            margin: 16px 0;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 0 0;
+        }
+
+        .total-label {
+            font-size: 19px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .total-amount {
+            font-size: 26px;
+            font-weight: 800;
+            color: #6366f1;
+        }
+
+        .modal-footer {
+            background: #ffffff;
+            border-top: 2px solid #e2e8f0;
+            padding: 24px 40px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid #cbd5e0;
+            background: #ffffff;
+            color: #475569;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-cancel:hover {
+            background: #f8fafc;
+            border-color: #6366f1;
+            color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .btn-confirm {
+            flex: 2;
+            padding: 14px 32px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-confirm:hover {
+            box-shadow: 0 10px 28px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-confirm:active {
+            transform: translateY(0);
+        }
+
+        /* Security Badge */
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .security-badge i {
+            color: #16a34a;
+            font-size: 16px;
+        }
+
+        .security-badge span {
+            font-size: 13px;
+            color: #166534;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Trigger Button for Demo -->
+    <div style="padding: 50px; text-align: center;">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#paymentModal" style="padding: 15px 40px; font-size: 16px; border-radius: 12px;">
+            Open Payment Modal
+        </button>
+    </div>
+
+    <!-- Payment Modal -->
+    <!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <div style="position: relative; z-index: 2;">
+                    <h3 class="modal-title" id="paymentModalLabel">
+                        <i class="fas fa-credit-card"></i>
+                        Choose Payment Method
+                    </h3>
+                    <p class="modal-subtitle">Select your preferred payment option to complete your order</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <!-- FORM ACTION TO'G'RI BO'LISHI KERAK -->
+                <form method="post" action="{% url 'orders:process_payment' unique_id=unique_id %}" id="paymentForm">
+                    {% csrf_token %}
+
+                    <h5 class="section-title">
+                        <i class="fas fa-hand-pointer"></i>
+                        Payment Options
+                    </h5>
+
+                    <div class="payment-options">
+                        <!-- Uzum Bank -->
+                        <div class="payment-option" onclick="selectPayment('uzum')">
+                            <input type="radio" name="payment_method" value="uzum" id="uzum" required>
+                            <label for="uzum" class="payment-label">
+                                <div class="payment-card">
+                                    <div class="payment-logo logo-uzum">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h6 class="payment-name">Uzum Bank</h6>
+                                        <p class="payment-desc">Fast & secure digital payments</p>
+                                    </div>
+                                    <div class="payment-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Agrobank -->
+                        <div class="payment-option" onclick="selectPayment('agrobank')">
+                            <input type="radio" name="payment_method" value="agrobank" id="agrobank" required>
+                            <label for="agrobank" class="payment-label">
+                                <div class="payment-card">
+                                    <div class="payment-logo logo-agrobank">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h6 class="payment-name">Agrobank</h6>
+                                        <p class="payment-desc">Trusted agricultural banking</p>
+                                    </div>
+                                    <div class="payment-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- TBC Bank -->
+                        <div class="payment-option" onclick="selectPayment('tbc')">
+                            <input type="radio" name="payment_method" value="tbc" id="tbc" required>
+                            <label for="tbc" class="payment-label">
+                                <div class="payment-card">
+                                    <div class="payment-logo logo-tbc">
+                                        <i class="fas fa-building-columns"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h6 class="payment-name">TBC Bank</h6>
+                                        <p class="payment-desc">International banking services</p>
+                                    </div>
+                                    <div class="payment-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Cash Payment -->
+                        <div class="payment-option" onclick="selectPayment('cash')">
+                            <input type="radio" name="payment_method" value="cash" id="cash" required>
+                            <label for="cash" class="payment-label">
+                                <div class="payment-card">
+                                    <div class="payment-logo logo-cash">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h6 class="payment-name">Cash Payment</h6>
+                                        <p class="payment-desc">Pay with cash on delivery</p>
+                                    </div>
+                                    <div class="payment-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="order-summary">
+                        <h6 class="summary-title">
+                            <i class="fas fa-receipt"></i>
+                            Order Summary
+                        </h6>
+                        <div class="summary-row">
+                            <span class="summary-label">Subtotal:</span>
+                            <span class="summary-value">${{ order.total_price|floatformat:2 }}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Shipping:</span>
+                            <span class="summary-free">Free</span>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-total">
+                            <span class="total-label">Total:</span>
+                            <span class="total-amount">${{ order.total_price|floatformat:2 }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Security Badge -->
+                    <div class="security-badge">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Secured payment with 256-bit SSL encryption</span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer - BU QISMNI TO'G'RILANG -->
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" data-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+                <button type="submit" form="paymentForm" class="btn-confirm">
+                    <i class="fas fa-lock"></i>
+                    Confirm Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function selectPayment(method) {
+            document.getElementById(method).checked = true;
+        }
+
+        // Form submission handler
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedMethod = document.querySelector('input[name="payment_method"]:checked');
+
+            if (!selectedMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+
+            // Show loading state
+            const confirmBtn = document.querySelector('.btn-confirm');
+            const originalText = confirmBtn.innerHTML;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            confirmBtn.disabled = true;
+
+            // Submit form (Django will handle the redirect)
+            this.submit();
+        });
+    </script>
+</body>
+</html>

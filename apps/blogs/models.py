@@ -33,7 +33,7 @@ class BlogTagModel(BaseModel):
 
 
 class BlogAuthorModel(BaseModel):
-    full_name = models.CharField(max_length=64)
+    full_name = models.CharField(max_length=128)
     avatar = models.ImageField(
         upload_to='blog-author/'
     )

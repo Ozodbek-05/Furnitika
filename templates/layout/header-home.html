@@ -389,7 +389,7 @@
                                                     <td colspan="3" class="d-flex justify-content-center">
                                                         <div class="cart-button">
                                                             <a href="{% url 'basket:detail' %}" title="View Cart">{% trans 'View Cart' %}</a>
-                                                            <a href="product-checkout.html" title="Checkout">{% trans 'Checkout' %}</a>
+                                                            <a href="{% url 'orders:create' %}" title="Checkout">{% trans 'Checkout' %}</a>
                                                         </div>
                                                     </td>
                                                 </td>
