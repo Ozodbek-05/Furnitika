@@ -51,7 +51,7 @@ class BlogViewModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'user_ip', 'blog_title', 'created_at']
     search_fields = ['user_ip']
     list_filter = ['created_at', 'user_ip']
-    fields = ['image', 'title', 'content', 'status', 'author', 'category', 'tag']
+    fields = ['user_ip', 'blog']
 
     # list_display uchun method
     def blog_title(self, obj):
